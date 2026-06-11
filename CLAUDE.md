@@ -44,6 +44,18 @@ vercel.json          # { "framework": "nextjs" }
 - **Production URL**: https://mcapanemaio.vercel.app
 - Every push to `main` triggers an automatic production deployment on Vercel.
 
+## Git workflow
+
+**Never commit directly to `main`.** For every change:
+
+1. Create a new branch from `main` with a short descriptive name (e.g. `feat/case-studies-page`, `fix/dark-mode-nav`)
+2. Make commits on that branch
+3. Run `npm run build` to verify the build passes before opening a PR
+4. Open a PR on GitHub with `gh pr create` — write a clear title and a body that explains what changed and why
+5. Leave the PR open for Murilo to review and merge
+
+The PR description should cover: what was changed, why, and any decisions or tradeoffs worth noting. Vercel will create a preview deployment automatically for every PR.
+
 ## Local development
 
 ```bash
