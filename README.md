@@ -1,22 +1,27 @@
 # capanema.io
 
-Personal portfolio built with Next.js, MDX, and Tailwind CSS. Deployed on Vercel.
+This is my personal site — a curated record of the engineering leadership work I find worth documenting. It hosts long-form case studies on the problems I've led teams through, the architectural and organizational tradeoffs I've navigated, and the outcomes that followed. It also serves as a living resume.
+
+The site is intentionally minimal. No CMS, no database, no third-party content layer. Content lives as MDX files in the repository, which means the writing process is the same as the engineering process: version-controlled, reviewable, and permanent.
 
 ## Stack
 
-- **Framework**: Next.js (App Router)
-- **Content**: MDX with remark-gfm
-- **Styles**: Tailwind CSS v4
-- **Deployment**: Vercel
+| Layer | Choice | Rationale |
+|---|---|---|
+| Framework | Next.js 16 (App Router) | Static generation by default; incremental adoption of server components as content scales |
+| Content | MDX + mdxRs | Markdown with full React composability; Rust compiler keeps builds fast |
+| Styles | Tailwind CSS v4 | Utility-first with zero runtime — no stylesheet overhead on a content-heavy site |
+| Observability | Vercel Analytics + Speed Insights | Page-level traffic and Core Web Vitals without a third-party script tax |
+| Deployment | Vercel | Git-push-to-production with zero config |
 
-## Getting started
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Content
+## Adding content
 
-- **Case studies** — add `.mdx` files under `src/app/case-studies/`
-- **Resume** — add your resume at `src/app/resume/page.tsx` or `page.mdx`
+- **Case study** — create `src/app/case-studies/[slug]/page.mdx`
+- **Resume** — edit `src/app/resume/page.tsx` or `page.mdx`
