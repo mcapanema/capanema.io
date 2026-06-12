@@ -6,12 +6,15 @@ export type Outcome = { value: string; label: string };
 export type CaseStudy = {
   slug: string;
   category: string; // e.g. "Healthcare · Optimization"
+  period?: string; // e.g. "2021–2023" — appended to the detail eyebrow
   title: string;
   summary: string;
   date: string; // ISO yyyy-mm-dd
   tags: string[];
   readingMinutes: number;
-  outcomes: Outcome[]; // headline metrics shown on the card
+  outcomes: Outcome[]; // two headline metrics shown on the card
+  metrics: Outcome[]; // 3–4 metrics for the detail band / featured panel
+  sections: string[]; // H2 labels, in order — drives the ToC + anchors
   featured?: boolean;
 };
 
@@ -38,4 +41,13 @@ export function formatStamp(iso: string): string {
 
 export function byNewest<T extends { date: string }>(items: T[]): T[] {
   return [...items].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+// Stable anchor id from heading text. Mirrored by the MDX h2 renderer so ToC
+// links resolve without a rehype-slug plugin (unavailable under Turbopack).
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }

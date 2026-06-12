@@ -12,3 +12,6 @@ export { Footer } from "./Footer";
 export { CaseStudyCard } from "./CaseStudyCard";
 export { ArticleCard } from "./ArticleCard";
 export { CredibilityStrip } from "./CredibilityStrip";
+export { FeaturedCaseStudy } from "./FeaturedCaseStudy";
+export { ToCRail, type ToCItem } from "./ToCRail";
+export { PageHeader } from "./PageHeader";

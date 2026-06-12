@@ -1,0 +1,29 @@
+## The mandate
+
+When I joined, scheduling across the network ran on a patchwork of spreadsheets and a decade-old system nobody fully understood. Every hospital did it differently, and the cost showed up as idle operating rooms and patients waiting weeks for routine procedures.
+
+The mandate was deceptively simple: one scheduling platform, forty hospitals, no downtime. The real assignment underneath it was harder — change how thousands of clinicians worked without ever asking them to trust a black box.
+
+## What we changed
+
+We rebuilt scheduling as a real-time optimization engine, rolling it out hospital by hospital so the network never lost a day. Each site kept its existing workflow on day one; the engine only began making suggestions once it had learned the local constraints.
+
+The hard part was never the solver — it was earning the trust of the people whose work it changed.
+
+<Pullquote attribution="— project retrospective">
+The algorithm was the easy part. The two years of trust-building around it were the actual work.
+</Pullquote>
+
+We invested as heavily in explainability as in optimization. Every suggestion the engine made carried its reasoning, and any scheduler could override it in one click. Overrides became our richest training signal.
+
+## Outcomes
+
+By the end, utilization was up across every site and wait times had fallen by nearly half. But the outcome I am proudest of is that the team running it today never needs to call me.
+
+<Callout variant="success" title="Outcome">
+3.2M patients served annually, 42% lower average wait time, and a platform the network now owns end to end.
+</Callout>
+
+## What I'd do again
+
+I would start with the explainability layer, not bolt it on. The fastest path to adoption was never a better objective function — it was making the system legible to the people it served. Next time, that is where I'd spend the first month.
