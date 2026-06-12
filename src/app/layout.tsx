@@ -1,22 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Design System fonts: Inter for all UI + display, JetBrains Mono for
+// eyebrows, labels, metadata, and code.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Murilo Capanema",
-  description: "Product & engineering portfolio",
+  title: {
+    default: "Murilo Capanema — Technology & Engineering Leadership",
+    template: "%s · Murilo Capanema",
+  },
+  description:
+    "Case studies, writing, and a professional profile from Murilo Capanema — scaling engineering organizations and the platforms they ship.",
 };
 
 export default function RootLayout({
@@ -25,9 +33,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
+      {/* Colors come from semantic tokens; they re-resolve per Mode via
+          prefers-color-scheme, so no `dark:` variants are needed. */}
+      <body className="min-h-full bg-surface-primary text-text-primary">
         {children}
         <Analytics />
         <SpeedInsights />
