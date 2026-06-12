@@ -48,3 +48,7 @@ export function getArticles(): Article[] {
 export function getArticle(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }
+
+export function getAllArticleCategories(): string[] {
+  return [...new Set(articles.map((a) => a.category))].sort();
+}
