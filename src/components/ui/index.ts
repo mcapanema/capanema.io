@@ -9,3 +9,6 @@ export { Pullquote } from "./Pullquote";
 export { Breadcrumb, type Crumb } from "./Breadcrumb";
 export { SiteHeader } from "./SiteHeader";
 export { Footer } from "./Footer";
+export { CaseStudyCard } from "./CaseStudyCard";
+export { ArticleCard } from "./ArticleCard";
+export { CredibilityStrip } from "./CredibilityStrip";
