@@ -1,0 +1,21 @@
+## The mandate
+
+Four acquisitions in three years had left us with four payment systems, four ledgers, and four definitions of the word "settled." Finance reconciled by hand. Engineering feared every release. The mandate was to consolidate onto one auditable platform — without a code freeze the business could not afford.
+
+## What we changed
+
+We modelled money movement as an event-sourced ledger and migrated one product at a time behind a routing layer, so traffic shifted gradually and every cutover was reversible.
+
+<Callout variant="info" title="Principle">
+Every migration step had to be reversible in production within minutes. If it wasn't, it wasn't ready to ship.
+</Callout>
+
+The ledger became the single source of truth; the legacy systems were reduced to thin adapters and then retired one by one.
+
+## Outcomes
+
+We collapsed four stacks into one, cut p95 latency by 42%, and did it with zero downtime cost to the business. Reconciliation went from a multi-day manual process to a continuous, automated one.
+
+## What I'd do again
+
+I'd build the reconciliation tooling before the migration, not alongside it. It was the thing that gave finance confidence to let us keep moving — and we built it a quarter later than we should have.

@@ -1,68 +1,105 @@
-export default function Home() {
+import { ArrowRight } from "lucide-react";
+import {
+  ArticleCard,
+  Button,
+  CaseStudyCard,
+  CredibilityStrip,
+  Footer,
+  SiteHeader,
+} from "@/components/ui";
+import { getCaseStudies } from "@/content/case-studies";
+import { getArticles } from "@/content/articles";
+
+const COMPANIES = ["HealthCo", "Stripe", "Vercel", "Linear", "Atlassian"];
+
+function SectionHeader({
+  title,
+  href,
+  cta,
+}: {
+  title: string;
+  href: string;
+  cta: string;
+}) {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-24 bg-white dark:bg-zinc-950">
-      <div className="w-full max-w-2xl">
+    <div className="flex flex-wrap items-end justify-between gap-4">
+      <h2 className="text-[32px] font-semibold leading-[1.2] tracking-[-0.5px] text-text-primary">
+        {title}
+      </h2>
+      <a
+        href={href}
+        className="group inline-flex items-center gap-2 text-sm font-semibold text-link transition-colors hover:text-link-hover"
+      >
+        {cta}
+        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+      </a>
+    </div>
+  );
+}
 
-        {/* Identity */}
-        <div className="mb-12">
-          <p className="text-xs font-medium tracking-widest uppercase text-zinc-400 dark:text-zinc-500 mb-4">
-            Engineering Leadership
-          </p>
-          <h1 className="text-5xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50 leading-tight mb-5">
-            Murilo Capanema
-          </h1>
-          <p className="text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-lg">
-            I build and lead engineering teams that ship products people rely on.
-            This is a record of the work behind them.
-          </p>
+export default function Home() {
+  const caseStudies = getCaseStudies().slice(0, 2);
+  const articles = getArticles().slice(0, 3);
+
+  return (
+    <>
+      <SiteHeader />
+      <main className="mx-auto max-w-[1120px] px-6 md:px-8">
+        {/* Hero — DS Hero Pattern */}
+        <section className="flex flex-col gap-12 py-16 md:py-24">
+          <div className="flex flex-col gap-6">
+            <span className="font-mono text-sm tracking-[1px] text-text-accent">
+              CTO · PLATFORM &amp; AI · ORG SCALING
+            </span>
+            <h1 className="max-w-[900px] text-[40px] font-semibold leading-[1.05] tracking-[-1px] text-text-primary sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
+              Scaling engineering organizations and the platforms they ship.
+            </h1>
+            <p className="max-w-[640px] text-lg leading-[1.6] text-text-secondary">
+              Two decades turning early teams into durable engineering
+              organizations — and the data and AI platforms that let them move
+              fast without breaking trust.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button
+                href="/case-studies"
+                icon={<ArrowRight className="size-4" />}
+              >
+                View case studies
+              </Button>
+              <Button variant="secondary" href="/resume">
+                Read résumé
+              </Button>
+            </div>
+          </div>
+          <CredibilityStrip companies={COMPANIES} />
+        </section>
+
+        {/* Latest Updates — the home dashboard */}
+        <div className="flex flex-col gap-16 border-t border-border-subtle py-16">
+          <section className="flex flex-col gap-8">
+            <SectionHeader
+              title="Case studies"
+              href="/case-studies"
+              cta="All case studies"
+            />
+            <div className="grid gap-6 md:grid-cols-2">
+              {caseStudies.map((cs) => (
+                <CaseStudyCard key={cs.slug} caseStudy={cs} />
+              ))}
+            </div>
+          </section>
+
+          <section className="flex flex-col gap-8">
+            <SectionHeader title="Writing" href="/articles" cta="All writing" />
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {articles.map((a) => (
+                <ArticleCard key={a.slug} article={a} />
+              ))}
+            </div>
+          </section>
         </div>
-
-        {/* Divider */}
-        <div className="w-12 h-px bg-zinc-200 dark:bg-zinc-800 mb-12" />
-
-        {/* Navigation cards */}
-        <nav className="flex flex-col gap-3">
-          <a
-            href="/case-studies"
-            className="group flex items-center justify-between p-5 rounded-xl border border-zinc-100 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-800/60 transition-all duration-200"
-          >
-            <div className="space-y-0.5">
-              <p className="font-medium text-zinc-900 dark:text-zinc-100">
-                Case Studies
-              </p>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                Deep dives into problems I&apos;ve led teams through
-              </p>
-            </div>
-            <span className="text-zinc-300 dark:text-zinc-600 group-hover:text-zinc-500 dark:group-hover:text-zinc-400 group-hover:translate-x-0.5 transition-all duration-200 text-lg">
-              →
-            </span>
-          </a>
-
-          <a
-            href="/resume"
-            className="group flex items-center justify-between p-5 rounded-xl border border-zinc-100 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-800/60 transition-all duration-200"
-          >
-            <div className="space-y-0.5">
-              <p className="font-medium text-zinc-900 dark:text-zinc-100">
-                Resume
-              </p>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                Background, experience, and skills
-              </p>
-            </div>
-            <span className="text-zinc-300 dark:text-zinc-600 group-hover:text-zinc-500 dark:group-hover:text-zinc-400 group-hover:translate-x-0.5 transition-all duration-200 text-lg">
-              →
-            </span>
-          </a>
-        </nav>
-
-        {/* Footer */}
-        <p className="mt-16 text-xs text-zinc-300 dark:text-zinc-700">
-          murilo.capanema@gmail.com
-        </p>
-
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
