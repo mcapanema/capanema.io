@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import {
   ArticleCard,
   Button,
@@ -43,6 +43,24 @@ export default function Home() {
   const caseStudies = getCaseStudies().slice(0, 2);
   const articles = getArticles().slice(0, 3);
 
+  const {
+    props: { srcSet: tabletDesktopSrcSet },
+  } = getImageProps({
+    src: meImage,
+    alt: "Murilo Capanema",
+    quality: 90,
+    sizes: "(min-width: 1024px) 680px, 520px",
+  });
+
+  const {
+    props: { srcSet: mobileSrcSet, ...heroImgProps },
+  } = getImageProps({
+    src: meImage,
+    alt: "Murilo Capanema",
+    quality: 90,
+    sizes: "300px",
+  });
+
   return (
     <>
       <SiteHeader />
@@ -77,15 +95,18 @@ export default function Home() {
             </div>
             {/* Portrait — supporting role below the actions on mobile, right on desktop */}
             <div className="lg:shrink-0">
-              <Image
-                src={meImage}
-                alt="Murilo Capanema"
-                priority
-                placeholder="blur"
-                quality={90}
-                sizes="(min-width: 1024px) 340px, (min-width: 640px) 260px, 150px"
-                className="h-auto w-[150px] rounded-xl border border-border-subtle shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
-              />
+              <picture>
+                {/* tablet + desktop: doubled sizes for 1x-display sharpness */}
+                <source media="(min-width: 640px)" srcSet={tabletDesktopSrcSet} />
+                {/* mobile fallback: accurate sizes, bandwidth-optimal on retina phones */}
+                <img
+                  {...heroImgProps}
+                  srcSet={mobileSrcSet}
+                  loading="eager"
+                  fetchPriority="high"
+                  className="h-auto w-[150px] rounded-xl border border-border-subtle shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
+                />
+              </picture>
             </div>
           </div>
           <CredibilityStrip companies={COMPANIES} />
