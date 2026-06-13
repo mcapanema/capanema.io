@@ -53,7 +53,7 @@ export default function Home() {
   });
 
   const {
-    props: { srcSet: mobileSrcSet, ...heroImgProps },
+    props: { srcSet: mobileSrcSet, loading: _loading, ...heroImgProps },
   } = getImageProps({
     src: meImage,
     alt: "Murilo Capanema",
