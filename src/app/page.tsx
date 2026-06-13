@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import {
   ArticleCard,
   Button,
@@ -9,6 +10,7 @@ import {
 } from "@/components/ui";
 import { getCaseStudies } from "@/content/case-studies";
 import { getArticles } from "@/content/articles";
+import meImage from "./me.png";
 
 const COMPANIES = ["HealthCo", "Stripe", "Vercel", "Linear", "Atlassian"];
 
@@ -47,28 +49,42 @@ export default function Home() {
       <main className="mx-auto max-w-[1120px] px-6 md:px-8">
         {/* Hero — DS Hero Pattern */}
         <section className="flex flex-col gap-12 py-16 md:py-24">
-          <div className="flex flex-col gap-6">
-            <span className="font-mono text-sm tracking-[1px] text-text-accent">
-              CTO · PLATFORM &amp; AI · ORG SCALING
-            </span>
-            <h1 className="max-w-[900px] text-[40px] font-semibold leading-[1.05] tracking-[-1px] text-text-primary sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
-              Scaling engineering organizations and the platforms they ship.
-            </h1>
-            <p className="max-w-[640px] text-lg leading-[1.6] text-text-secondary">
-              Two decades turning early teams into durable engineering
-              organizations — and the data and AI platforms that let them move
-              fast without breaking trust.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button
-                href="/case-studies"
-                icon={<ArrowRight className="size-4" />}
-              >
-                View case studies
-              </Button>
-              <Button variant="secondary" href="/resume">
-                Read résumé
-              </Button>
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+            {/* Portrait — first on mobile (above the headline), right on desktop */}
+            <div className="order-first lg:order-last lg:shrink-0">
+              <Image
+                src={meImage}
+                alt="Murilo Capanema"
+                priority
+                placeholder="blur"
+                sizes="(min-width: 1024px) 340px, (min-width: 640px) 260px, 220px"
+                className="h-auto w-[220px] rounded-xl border border-border-subtle shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
+              />
+            </div>
+            {/* Headline + subline + actions */}
+            <div className="flex flex-col gap-6 lg:min-w-0 lg:flex-1">
+              <span className="font-mono text-sm tracking-[1px] text-text-accent">
+                CTO · PLATFORM &amp; AI · ORG SCALING
+              </span>
+              <h1 className="max-w-[900px] text-[40px] font-semibold leading-[1.05] tracking-[-1px] text-text-primary sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
+                Scaling engineering organizations and the platforms they ship.
+              </h1>
+              <p className="max-w-[640px] text-lg leading-[1.6] text-text-secondary">
+                Two decades turning early teams into durable engineering
+                organizations — and the data and AI platforms that let them move
+                fast without breaking trust.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Button
+                  href="/case-studies"
+                  icon={<ArrowRight className="size-4" />}
+                >
+                  View case studies
+                </Button>
+                <Button variant="secondary" href="/resume">
+                  Read résumé
+                </Button>
+              </div>
             </div>
           </div>
           <CredibilityStrip companies={COMPANIES} />
