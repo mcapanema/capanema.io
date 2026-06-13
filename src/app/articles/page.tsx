@@ -3,7 +3,7 @@ import { getArticles, getAllArticleCategories } from "@/content/articles";
 import { ArticlesExplorer } from "./ArticlesExplorer";
 
 export const metadata = {
-  title: "Writing",
+  title: "Articles",
   description:
     "Essays on engineering leadership, org design, platforms, and the craft of building technology organizations.",
 };
@@ -17,8 +17,8 @@ export default function ArticlesPage() {
       <SiteHeader />
       <main className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8 md:py-20">
         <PageHeader
-          eyebrow="WRITING"
-          title="Writing"
+          eyebrow="ARTICLES"
+          title="Articles"
           description="Essays on engineering leadership, org design, and the craft of building technology organizations — a working notebook, not a feed."
         />
         <ArticlesExplorer articles={articles} categories={categories} />

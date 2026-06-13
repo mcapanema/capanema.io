@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s · Murilo Capanema",
   },
   description:
-    "Case studies, writing, and a professional profile from Murilo Capanema — scaling engineering organizations and the platforms they ship.",
+    "Case studies, articles, and a professional profile from Murilo Capanema — scaling engineering organizations and the platforms they ship.",
 };
 
 // Runs before first paint: apply a persisted theme choice so there is no

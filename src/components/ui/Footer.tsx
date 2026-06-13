@@ -3,7 +3,7 @@
 // on-dark tokens (this surface is dark in both modes).
 const explore = [
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/articles", label: "Writing" },
+  { href: "/articles", label: "Articles" },
   { href: "/resume", label: "Resume" },
 ];
 
