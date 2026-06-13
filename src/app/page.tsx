@@ -82,14 +82,14 @@ export default function Home() {
                 fast without breaking trust.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
+                <Button variant="secondary" href="/resume">
+                  About me
+                </Button>
                 <Button
                   href="/case-studies"
                   icon={<ArrowRight className="size-4" />}
                 >
                   View case studies
-                </Button>
-                <Button variant="secondary" href="/resume">
-                  About me
                 </Button>
               </div>
             </div>
