@@ -2,7 +2,8 @@
 
 # capanema.io — Project Guide
 
-Personal portfolio for Murilo Capanema (technology / engineering / product leadership). Hosts a home dashboard, case studies, writing, and an About me profile with a downloadable résumé. Built to be minimal: no CMS, no database — content lives as MDX + typed metadata in the repo.
+Personal portfolio for Murilo Capanema (technology / engineering / product leadership). Hosts a home dashboard, case studies, writing, and an executive resume. Built to be minimal: n
+o CMS, no database — content lives as MDX + typed metadata in the repo.
 
 **The entire site is built from a Design System.** Before making any design, layout, component, spacing, typography, color, or interaction decision, read **[DESIGN.md](./DESIGN.md)** — it is the authoritative record of the tokens, components, patterns, conventions, and accessibility rules. The DS itself is maintained in Pencil (a separate repo) and is the single source of truth; DESIGN.md is its translation into this codebase.
 

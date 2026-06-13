@@ -1,6 +1,7 @@
 # capanema.io
 
-This is my personal site — a curated record of the engineering leadership work I find worth documenting. It hosts long-form case studies on the problems I've led teams through, the architectural and organizational tradeoffs I've navigated, and the outcomes that followed. It also serves as a living About me profile with a downloadable resume.
+This is my personal site — a curated record of the engineering leadership work I find worth documenting. It hosts long-form case studies on the problems I've led teams through, the a
+rchitectural and organizational tradeoffs I've navigated, and the outcomes that followed. It also serves as a living resume.
 
 The site is intentionally minimal. No CMS, no database, no third-party content layer. Content lives as MDX files in the repository, which means the writing process is the same as the engineering process: version-controlled, reviewable, and permanent.
 
