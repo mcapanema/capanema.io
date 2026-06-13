@@ -18,7 +18,7 @@ export function NavItem({
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "inline-flex items-center py-2 text-sm font-medium transition-colors hover:text-text-primary",
+        "inline-flex items-center whitespace-nowrap py-2 text-sm font-medium transition-colors hover:text-text-primary",
         active ? "text-text-primary" : "text-text-secondary",
         className,
       )}

@@ -20,7 +20,8 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-6 px-6 py-4 md:px-8">
         <a
           href="/"
-          className="inline-flex items-center gap-2 text-base font-semibold tracking-[-0.3px] text-text-primary"
+          aria-label="Murilo Capanema – Home"
+          className="inline-flex shrink-0 items-center gap-2 text-base font-semibold tracking-[-0.3px] text-text-primary"
         >
           <img
             src="/logo-light.png"
@@ -36,11 +37,11 @@ export function SiteHeader() {
             height={32}
             className="logo-dark h-8 w-8"
           />
-          Murilo Capanema
+          <span className="hidden sm:inline">Murilo Capanema</span>
         </a>
         <div className="flex items-center gap-4 md:gap-6">
           <nav aria-label="Primary">
-            <ul className="flex items-center gap-6 md:gap-8">
+            <ul className="flex items-center gap-3 sm:gap-6 md:gap-8">
               {links.map((link) => (
                 <li key={link.href}>
                   <NavItem
