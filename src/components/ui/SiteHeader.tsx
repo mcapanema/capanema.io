@@ -20,8 +20,22 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-6 px-6 py-4 md:px-8">
         <a
           href="/"
-          className="text-base font-semibold tracking-[-0.3px] text-text-primary"
+          className="inline-flex items-center gap-2 text-base font-semibold tracking-[-0.3px] text-text-primary"
         >
+          <img
+            src="/logo-light.png"
+            alt=""
+            width={32}
+            height={32}
+            className="logo-light h-8 w-8"
+          />
+          <img
+            src="/logo-dark.png"
+            alt=""
+            width={32}
+            height={32}
+            className="logo-dark h-8 w-8"
+          />
           Murilo Capanema
         </a>
         <div className="flex items-center gap-4 md:gap-6">
