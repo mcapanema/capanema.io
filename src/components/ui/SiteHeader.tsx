@@ -8,7 +8,7 @@ import { ThemeToggle } from "./ThemeToggle";
 // primary navigation right. Active section is resolved from the pathname.
 const links = [
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/articles", label: "Writing" },
+  { href: "/articles", label: "Articles" },
   { href: "/resume", label: "Resume" },
 ];
 

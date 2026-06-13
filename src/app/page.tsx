@@ -90,7 +90,7 @@ export default function Home() {
           </section>
 
           <section className="flex flex-col gap-8">
-            <SectionHeader title="Writing" href="/articles" cta="All writing" />
+            <SectionHeader title="Articles" href="/articles" cta="All articles" />
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {articles.map((a) => (
                 <ArticleCard key={a.slug} article={a} />

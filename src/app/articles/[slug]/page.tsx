@@ -42,7 +42,7 @@ export default async function ArticlePage({
       <main className="mx-auto flex max-w-[680px] flex-col gap-8 px-6 py-12 md:py-16">
         <Breadcrumb
           items={[
-            { label: "Writing", href: "/articles" },
+            { label: "Articles", href: "/articles" },
             { label: title },
           ]}
         />
@@ -79,7 +79,7 @@ export default async function ArticlePage({
             href="/articles"
             className="text-sm font-semibold text-link transition-colors hover:text-link-hover"
           >
-            ← All writing
+            ← All articles
           </a>
         </footer>
       </main>

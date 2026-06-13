@@ -6,7 +6,7 @@ import { ArticleCard, FeaturedArticle } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import type { Article } from "@/content/types";
 
-// Discoverability layer for the Writing index: search + category filter + sort,
+// Discoverability layer for the Articles index: search + category filter + sort,
 // composed from tokenised primitives (the DS defines cards, not form controls).
 type Sort = "newest" | "oldest" | "reading";
 
@@ -66,8 +66,8 @@ export function ArticlesExplorer({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search writing"
-            aria-label="Search writing"
+            placeholder="Search articles"
+            aria-label="Search articles"
             className="h-11 w-full rounded-lg border border-border-default bg-surface-elevated pl-11 pr-4 text-sm text-text-primary placeholder:text-text-tertiary"
           />
         </div>
@@ -78,7 +78,7 @@ export function ArticlesExplorer({
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as Sort)}
-            aria-label="Sort writing"
+            aria-label="Sort articles"
             className="h-11 rounded-lg border border-border-default bg-surface-elevated px-3 text-sm text-text-primary"
           >
             {Object.entries(sortLabels).map(([value, label]) => (
@@ -120,7 +120,7 @@ export function ArticlesExplorer({
         </div>
       ) : (
         <p className="py-12 text-center text-text-secondary">
-          No writing matches your search.
+          No articles match your search.
         </p>
       )}
     </div>
