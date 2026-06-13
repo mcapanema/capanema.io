@@ -12,7 +12,7 @@ import { getCaseStudies } from "@/content/case-studies";
 import { getArticles } from "@/content/articles";
 import meImage from "./me.png";
 
-const COMPANIES = ["Creditas", "GenialCare", "and more"];
+const COMPANIES = ["Genial Care", "Creditas", "and more"];
 
 function SectionHeader({
   title,
@@ -77,9 +77,8 @@ export default function Home() {
                 Scaling engineering organizations and the platforms they ship.
               </h1>
               <p className="max-w-[640px] text-lg leading-[1.6] text-text-secondary">
-                Two decades turning early teams into durable engineering
-                organizations — and the data and AI platforms that let them move
-                fast without breaking trust.
+                Two decades helping organizations navigate through
+                growth, complexity, and change.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <Button variant="secondary" href="/resume">
