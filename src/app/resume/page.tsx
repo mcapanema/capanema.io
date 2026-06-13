@@ -57,7 +57,6 @@ export default function AboutMePage() {
     metrics,
     experience,
     education,
-    certifications,
     focusAreas,
     contact,
   } = resume;
@@ -118,10 +117,9 @@ export default function AboutMePage() {
           </div>
         </section>
 
-        {/* Education + Certifications */}
-        <div className="grid gap-12 sm:grid-cols-2">
+        {/* Education */}
+        <div>
           <CredentialList label="EDUCATION" items={education} />
-          <CredentialList label="CERTIFICATIONS" items={certifications} />
         </div>
 
         {/* Focus areas */}
