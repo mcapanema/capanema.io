@@ -12,7 +12,7 @@ import { resume } from "@/content/resume";
 import type { Credential } from "@/content/resume";
 
 export const metadata = {
-  title: "Resume",
+  title: "About me",
   description: resume.summary,
 };
 
@@ -48,7 +48,7 @@ function CredentialList({
   );
 }
 
-export default function ResumePage() {
+export default function AboutMePage() {
   const {
     name,
     role,

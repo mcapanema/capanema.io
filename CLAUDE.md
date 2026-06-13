@@ -2,7 +2,8 @@
 
 # capanema.io — Project Guide
 
-Personal portfolio for Murilo Capanema (technology / engineering / product leadership). Hosts a home dashboard, case studies, writing, and an executive resume. Built to be minimal: no CMS, no database — content lives as MDX + typed metadata in the repo.
+Personal portfolio for Murilo Capanema (technology / engineering / product leadership). Hosts a home dashboard, case studies, writing, and an executive resume. Built to be minimal: n
+o CMS, no database — content lives as MDX + typed metadata in the repo.
 
 **The entire site is built from a Design System.** Before making any design, layout, component, spacing, typography, color, or interaction decision, read **[DESIGN.md](./DESIGN.md)** — it is the authoritative record of the tokens, components, patterns, conventions, and accessibility rules. The DS itself is maintained in Pencil (a separate repo) and is the single source of truth; DESIGN.md is its translation into this codebase.
 
@@ -32,7 +33,7 @@ src/
       page.tsx              # Index (Writing pattern)
       ArticlesExplorer.tsx  # Client: search / filter / sort
       [slug]/page.tsx       # Article reading template
-    resume/page.tsx         # Resume (Resume + Contact patterns)
+    resume/page.tsx         # About me (profile + Contact patterns)
   components/ui/            # DS components (one file each) + index.ts barrel
   content/                  # Typed metadata + MDX bodies (the content layer)
   lib/cn.ts                 # Tiny className joiner (no clsx dep)
@@ -47,7 +48,7 @@ Content is **typed metadata + an MDX body**, not per-route MDX pages.
 
 - **Case study**: add an entry to `src/content/case-studies.ts` (incl. `sections` = the H2 labels, in order) and a body at `src/content/case-studies/<slug>.mdx`. The route `case-studies/[slug]` renders it.
 - **Article**: add an entry to `src/content/articles.ts` and a body at `src/content/articles/<slug>.mdx`.
-- **Resume**: edit `src/content/resume.ts`; replace `public/Murilo-Capanema-Resume.pdf` with the real document.
+- **About me**: edit `src/content/resume.ts`; replace `public/Murilo-Capanema-Resume.pdf` with the real document.
 - MDX bodies use plain markdown plus the DS components exposed in `mdx-components.tsx` (`<Pullquote>`, `<Callout>`, `<Metric>`, `<Tag>`). H2 anchors are slugified automatically.
 
 ## Key constraints

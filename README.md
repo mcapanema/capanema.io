@@ -1,6 +1,7 @@
 # capanema.io
 
-This is my personal site — a curated record of the engineering leadership work I find worth documenting. It hosts long-form case studies on the problems I've led teams through, the architectural and organizational tradeoffs I've navigated, and the outcomes that followed. It also serves as a living resume.
+This is my personal site — a curated record of the engineering leadership work I find worth documenting. It hosts long-form case studies on the problems I've led teams through, the a
+rchitectural and organizational tradeoffs I've navigated, and the outcomes that followed. It also serves as a living resume.
 
 The site is intentionally minimal. No CMS, no database, no third-party content layer. Content lives as MDX files in the repository, which means the writing process is the same as the engineering process: version-controlled, reviewable, and permanent.
 
@@ -23,5 +24,5 @@ npm run dev
 
 ## Adding content
 
-- **Case study** — create `src/app/case-studies/[slug]/page.mdx`
-- **Resume** — edit `src/app/resume/page.tsx` or `page.mdx`
+- **Case study** — add metadata in `src/content/case-studies.ts` and a body in `src/content/case-studies/<slug>.mdx`
+- **About me** — edit `src/content/resume.ts`; replace `public/Murilo-Capanema-Resume.pdf` when the downloadable resume changes

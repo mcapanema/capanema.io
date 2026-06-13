@@ -4,7 +4,7 @@
 const explore = [
   { href: "/case-studies", label: "Case Studies" },
   { href: "/articles", label: "Articles" },
-  { href: "/resume", label: "Resume" },
+  { href: "/resume", label: "About me" },
 ];
 
 const connect = [

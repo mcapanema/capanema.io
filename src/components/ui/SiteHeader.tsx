@@ -9,7 +9,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const links = [
   { href: "/case-studies", label: "Case Studies" },
   { href: "/articles", label: "Articles" },
-  { href: "/resume", label: "Resume" },
+  { href: "/resume", label: "About me" },
 ];
 
 export function SiteHeader() {
