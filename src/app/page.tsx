@@ -50,18 +50,7 @@ export default function Home() {
         {/* Hero — DS Hero Pattern */}
         <section className="flex flex-col gap-12 py-16 md:py-24">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-            {/* Portrait — first on mobile (above the headline), right on desktop */}
-            <div className="order-first lg:order-last lg:shrink-0">
-              <Image
-                src={meImage}
-                alt="Murilo Capanema"
-                priority
-                placeholder="blur"
-                sizes="(min-width: 1024px) 340px, (min-width: 640px) 260px, 220px"
-                className="h-auto w-[220px] rounded-xl border border-border-subtle shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
-              />
-            </div>
-            {/* Headline + subline + actions */}
+            {/* Headline + subline + actions — lead the page on mobile, left on desktop */}
             <div className="flex flex-col gap-6 lg:min-w-0 lg:flex-1">
               <span className="font-mono text-sm tracking-[1px] text-text-accent">
                 CTO · PLATFORM &amp; AI · ORG SCALING
@@ -85,6 +74,17 @@ export default function Home() {
                   Read résumé
                 </Button>
               </div>
+            </div>
+            {/* Portrait — supporting role below the actions on mobile, right on desktop */}
+            <div className="lg:shrink-0">
+              <Image
+                src={meImage}
+                alt="Murilo Capanema"
+                priority
+                placeholder="blur"
+                sizes="(min-width: 1024px) 340px, (min-width: 640px) 260px, 150px"
+                className="h-auto w-[150px] rounded-xl border border-border-subtle shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
+              />
             </div>
           </div>
           <CredibilityStrip companies={COMPANIES} />
