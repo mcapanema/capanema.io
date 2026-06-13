@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ssuperpowers Skill Plans
+docs/superpowers/plans/*
