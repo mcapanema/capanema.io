@@ -1,0 +1,243 @@
+# capanema.io — Design System
+
+This document is the authoritative record of how capanema.io is designed and built. **Every visual decision must be traceable to it.** Before adding or changing UI, read the relevant section and reuse what exists.
+
+The Design System is maintained in **Pencil** (`.pen` file, a separate repo — the single source of truth) and translated into this codebase as a token-first foundation. This file documents that translation: tokens, components, patterns, conventions, and rules. When the two ever disagree, Pencil wins and this file should be corrected to match.
+
+---
+
+## 1. Philosophy
+
+The site is content-first: an executive portfolio that should communicate seniority, credibility, clarity, and thoughtfulness. The design is understated and timeless — closer to a thoughtful technology leader's knowledge base than a marketing site.
+
+Principles, in priority order (the tie-breakers when a choice is unclear):
+
+1. **Simplicity over complexity** — fewest moving parts that solve the problem.
+2. **Consistency over novelty** — match what exists; predictable beats clever.
+3. **Accessibility first** — WCAG AA is the floor, in both themes, no exceptions.
+4. **Readability over decoration** — type, spacing, and hierarchy serve reading.
+5. **Mobile-first & responsive** — design the smallest viewport first.
+6. **Reuse before creating** — compose from existing tokens/components/patterns.
+7. **Maintainability** — every value routes through a token; optimize for the next contributor.
+
+Decision test for anything new: *Does it serve the reader first? Can an existing token/component/pattern already do it? Does it work in Light and Dark with zero overrides? Does it meet WCAG AA? Will it be obvious to the next contributor?* If any answer is no, revise before adding.
+
+---
+
+## 2. Architecture
+
+**Five-layer governance chain — each layer references only the one above it:**
+
+```
+Foundation primitives  →  Semantic tokens  →  Components  →  Patterns  →  Pages
+(static hex/values)        (per-mode)          (consume tokens)  (compose)   (compose)
+```
+
+- **Foundation primitives** are static and never themed (`--neutral-*`, `--accent-*`, `--dark-*`, `--primary-*`). Components must never reference them directly.
+- **Semantic tokens** carry a value per **Mode (Light / Dark)** and re-resolve automatically.
+- **Components** consume semantic tokens only — never raw hex, never primitives.
+- **Patterns** compose components; **Pages** compose patterns.
+
+**Dark mode is token-driven.** `globals.css` defines Light values in `:root` and Dark overrides in `@media (prefers-color-scheme: dark)`. Because every component uses semantic token utilities, dark mode needs **zero `dark:` variants and zero per-component overrides**. Never hardcode a color or add a `dark:` class.
+
+All tokens are defined in `src/app/globals.css` and mapped into Tailwind v4 via `@theme inline`, which keeps utilities pointing at the live CSS vars so the media-query swap re-resolves them.
+
+---
+
+## 3. Foundations
+
+### Typography
+
+Two families, loaded in `layout.tsx`:
+
+- **Inter** (`font-sans`, `--font-inter`) — all UI and display text.
+- **JetBrains Mono** (`font-mono`, `--font-jetbrains-mono`) — eyebrows, labels, metadata, dates, reading-time, code.
+
+**Type scale** (size / line-height / letter-spacing; headings are weight 600):
+
+| Name | px | line-height | tracking | Tailwind example |
+|---|---|---|---|---|
+| Display XL | 72 | 1.05 | −1.5 | `text-[72px] leading-[1.05] tracking-[-1.5px]` |
+| Display L | 64 | 1.05 | −1.3 | `text-[64px] leading-[1.05] tracking-[-1.3px]` |
+| Display M | 56 | 1.08 | −1.1 | `text-[56px] leading-[1.08] tracking-[-1.1px]` |
+| H1 | 48 | 1.1 | −1 | `text-[48px] leading-[1.1] tracking-[-1px]` |
+| H2 | 40 | 1.15 | −0.8 | `text-[40px] leading-[1.15] tracking-[-0.8px]` |
+| H3 | 32 | 1.2 | −0.5 | `text-[32px] leading-[1.2] tracking-[-0.5px]` |
+| H4 | 24 | 1.3 | −0.3 | `text-2xl leading-[1.3] tracking-[-0.3px]` |
+| H5 | 20 | 1.4 | 0 | `text-xl leading-[1.4]` |
+| Body L | 18 | 1.6 | 0 | `text-lg leading-[1.6]` |
+| Body M | 16 | 1.6 | 0 | `text-base leading-[1.6]` |
+| Body S | 14 | 1.5 | 0 | `text-sm leading-[1.5]` |
+| Caption | 12 | 1.4 | 0 | `text-xs leading-[1.4] font-medium` |
+
+The type scale is **applied as raw values**, not tokenized (a known DS gap — §10). Line-height tokens exist for prose: `--leading-tight 1.1`, `--leading-snug 1.3`, `--leading-normal 1.6`, `--leading-prose 1.7`. Reading measure: `--measure-prose: 680px`.
+
+### Spacing
+
+DS ramp (`space-0…12`): `0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128`. Every value maps exactly onto Tailwind's default 4px scale, so use standard utilities — no custom spacing tokens:
+
+| DS | px | Tailwind | DS | px | Tailwind |
+|---|---|---|---|---|---|
+| space-1 | 4 | `1` | space-7 | 40 | `10` |
+| space-2 | 8 | `2` | space-8 | 48 | `12` |
+| space-3 | 12 | `3` | space-9 | 64 | `16` |
+| space-4 | 16 | `4` | space-10 | 80 | `20` |
+| space-5 | 24 | `6` | space-11 | 96 | `24` |
+| space-6 | 32 | `8` | space-12 | 128 | `32` |
+
+### Radius & elevation
+
+- **Radius** is applied as raw values (gap — §10): cards `rounded-xl` (12), buttons/inputs `rounded-lg` (8), callouts `rounded-[10px]`, pills/dots `rounded-full`.
+- **Elevation** — soft card shadow via the themed shadow tokens: `shadow-[0_1px_3px_var(--shadow-1a)]`.
+
+### Layout widths
+
+- Page container: `max-w-[1120px]`.
+- Reading measure (prose): `max-w-[680px]`.
+- Pattern headers / hero subline: `max-w-[820px]` / `max-w-[640px]`.
+
+---
+
+## 4. Semantic tokens
+
+Reference with the matching Tailwind utility (color name = token name). Every token resolves per mode.
+
+**Text** — `text-primary`, `text-secondary`, `text-tertiary`, `text-muted`, `text-prose`, `text-accent`, `text-inverse`, `text-on-accent`, `text-on-dark`, `text-on-dark-muted`, `text-success`.
+→ utilities `text-text-primary`, `text-text-secondary`, … (the doubled `text-` is correct: prefix + token name).
+
+**Surface** — `surface-primary`, `surface-secondary`, `surface-tertiary`, `surface-subtle`, `surface-elevated`, `surface-inverse`, `surface-dark`, `surface-dark-raised`, `surface-accent`. → `bg-surface-elevated`, etc.
+
+**Border** — `border-subtle`, `border-default`, `border-strong`, `border-accent`. → `border-border-subtle`, etc.
+
+**Action / link / focus / disabled** — `action-primary` (+`-hover`, `-pressed`), `action-secondary` (+`-hover`), `link` (+`-hover`), `focus-ring`, `disabled`, `disabled-text`.
+
+**Status** (each has `-fg` and `-surface`) — `status-success-*`, `status-warning-*`, `status-error-*`, `status-info-*`. Always pair the surface with the matching fg **and** an icon/label (color is never the sole signal).
+
+> `surface-dark` / `text-on-dark*` are dark in **both** modes — used by the Footer and Contact section.
+
+The full hex values per mode live in `src/app/globals.css`. The deprecated shadcn `--background`/`--primary`/`--radius-*` set is **intentionally omitted** — do not reintroduce or reference `--`-prefixed tokens in new work.
+
+---
+
+## 5. Components
+
+All in `src/components/ui/`, exported from `index.ts`. Each maps to a Pencil master and uses semantic tokens only.
+
+**Primitives**
+- `Button` — primary / secondary variants, optional icon, `min-h-11` touch target. Renders `<a>` (when `href`) or `<button>`.
+- `IconButton` — square icon action, requires `label` (a11y), `min-h-11 min-w-11`.
+- `Tag` — mono pill, optional accent dot.
+- `NavItem` — text nav link with active state.
+- `Metric` — big value + label; `tone="onDark"` for dark panels.
+- `MetricCard` — elevated metric with mono eyebrow.
+- `Callout` — `info` / `success` / `warning` / `error`, leading icon + optional title (usable in MDX).
+- `Pullquote` — left-accent quote + attribution (usable in MDX).
+- `Breadcrumb` — `items: Crumb[]`, chevron separators, current page emphasized.
+
+**Composite**
+- `CaseStudyCard` — category, title, summary, divider, outcome metrics, "Read case study" (whole-card link).
+- `ArticleCard` — category · date, title, excerpt, reading time.
+- `CredibilityStrip` — eyebrow + company wordmarks.
+- `FeaturedCaseStudy` — content + dark metric panel (Discovery featured block).
+- `FeaturedArticle` — featured essay card (Writing pattern).
+- `TimelineItem` — dated role with left rail + accent dot, description, accent outcome; `isLast` drops the rail.
+- `ToCRail` — "On this page" rail with **scroll-spy** active state (client; IntersectionObserver).
+
+**Chrome / layout**
+- `SiteHeader` — brand + primary nav (client; active section from pathname).
+- `Footer` — dark, brand + link columns + legal.
+- `PageHeader` — shared index header (eyebrow + H1 + description).
+- `ContactSection` — dark Contact pattern block (eyebrow, headline, sub, email CTA, social links).
+
+> `Highlight Card` (LA0Vr) exists in the DS but is not yet used in code — build it from its master if a future section needs it.
+
+---
+
+## 6. Patterns → Pages
+
+The DS Patterns board maps ~1:1 to the pages. Each page is composed only from existing components.
+
+| Page | Route | Pattern | Key components |
+|---|---|---|---|
+| Home | `/` | Hero + Latest Updates | `PageHeader`-less hero, `Button`, `CredibilityStrip`, `CaseStudyCard`, `ArticleCard` |
+| Case Studies | `/case-studies` | Case Study Discovery | `PageHeader`, `FeaturedCaseStudy`, `CaseStudyCard`, explorer (search/filter/sort) |
+| Case Study | `/case-studies/[slug]` | Case Study Detail | `Breadcrumb`, `Metric` band, `ToCRail`, MDX prose, `Pullquote`, `Callout`, `CaseStudyCard` (related) |
+| Articles | `/articles` | Writing | `PageHeader`, `FeaturedArticle`, `ArticleCard`, explorer |
+| Article | `/articles/[slug]` | Writing (reading) | `Breadcrumb`, meta, MDX prose |
+| Resume | `/resume` | Resume + Contact | `MetricCard`, `TimelineItem`, `Tag`, `ContactSection`, `Button` (download) |
+
+`/styleguide` renders the token palette, type scale, and every component for in-browser review in both themes.
+
+---
+
+## 7. Conventions
+
+- **Token names** — lowercase, hyphen-separated (`action-primary`, `status-error-fg`). Interaction states use `-hover` / `-pressed`. Reference in CSS with a `$`/`var()`; in Tailwind via the color utility.
+- **Components** — PascalCase, named by function not appearance, one file each, re-exported from `index.ts`. Variants are props/token overrides, never a forked component.
+- **No raw values in components** — every color/spacing/radius is a token or a standard Tailwind utility backed by one. If you write a hex into a component, route it through a token instead.
+- **Class joining** — `cn()` from `src/lib/cn.ts` (no clsx dependency).
+- **Dynamic Tailwind classes** — Tailwind only detects complete literal class strings; never build class names by interpolation (`text-${x}`). Use full literals or arbitrary `text-(--token)` syntax.
+
+---
+
+## 8. Accessibility (mandatory, both themes)
+
+- **WCAG 2.1 AA** minimum for all text and meaningful UI; verify in Light **and** Dark.
+- **Keyboard** — every interactive element reachable and operable, logical order, no traps.
+- **Visible focus** — global `:focus-visible` ring (`--focus-ring`) in `globals.css`; never remove without an equal replacement.
+- **Targets** — interactive targets ≥ 44×44px (`min-h-11`; filter chips ≥ 36px with spacing).
+- **Color is never alone** — hierarchy from size/weight; status pairs color with icon + label.
+- **Semantic structure** — one `<h1>` per page, headings nest without skipping; real landmarks (`nav` for breadcrumb/ToC/header, `header`/`footer`/`main`).
+- **Responsive** — usable from 320px; content reflows, nothing clipped or horizontally scrolled. ToC hides under `lg`; grids collapse to one column.
+
+Contrast quick reference: body ≥ 4.5:1; large text (≥24px / 19px bold) & UI ≥ 3:1; focus ring ≥ 3:1 against adjacent color.
+
+---
+
+## 9. MDX prose system
+
+`mdx-components.tsx` (repo root, required by Next's MDX integration) styles every prose element with DS tokens — Body L on `text-prose` at `leading-prose`, headings on the type scale, tokenized links/code/tables/blockquotes.
+
+- **Heading anchors** — the `h2` renderer slugifies its text into an `id` (`slugify()` in `content/types.ts`), since `rehype-slug` can't run under Turbopack. ToC `sections` in metadata mirror those labels to produce matching anchors.
+- **DS components in MDX** — `<Pullquote>`, `<Callout>`, `<Metric>`, `<Tag>` are exposed for authors to compose directly.
+- Supports the full long-form toolkit: headings, lists, links, images, tables, code blocks, blockquotes, callouts, pullquotes, metrics.
+- Templates strip the leading top margin with `[&>*:first-child]:mt-0`.
+
+---
+
+## 10. Content model
+
+Typed metadata + MDX bodies, in `src/content/`:
+
+- `types.ts` — `CaseStudy`, `Article`, `Outcome`; helpers `formatStamp`, `byNewest`, `slugify`.
+- `case-studies.ts` / `articles.ts` — metadata arrays + getters + tag/category helpers. Case studies carry `metrics`, `sections` (= H2 labels driving the ToC), `period`.
+- `case-studies/<slug>.mdx`, `articles/<slug>.mdx` — long-form bodies, loaded via **relative dynamic import** (`../../../content/.../${slug}.mdx`) so Turbopack bundles them; `generateStaticParams` prerenders each.
+- `resume.ts` — typed resume data; PDF at `public/Murilo-Capanema-Resume.pdf`.
+
+See CLAUDE.md → "Adding content" for the step-by-step.
+
+---
+
+## 11. Known gaps & decisions
+
+Gaps the DS itself flags — handled by **mirroring the DS's current raw-value approach** (the agreed call this build) rather than inventing token scales:
+
+- **No radius token scale** — radii are raw (`rounded-lg` 8, `rounded-xl` 12, `rounded-[10px]`).
+- **No type-scale tokens** — sizes applied raw per §3.
+- **No motion tokens** — transitions use ad-hoc `transition-colors`; define duration/easing tokens before building real motion.
+- **No breakpoint tokens** — rely on Tailwind's defaults (`sm`/`md`/`lg`).
+
+Additions made this build, justified by spec requirements the DS didn't cover, composed from existing primitives:
+
+- **Search / category-tag filter / sort** controls on the index pages (the DS defines cards, not form controls) — tokenized inputs, selects, and toggle chips.
+- **Education / Certifications** on the resume — a `CredentialList` composed from type tokens.
+- **Résumé download** — a real `<a download>` to a (placeholder) PDF in `public/`.
+
+---
+
+## 12. Workflow reminders
+
+- Verify both themes and mobile before claiming done.
+- `npm run build` must pass before a PR; pages prerender as static HTML.
+- Branch from `main`, never stack PRs (see CLAUDE.md → Git workflow).
+- When the Pencil DS changes, update this file, CLAUDE.md, and the token layer together — never let them drift.
