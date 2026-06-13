@@ -165,7 +165,7 @@ The DS Patterns board maps ~1:1 to the pages. Each page is composed only from ex
 | Case Study | `/case-studies/[slug]` | Case Study Detail | `Breadcrumb`, `Metric` band, `ToCRail`, MDX prose, `Pullquote`, `Callout`, `CaseStudyCard` (related) |
 | Articles | `/articles` | Writing | `PageHeader`, `FeaturedArticle`, `ArticleCard`, explorer |
 | Article | `/articles/[slug]` | Writing (reading) | `Breadcrumb`, meta, MDX prose |
-| Resume | `/resume` | Resume + Contact | `MetricCard`, `TimelineItem`, `Tag`, `ContactSection`, `Button` (download) |
+| About me | `/resume` | Profile + Contact | `MetricCard`, `TimelineItem`, `Tag`, `ContactSection`, `Button` (download) |
 
 `/styleguide` renders the token palette, type scale, and every component for in-browser review in both themes.
 
@@ -213,7 +213,7 @@ Typed metadata + MDX bodies, in `src/content/`:
 - `types.ts` — `CaseStudy`, `Article`, `Outcome`; helpers `formatStamp`, `byNewest`, `slugify`.
 - `case-studies.ts` / `articles.ts` — metadata arrays + getters + tag/category helpers. Case studies carry `metrics`, `sections` (= H2 labels driving the ToC), `period`.
 - `case-studies/<slug>.mdx`, `articles/<slug>.mdx` — long-form bodies, loaded via **relative dynamic import** (`../../../content/.../${slug}.mdx`) so Turbopack bundles them; `generateStaticParams` prerenders each.
-- `resume.ts` — typed resume data; PDF at `public/Murilo-Capanema-Resume.pdf`.
+- `resume.ts` — typed About me profile data; PDF at `public/Murilo-Capanema-Resume.pdf`.
 
 See CLAUDE.md → "Adding content" for the step-by-step.
 
@@ -231,7 +231,7 @@ Gaps the DS itself flags — handled by **mirroring the DS's current raw-value a
 Additions made this build, justified by spec requirements the DS didn't cover, composed from existing primitives:
 
 - **Search / category-tag filter / sort** controls on the index pages (the DS defines cards, not form controls) — tokenized inputs, selects, and toggle chips.
-- **Education / Certifications** on the resume — a `CredentialList` composed from type tokens.
+- **Education / Certifications** on the About me page — a `CredentialList` composed from type tokens.
 - **Résumé download** — a real `<a download>` to a (placeholder) PDF in `public/`.
 
 ---

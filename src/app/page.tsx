@@ -89,7 +89,7 @@ export default function Home() {
                   View case studies
                 </Button>
                 <Button variant="secondary" href="/resume">
-                  Read résumé
+                  About me
                 </Button>
               </div>
             </div>

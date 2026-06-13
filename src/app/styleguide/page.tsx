@@ -155,7 +155,7 @@ export default function StyleGuide() {
               View case studies
             </Button>
             <Button variant="secondary" href="/resume">
-              Read resume
+              About me
             </Button>
             <Button variant="secondary" icon={<Download className="size-4" />}>
               Download PDF
