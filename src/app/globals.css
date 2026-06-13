@@ -206,3 +206,34 @@ body {
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+/* ----------------------------------------------------------------------------
+   Brand logo · theme-aware swap (navbar)
+   Two <img>s share these classes; visibility follows the same color-scheme /
+   data-theme mechanism as the token layer above — OS by default, overridden by
+   a persisted data-theme choice. No JS, no flash, no `dark:` variant needed.
+   ---------------------------------------------------------------------------- */
+.logo-light {
+  display: block;
+}
+.logo-dark {
+  display: none;
+}
+
+/* Forced dark via the ThemeToggle wins over the OS setting. */
+:root[data-theme="dark"] .logo-light {
+  display: none;
+}
+:root[data-theme="dark"] .logo-dark {
+  display: block;
+}
+
+/* Follow the OS only when no explicit choice is persisted. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .logo-light {
+    display: none;
+  }
+  :root:not([data-theme]) .logo-dark {
+    display: block;
+  }
+}
