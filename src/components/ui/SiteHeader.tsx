@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { NavItem } from "./NavItem";
+import { ThemeToggle } from "./ThemeToggle";
 
 // Site chrome derived from the Hero Pattern top row: brand wordmark left,
 // primary navigation right. Active section is resolved from the pathname.
@@ -23,20 +24,23 @@ export function SiteHeader() {
         >
           Murilo Capanema
         </a>
-        <nav aria-label="Primary">
-          <ul className="flex items-center gap-6 md:gap-8">
-            {links.map((link) => (
-              <li key={link.href}>
-                <NavItem
-                  href={link.href}
-                  active={pathname.startsWith(link.href)}
-                >
-                  {link.label}
-                </NavItem>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-4 md:gap-6">
+          <nav aria-label="Primary">
+            <ul className="flex items-center gap-6 md:gap-8">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <NavItem
+                    href={link.href}
+                    active={pathname.startsWith(link.href)}
+                  >
+                    {link.label}
+                  </NavItem>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
