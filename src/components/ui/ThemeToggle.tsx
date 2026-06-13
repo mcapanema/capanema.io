@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 import { IconButton } from "./IconButton";
 
@@ -22,24 +22,50 @@ function getSystemTheme(): Theme {
     : "light";
 }
 
-export function ThemeToggle() {
-  // null until mounted: server can't know the effective theme, so we render a
-  // neutral placeholder first to avoid a hydration mismatch.
-  const [theme, setTheme] = useState<Theme | null>(null);
+/* The effective theme is an external store: the persisted choice if any, else
+   the OS preference. useSyncExternalStore keeps the UI in sync with it without
+   a setState-in-effect, and returns null on the server / first hydration render
+   so we paint a neutral placeholder and avoid a mismatch. */
+const listeners = new Set<() => void>();
 
-  useEffect(() => {
-    setTheme(getStoredTheme() ?? getSystemTheme());
-  }, []);
+function notify() {
+  for (const listener of listeners) listener();
+}
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  // OS change (while following the OS) and changes from other tabs.
+  media.addEventListener("change", callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    listeners.delete(callback);
+    media.removeEventListener("change", callback);
+    window.removeEventListener("storage", callback);
+  };
+}
+
+function getSnapshot(): Theme {
+  return getStoredTheme() ?? getSystemTheme();
+}
+
+function getServerSnapshot(): null {
+  return null;
+}
+
+export function ThemeToggle() {
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   function toggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
     try {
       localStorage.setItem("theme", next);
     } catch {
       // ignore storage failures (private mode, etc.)
     }
     document.documentElement.dataset.theme = next;
+    // setItem doesn't fire a storage event in the same tab, so notify directly.
+    notify();
   }
 
   const isDark = theme === "dark";
