@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
   },
+  images: {
+    qualities: [75, 90],
+  },
 };
 
 export default withMDX(nextConfig);
