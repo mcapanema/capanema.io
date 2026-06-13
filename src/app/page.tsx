@@ -10,7 +10,7 @@ import {
 } from "@/components/ui";
 import { getCaseStudies } from "@/content/case-studies";
 import { getArticles } from "@/content/articles";
-import meImage from "./me.webp";
+import meImage from "./me.png";
 
 const COMPANIES = ["HealthCo", "Stripe", "Vercel", "Linear", "Atlassian"];
 
