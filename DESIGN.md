@@ -38,9 +38,9 @@ Foundation primitives  →  Semantic tokens  →  Components  →  Patterns  →
 - **Components** consume semantic tokens only — never raw hex, never primitives.
 - **Patterns** compose components; **Pages** compose patterns.
 
-**Dark mode is token-driven.** `globals.css` defines Light values in `:root` and Dark overrides in `@media (prefers-color-scheme: dark)`. Because every component uses semantic token utilities, dark mode needs **zero `dark:` variants and zero per-component overrides**. Never hardcode a color or add a `dark:` class.
+**Dark mode is token-driven.** `globals.css` defines each themed token once with `light-dark(<light>, <dark>)` in `:root`, which resolves against the element's `color-scheme`. `:root` defaults to `color-scheme: light dark` (follow the OS). An explicit, persisted choice sets `data-theme="light|dark"` on `<html>`, which switches `color-scheme` and overrides the OS. Because every component uses semantic token utilities, dark mode needs **zero `dark:` variants and zero per-component overrides**. Never hardcode a color or add a `dark:` class.
 
-All tokens are defined in `src/app/globals.css` and mapped into Tailwind v4 via `@theme inline`, which keeps utilities pointing at the live CSS vars so the media-query swap re-resolves them.
+All tokens are defined in `src/app/globals.css` and mapped into Tailwind v4 via `@theme inline`, which keeps utilities pointing at the live CSS vars so the `light-dark()`/`color-scheme` resolution re-resolves them. See §13 for the theme-toggle mechanism.
 
 ---
 
@@ -144,7 +144,8 @@ All in `src/components/ui/`, exported from `index.ts`. Each maps to a Pencil mas
 - `ToCRail` — "On this page" rail with **scroll-spy** active state (client; IntersectionObserver).
 
 **Chrome / layout**
-- `SiteHeader` — brand + primary nav (client; active section from pathname).
+- `SiteHeader` — brand + primary nav + `ThemeToggle` (client; active section from pathname).
+- `ThemeToggle` — `IconButton` that flips light/dark and persists the choice to `localStorage` (client; see §13).
 - `Footer` — dark, brand + link columns + legal.
 - `PageHeader` — shared index header (eyebrow + H1 + description).
 - `ContactSection` — dark Contact pattern block (eyebrow, headline, sub, email CTA, social links).
@@ -241,3 +242,17 @@ Additions made this build, justified by spec requirements the DS didn't cover, c
 - `npm run build` must pass before a PR; pages prerender as static HTML.
 - Branch from `main`, never stack PRs (see CLAUDE.md → Git workflow).
 - When the Pencil DS changes, update this file, CLAUDE.md, and the token layer together — never let them drift.
+
+---
+
+## 13. Theming & the theme toggle
+
+Three layers cooperate:
+
+1. **Tokens (`globals.css`).** Each themed token is `light-dark(<light>, <dark>)`, resolved against `color-scheme`. `:root` is `color-scheme: light dark` (follow OS). `:root[data-theme="light"|"dark"]` forces one mode.
+2. **Pre-hydration script (`layout.tsx`).** First child of `<body>`; reads `localStorage.theme` and, if it is `"light"`/`"dark"`, sets `data-theme` on `<html>` before first paint (no flash). No stored value = attribute unset = follow OS. `<html>` carries `suppressHydrationWarning` because the script mutates the attribute.
+3. **`ThemeToggle` (`components/ui/ThemeToggle.tsx`).** On mount resolves the effective theme (`localStorage` else `matchMedia`); on click flips it, writes `localStorage.theme`, and sets `data-theme`. Renders a fixed-size placeholder until mounted to avoid layout shift / hydration mismatch.
+
+**Default behavior is preserved:** with nothing stored, the site follows the OS live. Persistence is opt-in (set on first click). Returning to pure OS-follow means clearing `localStorage.theme` (no "Auto" control yet — a possible future addition).
+
+Adding a new themed token: define it once with `light-dark()` in `:root` and map it in `@theme inline`. Never add a `@media (prefers-color-scheme)` block or a `dark:` variant.
