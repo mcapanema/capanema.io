@@ -23,20 +23,26 @@ export function SiteHeader() {
           aria-label="Murilo Capanema – Home"
           className="inline-flex shrink-0 items-center gap-2 text-base font-semibold tracking-[-0.3px] text-text-primary"
         >
-          <img
-            src="/logo-light.png"
-            alt=""
-            width={32}
-            height={32}
-            className="logo-light h-8 w-8"
-          />
-          <img
-            src="/logo-dark.png"
-            alt=""
-            width={32}
-            height={32}
-            className="logo-dark h-8 w-8"
-          />
+          <picture>
+            <source srcSet="/logo-light.webp" type="image/webp" />
+            <img
+              src="/logo-light.png"
+              alt=""
+              width={32}
+              height={32}
+              className="logo-light h-8 w-8"
+            />
+          </picture>
+          <picture>
+            <source srcSet="/logo-dark.webp" type="image/webp" />
+            <img
+              src="/logo-dark.png"
+              alt=""
+              width={32}
+              height={32}
+              className="logo-dark h-8 w-8"
+            />
+          </picture>
           <span className="hidden sm:inline">Murilo Capanema</span>
         </a>
         <div className="flex items-center gap-4 md:gap-6">
