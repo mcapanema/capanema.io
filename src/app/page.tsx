@@ -83,7 +83,7 @@ export default function Home() {
                 priority
                 placeholder="blur"
                 quality={90}
-                sizes="(min-width: 1024px) 340px, (min-width: 640px) 260px, 150px"
+                sizes="(min-width: 1024px) 680px, (min-width: 640px) 520px, 300px"
                 className="h-auto w-[150px] rounded-xl border border-border-subtle shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
               />
             </div>
