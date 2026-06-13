@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 import { IconButton } from "./IconButton";
 
@@ -56,7 +56,22 @@ function getServerSnapshot(): null {
 export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
+  // Keep the <html data-theme> attribute in sync with the *stored* choice so a
+  // change from another tab (storage event) updates the page colors, not just
+  // this icon. Sync from the stored value, never the effective theme: when the
+  // visitor is following the OS there is no stored value, so we remove the
+  // attribute and let `color-scheme: light dark` keep tracking the OS.
+  useEffect(() => {
+    const stored = getStoredTheme();
+    if (stored) {
+      document.documentElement.dataset.theme = stored;
+    } else {
+      delete document.documentElement.dataset.theme;
+    }
+  }, [theme]);
+
   function toggle() {
+    if (theme === null) return;
     const next: Theme = theme === "dark" ? "light" : "dark";
     try {
       localStorage.setItem("theme", next);
