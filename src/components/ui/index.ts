@@ -16,3 +16,5 @@ export { FeaturedCaseStudy } from "./FeaturedCaseStudy";
 export { ToCRail, type ToCItem } from "./ToCRail";
 export { PageHeader } from "./PageHeader";
 export { FeaturedArticle } from "./FeaturedArticle";
+export { TimelineItem } from "./TimelineItem";
+export { ContactSection } from "./ContactSection";
