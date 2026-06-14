@@ -25,12 +25,12 @@ function SectionHeader({
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
-      <h2 className="text-[32px] font-semibold leading-[1.2] tracking-[-0.5px] text-text-primary">
+      <h2 className="text-text-primary text-[32px] leading-[1.2] font-semibold tracking-[-0.5px]">
         {title}
       </h2>
       <a
         href={href}
-        className="group inline-flex items-center gap-2 text-sm font-semibold text-link transition-colors hover:text-link-hover"
+        className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors"
       >
         {cta}
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -70,13 +70,13 @@ export default function Home() {
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
             {/* Headline + subline + actions — lead the page on mobile, left on desktop */}
             <div className="flex flex-col gap-6 lg:min-w-0 lg:flex-1">
-              <span className="font-mono text-sm tracking-[1px] text-text-accent">
+              <span className="text-text-accent font-mono text-sm tracking-[1px]">
                 CTO · PLATFORM &amp; AI · ORG SCALING
               </span>
-              <h1 className="max-w-[900px] text-[40px] font-semibold leading-[1.05] tracking-[-1px] text-text-primary sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
+              <h1 className="text-text-primary max-w-[900px] text-[40px] leading-[1.05] font-semibold tracking-[-1px] sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
                 Scaling engineering organizations and the platforms they ship.
               </h1>
-              <p className="max-w-[640px] text-lg leading-[1.6] text-text-secondary">
+              <p className="text-text-secondary max-w-[640px] text-lg leading-[1.6]">
                 Two decades helping organizations navigate through
                 growth, complexity, and change.
               </p>
@@ -100,10 +100,11 @@ export default function Home() {
                 {/* mobile fallback: accurate sizes, bandwidth-optimal on retina phones */}
                 <img
                   {...heroImgProps}
+                  alt="Murilo Capanema"
                   srcSet={mobileSrcSet}
                   loading="eager"
                   fetchPriority="high"
-                  className="h-auto w-[150px] rounded-xl border border-border-subtle shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
+                  className="border-border-subtle h-auto w-[150px] rounded-xl border shadow-[0_1px_3px_var(--shadow-1a)] sm:w-[260px] lg:w-[340px]"
                 />
               </picture>
             </div>
@@ -112,7 +113,7 @@ export default function Home() {
         </section>
 
         {/* Latest Updates — the home dashboard */}
-        <div className="flex flex-col gap-16 border-t border-border-subtle py-16">
+        <div className="border-border-subtle flex flex-col gap-16 border-t py-16">
           <section className="flex flex-col gap-8">
             <SectionHeader
               title="Case studies"

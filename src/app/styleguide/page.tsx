@@ -26,16 +26,16 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col gap-6 border-t border-border-subtle pt-10">
+    <section className="border-border-subtle flex flex-col gap-6 border-t pt-10">
       <div className="flex flex-col gap-2">
-        <span className="font-mono text-xs tracking-[1px] text-text-accent">
+        <span className="text-text-accent font-mono text-xs tracking-[1px]">
           {n}
         </span>
-        <h2 className="text-[32px] font-semibold leading-[1.2] tracking-[-0.5px] text-text-primary">
+        <h2 className="text-text-primary text-[32px] leading-[1.2] font-semibold tracking-[-0.5px]">
           {title}
         </h2>
         {description && (
-          <p className="max-w-[680px] text-base leading-[1.6] text-text-secondary">
+          <p className="text-text-secondary max-w-[680px] text-base leading-[1.6]">
             {description}
           </p>
         )}
@@ -91,13 +91,13 @@ export default function StyleGuide() {
       <SiteHeader />
       <main className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8">
         <header className="flex flex-col gap-3">
-          <span className="font-mono text-xs tracking-[1px] text-text-accent">
+          <span className="text-text-accent font-mono text-xs tracking-[1px]">
             FOUNDATION PREVIEW
           </span>
-          <h1 className="text-[48px] font-semibold leading-[1.1] tracking-[-1px] text-text-primary">
+          <h1 className="text-text-primary text-[48px] leading-[1.1] font-semibold tracking-[-1px]">
             Design System foundation
           </h1>
-          <p className="max-w-[680px] text-lg leading-[1.6] text-text-secondary">
+          <p className="text-text-secondary max-w-[680px] text-lg leading-[1.6]">
             Tokens and base components rendered from the live token layer. Toggle
             your OS appearance to verify Light and Dark resolve with zero
             per-component overrides.
@@ -112,7 +112,7 @@ export default function StyleGuide() {
           <div className="flex flex-col gap-5">
             {typeScale.map(([name, meta, cls]) => (
               <div key={name} className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-8">
-                <span className="w-44 shrink-0 font-mono text-xs text-text-tertiary">
+                <span className="text-text-tertiary w-44 shrink-0 font-mono text-xs">
                   {name} · {meta}
                 </span>
                 <span className={`text-text-primary ${cls}`}>
@@ -127,7 +127,7 @@ export default function StyleGuide() {
           <div className="flex flex-col gap-2">
             {textTokens.map(([name, cls]) => (
               <p key={name} className={`text-lg ${cls}`}>
-                <span className="font-mono text-sm text-text-tertiary">{name}</span>
+                <span className="text-text-tertiary font-mono text-sm">{name}</span>
                 {"  —  "}
                 The structures that work at twenty engineers break at a hundred.
               </p>
@@ -140,10 +140,10 @@ export default function StyleGuide() {
             {surfaceSwatches.map(([name, bg]) => (
               <div
                 key={name}
-                className="flex h-24 flex-col justify-end rounded-xl border border-border-subtle p-3"
+                className="border-border-subtle flex h-24 flex-col justify-end rounded-xl border p-3"
               >
-                <div className={`mb-2 h-10 w-full rounded-lg border border-border-default ${bg}`} />
-                <span className="font-mono text-xs text-text-tertiary">{name}</span>
+                <div className={`border-border-default mb-2 h-10 w-full rounded-lg border ${bg}`} />
+                <span className="text-text-tertiary font-mono text-xs">{name}</span>
               </div>
             ))}
           </div>

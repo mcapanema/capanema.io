@@ -30,56 +30,56 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h2
           id={id}
-          className="mt-12 scroll-mt-28 text-2xl font-semibold leading-[1.3] tracking-[-0.3px] text-text-primary"
+          className="text-text-primary mt-12 scroll-mt-28 text-2xl leading-[1.3] font-semibold tracking-[-0.3px]"
         >
           {children}
         </h2>
       );
     },
     h3: ({ children }) => (
-      <h3 className="mt-8 scroll-mt-28 text-xl font-semibold leading-[1.4] text-text-primary">
+      <h3 className="text-text-primary mt-8 scroll-mt-28 text-xl leading-[1.4] font-semibold">
         {children}
       </h3>
     ),
     p: ({ children }) => (
-      <p className="mt-6 text-lg leading-[1.7] text-text-prose">{children}</p>
+      <p className="text-text-prose mt-6 text-lg leading-[1.7]">{children}</p>
     ),
     a: ({ children, href }) => (
       <a
         href={href}
-        className="font-medium text-link underline underline-offset-2 transition-colors hover:text-link-hover"
+        className="text-link hover:text-link-hover font-medium underline underline-offset-2 transition-colors"
       >
         {children}
       </a>
     ),
     ul: ({ children }) => (
-      <ul className="mt-6 flex list-disc flex-col gap-2 pl-6 text-lg leading-[1.7] text-text-prose marker:text-text-tertiary">
+      <ul className="text-text-prose marker:text-text-tertiary mt-6 flex list-disc flex-col gap-2 pl-6 text-lg leading-[1.7]">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="mt-6 flex list-decimal flex-col gap-2 pl-6 text-lg leading-[1.7] text-text-prose marker:text-text-tertiary">
+      <ol className="text-text-prose marker:text-text-tertiary mt-6 flex list-decimal flex-col gap-2 pl-6 text-lg leading-[1.7]">
         {children}
       </ol>
     ),
     li: ({ children }) => <li className="pl-1">{children}</li>,
     strong: ({ children }) => (
-      <strong className="font-semibold text-text-primary">{children}</strong>
+      <strong className="text-text-primary font-semibold">{children}</strong>
     ),
     em: ({ children }) => <em className="italic">{children}</em>,
     blockquote: ({ children }) => (
-      <blockquote className="mt-8 border-l-[3px] border-border-accent pl-6 text-lg italic leading-[1.7] text-text-secondary">
+      <blockquote className="border-border-accent text-text-secondary mt-8 border-l-[3px] pl-6 text-lg leading-[1.7] italic">
         {children}
       </blockquote>
     ),
-    hr: () => <hr className="mt-10 border-t border-border-subtle" />,
+    hr: () => <hr className="border-border-subtle mt-10 border-t" />,
     code: ({ children }) => (
-      <code className="rounded border border-border-subtle bg-surface-secondary px-1.5 py-0.5 font-mono text-[0.9em] text-text-primary">
+      <code className="border-border-subtle bg-surface-secondary text-text-primary rounded border px-1.5 py-0.5 font-mono text-[0.9em]">
         {children}
       </code>
     ),
     pre: ({ children }) => (
-      <pre className="mt-6 overflow-x-auto rounded-xl border border-border-subtle bg-surface-secondary p-5 text-sm leading-[1.6] [&_code]:border-0 [&_code]:bg-transparent [&_code]:p-0">
+      <pre className="border-border-subtle bg-surface-secondary mt-6 overflow-x-auto rounded-xl border p-5 text-sm leading-[1.6] [&_code]:border-0 [&_code]:bg-transparent [&_code]:p-0">
         {children}
       </pre>
     ),
@@ -87,23 +87,23 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
       <img
         {...props}
-        className="mt-8 w-full rounded-xl border border-border-subtle"
+        className="border-border-subtle mt-8 w-full rounded-xl border"
       />
     ),
     table: ({ children }) => (
-      <div className="mt-8 overflow-x-auto rounded-xl border border-border-subtle">
+      <div className="border-border-subtle mt-8 overflow-x-auto rounded-xl border">
         <table className="w-full border-collapse text-left text-base">
           {children}
         </table>
       </div>
     ),
     th: ({ children }) => (
-      <th className="border-b border-border-subtle bg-surface-secondary px-4 py-3 font-semibold text-text-primary">
+      <th className="border-border-subtle bg-surface-secondary text-text-primary border-b px-4 py-3 font-semibold">
         {children}
       </th>
     ),
     td: ({ children }) => (
-      <td className="border-b border-border-subtle px-4 py-3 text-text-prose">
+      <td className="border-border-subtle text-text-prose border-b px-4 py-3">
         {children}
       </td>
     ),

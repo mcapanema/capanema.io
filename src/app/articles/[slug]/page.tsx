@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Breadcrumb, Footer, SiteHeader } from "@/components/ui";
@@ -49,23 +50,23 @@ export default async function ArticlePage({
 
         <header className="flex flex-col gap-4">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-[1px] text-text-accent">
+            <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
               {category}
             </span>
-            <span aria-hidden className="text-xs text-text-tertiary">
+            <span aria-hidden className="text-text-tertiary text-xs">
               ·
             </span>
-            <span className="font-mono text-xs text-text-tertiary">
+            <span className="text-text-tertiary font-mono text-xs">
               {formatStamp(date)}
             </span>
-            <span aria-hidden className="text-xs text-text-tertiary">
+            <span aria-hidden className="text-text-tertiary text-xs">
               ·
             </span>
-            <span className="font-mono text-xs uppercase tracking-[0.5px] text-text-tertiary">
+            <span className="text-text-tertiary font-mono text-xs tracking-[0.5px] uppercase">
               {readingMinutes} min read
             </span>
           </div>
-          <h1 className="text-[34px] font-semibold leading-[1.12] tracking-[-0.8px] text-text-primary sm:text-[44px] sm:tracking-[-1px]">
+          <h1 className="text-text-primary text-[34px] leading-[1.12] font-semibold tracking-[-0.8px] sm:text-[44px] sm:tracking-[-1px]">
             {title}
           </h1>
         </header>
@@ -74,13 +75,13 @@ export default async function ArticlePage({
           <Body />
         </article>
 
-        <footer className="border-t border-border-subtle pt-8">
-          <a
+        <footer className="border-border-subtle border-t pt-8">
+          <Link
             href="/articles"
-            className="text-sm font-semibold text-link transition-colors hover:text-link-hover"
+            className="text-link hover:text-link-hover text-sm font-semibold transition-colors"
           >
             ← All articles
-          </a>
+          </Link>
         </footer>
       </main>
       <Footer />

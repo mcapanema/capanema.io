@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavItem } from "./NavItem";
 import { ThemeToggle } from "./ThemeToggle";
@@ -16,12 +17,12 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-border-subtle bg-surface-primary">
+    <header className="border-border-subtle bg-surface-primary border-b">
       <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-6 px-6 py-4 md:px-8">
-        <a
+        <Link
           href="/"
           aria-label="Murilo Capanema – Home"
-          className="inline-flex shrink-0 items-center gap-2 text-base font-semibold tracking-[-0.3px] text-text-primary"
+          className="text-text-primary inline-flex shrink-0 items-center gap-2 text-base font-semibold tracking-[-0.3px]"
         >
           <picture>
             <source srcSet="/logo-light.webp" type="image/webp" />
@@ -44,7 +45,7 @@ export function SiteHeader() {
             />
           </picture>
           <span className="hidden sm:inline">Murilo Capanema</span>
-        </a>
+        </Link>
         <div className="flex items-center gap-4 md:gap-6">
           <nav aria-label="Primary">
             <ul className="flex items-center gap-3 sm:gap-6 md:gap-8">

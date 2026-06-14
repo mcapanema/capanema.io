@@ -12,15 +12,15 @@ export function PageHeader({
   return (
     <div className="flex max-w-[820px] flex-col gap-4">
       {eyebrow && (
-        <span className="font-mono text-sm tracking-[1px] text-text-accent">
+        <span className="text-text-accent font-mono text-sm tracking-[1px]">
           {eyebrow}
         </span>
       )}
-      <h1 className="text-[36px] font-semibold leading-[1.1] tracking-[-0.8px] text-text-primary sm:text-5xl sm:tracking-[-1px]">
+      <h1 className="text-text-primary text-[36px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-5xl sm:tracking-[-1px]">
         {title}
       </h1>
       {description && (
-        <p className="text-lg leading-[1.6] text-text-secondary">
+        <p className="text-text-secondary text-lg leading-[1.6]">
           {description}
         </p>
       )}

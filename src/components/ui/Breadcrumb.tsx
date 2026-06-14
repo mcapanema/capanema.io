@@ -17,7 +17,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
                 {item.href && !last ? (
                   <a
                     href={item.href}
-                    className="text-[13px] text-text-tertiary transition-colors hover:text-text-primary"
+                    className="text-text-tertiary hover:text-text-primary text-[13px] transition-colors"
                   >
                     {item.label}
                   </a>
@@ -26,8 +26,8 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
                     aria-current={last ? "page" : undefined}
                     className={
                       last
-                        ? "text-[13px] font-semibold text-text-primary"
-                        : "text-[13px] text-text-tertiary"
+                        ? "text-text-primary text-[13px] font-semibold"
+                        : "text-text-tertiary text-[13px]"
                     }
                   >
                     {item.label}
@@ -36,7 +36,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
               </li>
               {!last && (
                 <li aria-hidden className="flex items-center">
-                  <ChevronRight className="size-3.5 text-text-tertiary" />
+                  <ChevronRight className="text-text-tertiary size-3.5" />
                 </li>
               )}
             </Fragment>

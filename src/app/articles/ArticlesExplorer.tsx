@@ -60,7 +60,7 @@ export function ArticlesExplorer({
         <div className="relative flex-1">
           <Search
             aria-hidden
-            className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-text-tertiary"
+            className="text-text-tertiary pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2"
           />
           <input
             type="search"
@@ -68,18 +68,18 @@ export function ArticlesExplorer({
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search articles"
             aria-label="Search articles"
-            className="h-11 w-full rounded-lg border border-border-default bg-surface-elevated pl-11 pr-4 text-sm text-text-primary placeholder:text-text-tertiary"
+            className="border-border-default bg-surface-elevated text-text-primary placeholder:text-text-tertiary h-11 w-full rounded-lg border pr-4 pl-11 text-sm"
           />
         </div>
-        <label className="flex items-center gap-2 text-sm text-text-secondary">
-          <span className="font-mono text-xs uppercase tracking-[0.5px] text-text-tertiary">
+        <label className="text-text-secondary flex items-center gap-2 text-sm">
+          <span className="text-text-tertiary font-mono text-xs tracking-[0.5px] uppercase">
             Sort
           </span>
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as Sort)}
             aria-label="Sort articles"
-            className="h-11 rounded-lg border border-border-default bg-surface-elevated px-3 text-sm text-text-primary"
+            className="border-border-default bg-surface-elevated text-text-primary h-11 rounded-lg border px-3 text-sm"
           >
             {Object.entries(sortLabels).map(([value, label]) => (
               <option key={value} value={value}>
@@ -119,7 +119,7 @@ export function ArticlesExplorer({
           ))}
         </div>
       ) : (
-        <p className="py-12 text-center text-text-secondary">
+        <p className="text-text-secondary py-12 text-center">
           No articles match your search.
         </p>
       )}

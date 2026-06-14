@@ -15,14 +15,14 @@ export function Tag({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full bg-surface-tertiary px-3 py-1 font-mono text-xs font-medium tracking-[0.5px] text-text-secondary",
+        "bg-surface-tertiary text-text-secondary inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-xs font-medium tracking-[0.5px]",
         className,
       )}
     >
       {dot && (
         <span
           aria-hidden
-          className="size-1.5 rounded-full bg-text-accent"
+          className="bg-text-accent size-1.5 rounded-full"
         />
       )}
       {children}
