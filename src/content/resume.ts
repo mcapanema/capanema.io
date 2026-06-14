@@ -85,11 +85,10 @@ export const resume = {
   ],
 
   contact: {
-    email: "murilo.capanema@gmail.com",
+    email: "murilo@capanema.io",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/mcapanema" },
       { label: "GitHub", href: "https://github.com/mcapanema" },
-      { label: "X", href: "https://x.com/mcapanema" },
     ],
   },
 };
