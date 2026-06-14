@@ -56,7 +56,6 @@ export default async function CaseStudyPage({
         <Breadcrumb
           items={[
             { label: "Case Studies", href: "/case-studies" },
-            { label: category.split("·")[0].trim(), href: "/case-studies" },
             { label: title },
           ]}
         />
