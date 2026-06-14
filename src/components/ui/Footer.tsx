@@ -11,6 +11,7 @@ const connect = [
   { href: "mailto:murilo@capanema.io", label: "Email" },
   { href: "https://www.linkedin.com/in/mcapanema", label: "LinkedIn" },
   { href: "https://github.com/mcapanema", label: "GitHub" },
+  { href: "https://murilocapanema.substack.com/", label: "Substack" },
 ];
 
 function LinkColumn({
