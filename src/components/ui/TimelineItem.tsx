@@ -26,7 +26,7 @@ export function TimelineItem({
       {/* Dot sits on the rail line (left edge) */}
       <span
         aria-hidden
-        className="border-surface-primary bg-surface-accent absolute top-1 -left-[7px] size-3 rounded-full border-2"
+        className="border-surface-primary bg-surface-accent absolute top-1 left-[-7px] size-3 rounded-full border-2"
       />
       <span className="text-text-tertiary font-mono text-xs tracking-[0.5px]">
         {date}

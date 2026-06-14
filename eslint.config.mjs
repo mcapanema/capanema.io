@@ -11,6 +11,7 @@ const eslintConfig = defineConfig([
     settings: {
       tailwindcss: {
         callees: ["cn"],
+        config: new URL("src/app/globals.css", import.meta.url).pathname,
       },
     },
     rules: {
@@ -19,6 +20,7 @@ const eslintConfig = defineConfig([
         { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
       ],
       "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/classnames-order": "off",
     },
   },
   globalIgnores([
