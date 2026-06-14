@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Breadcrumb, Footer, SiteHeader } from "@/components/ui";
@@ -75,12 +76,12 @@ export default async function ArticlePage({
         </article>
 
         <footer className="border-t border-border-subtle pt-8">
-          <a
+          <Link
             href="/articles"
             className="text-sm font-semibold text-link transition-colors hover:text-link-hover"
           >
             ← All articles
-          </a>
+          </Link>
         </footer>
       </main>
       <Footer />
