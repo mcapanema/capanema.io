@@ -89,6 +89,7 @@ export const resume = {
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/mcapanema" },
       { label: "GitHub", href: "https://github.com/mcapanema" },
+      { label: "Substack", href: "https://murilocapanema.substack.com/" },
     ],
   },
 };
