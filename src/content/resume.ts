@@ -13,73 +13,82 @@ export type ResumeMetric = Outcome & { eyebrow: string };
 
 export const resume = {
   name: "Murilo Capanema",
-  role: "CTO & Engineering Executive",
   summary:
-    "I build engineering organizations and the platforms they ship — across healthcare, fintech, and data/AI, from first hire to nine-figure scale.",
+    "Technology executive operating at the intersection of business strategy, product, and engineering. I build high-performance organizations and AI-enabled platforms that turn domain expertise into measurable business outcomes — from seed stage to scale.",
   resumePdf: "/Murilo-Capanema-Resume.pdf",
 
   metrics: [
-    { eyebrow: "EXPERIENCE", value: "20+", label: "years in engineering leadership" },
-    { eyebrow: "SCALE", value: "12→140", label: "engineers led & grown" },
-    { eyebrow: "PLATFORMS", value: "9", label: "platforms shipped to production" },
-    { eyebrow: "RELIABILITY", value: "99.99%", label: "uptime on flagship systems" },
+    { eyebrow: "EXPERIENCE", value: "20+", label: "years building technology organizations" },
+    { eyebrow: "TEAM SCALE", value: "~100", label: "engineers scaled across multiple organizations" },
+    { eyebrow: "EFFICIENCY", value: "300%", label: "clinical operations efficiency improvement" },
+    { eyebrow: "AI IMPACT", value: "2mo → 3d", label: "time-to-intervention through AI" },
   ] satisfies ResumeMetric[],
 
   experience: [
     {
-      date: "2021 — PRESENT",
-      title: "VP Engineering · HealthCo",
+      date: "2023 — PRESENT",
+      title: "VP of Technology · Genial Care",
       description:
-        "Lead a 140-person org across platform, product, and data for a 40-hospital network.",
-      outcome: "−38% infra cost · 3.2M patients served / yr",
+        "Led product & technology through Genial Care's scale-up phase, transforming clinical expertise into AI-enabled products, operational systems, and data capabilities that improved clinical outcomes, increased clinic capacity, and accelerated company growth.",
+      outcome: "DAU 20%→75% · time-to-intervention 2mo→3d · billing non-receipt rate <1%",
     },
     {
-      date: "2017 — 2021",
-      title: "Director of Platform · FinScale",
+      date: "2020 — 2023",
+      title: "Head of Technology · Genial Care",
       description:
-        "Built the platform org and consolidated four payment stacks onto one ledger.",
-      outcome: "4 → 40 services · 99.98% uptime",
+        "Joined at seed stage to build the product, platform, and engineering organization from the ground up, helping take the company from early product development to a $10M Series A led by General Catalyst.",
+      outcome: "0→25 engineers, zero voluntary attrition · $10M Series A (General Catalyst, 2023)",
     },
     {
-      date: "2013 — 2017",
-      title: "Eng Manager → Sr. EM · DataWorks",
+      date: "2020",
+      title: "Senior Engineering Manager · Creditas",
       description:
-        "Grew the first data team and shipped the company's initial ML platform.",
-      outcome: "0 → 1 ML platform · 12 engineers hired",
+        "Led Creditas' Product Platform organization, consolidating shared capabilities across lending products and creating the technical foundations for the company's next stage of growth.",
+      outcome: "~60 engineers · 8 direct reports · digital transformation cell model",
+    },
+    {
+      date: "2017 — 2020",
+      title: "Tech Lead · Creditas",
+      description:
+        "Created a new engineering tribe for Creditas's expansion into funding and loan servicing, working directly with the founder on product vision, technical roadmap, and architecture. Owned hiring, culture, and engineering practices from day one.",
+      outcome: "Greenfield tribe · TDD · DDD · Clean Architecture",
+    },
+    {
+      date: "2015 — 2017",
+      title: "Software Engineer · Creditas",
+      description:
+        "Joined as one of the first engineers (~15 employees). Built the entire AWS cloud infrastructure from scratch, the company's first data platform and analytics infrastructure, and led the shift toward a DevOps culture as the team scaled.",
+      outcome: "AWS infrastructure from scratch · first data platform · DevOps adoption",
     },
   ] satisfies Role[],
 
   education: [
     {
-      title: "M.Sc. Computer Science",
-      detail: "Distributed systems & optimization",
+      title: "B.Sc. Computer Science",
+      detail: "Universidade Paulista (UNIP) · 2009–2012",
     },
     {
-      title: "B.Sc. Computer Engineering",
-      detail: "Software engineering",
+      title: "MBA, Corporate Finance",
+      detail: "Saint Paul Escola de Negócios · In Progress",
     },
-  ] satisfies Credential[],
-
-  certifications: [
-    { title: "Executive Leadership Program", detail: "Technology leadership" },
-    { title: "Cloud Architecture", detail: "Professional certification" },
   ] satisfies Credential[],
 
   focusAreas: [
-    "Org Design",
-    "Platform Engineering",
+    "Engineering Leadership",
+    "Organizational Design",
+    "Platform Strategy",
     "Data & AI",
-    "Reliability",
-    "Hiring & Leveling",
-    "Executive Strategy",
+    "Product Development",
+    "Technology Strategy",
+    "Operational Excellence",
+    "Scaling Organizations",
   ],
 
   contact: {
-    email: "hello@capanema.io",
+    email: "murilo@capanema.io",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/mcapanema" },
       { label: "GitHub", href: "https://github.com/mcapanema" },
-      { label: "X", href: "https://x.com/mcapanema" },
     ],
   },
 };

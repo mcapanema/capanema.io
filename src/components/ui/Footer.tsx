@@ -8,7 +8,7 @@ const explore = [
 ];
 
 const connect = [
-  { href: "mailto:murilo.capanema@gmail.com", label: "Email" },
+  { href: "mailto:murilo@capanema.io", label: "Email" },
   { href: "https://www.linkedin.com/in/mcapanema", label: "LinkedIn" },
   { href: "https://github.com/mcapanema", label: "GitHub" },
 ];

@@ -51,13 +51,11 @@ function CredentialList({
 export default function AboutMePage() {
   const {
     name,
-    role,
     summary,
     resumePdf,
     metrics,
     experience,
     education,
-    certifications,
     focusAreas,
     contact,
   } = resume;
@@ -72,7 +70,6 @@ export default function AboutMePage() {
             <h1 className="text-[32px] font-semibold leading-[1.1] tracking-[-0.8px] text-text-primary sm:text-[40px]">
               {name}
             </h1>
-            <p className="text-xl font-medium text-text-accent">{role}</p>
             <p className="max-w-[760px] text-[17px] leading-[1.6] text-text-secondary">
               {summary}
             </p>
@@ -118,10 +115,9 @@ export default function AboutMePage() {
           </div>
         </section>
 
-        {/* Education + Certifications */}
-        <div className="grid gap-12 sm:grid-cols-2">
+        {/* Education */}
+        <div>
           <CredentialList label="EDUCATION" items={education} />
-          <CredentialList label="CERTIFICATIONS" items={certifications} />
         </div>
 
         {/* Focus areas */}
@@ -134,7 +130,12 @@ export default function AboutMePage() {
           </div>
         </section>
 
-        <ContactSection email={contact.email} links={contact.links} />
+        <ContactSection
+          email={contact.email}
+          links={contact.links}
+          headline="Let's talk."
+          sub="Whether you're scaling a technology organization, modernizing a platform, or exploring the role of AI in your business, I'm always interested in exchanging ideas."
+        />
       </main>
       <Footer />
     </>
