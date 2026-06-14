@@ -11,16 +11,16 @@ export function MetricCard({
   label: React.ReactNode;
 }) {
   return (
-    <div className="flex w-full flex-col gap-2 rounded-xl border border-border-subtle bg-surface-elevated p-8 shadow-[0_1px_3px_var(--shadow-1a)]">
+    <div className="border-border-subtle bg-surface-elevated flex w-full flex-col gap-2 rounded-xl border p-8 shadow-[0_1px_3px_var(--shadow-1a)]">
       {eyebrow && (
-        <span className="font-mono text-xs tracking-[1px] text-text-accent">
+        <span className="text-text-accent font-mono text-xs tracking-[1px]">
           {eyebrow}
         </span>
       )}
-      <span className="text-[40px] font-semibold leading-[1.1] tracking-[-0.8px] text-text-primary">
+      <span className="text-text-primary text-[40px] leading-[1.1] font-semibold tracking-[-0.8px]">
         {value}
       </span>
-      <span className="text-sm text-text-secondary">{label}</span>
+      <span className="text-text-secondary text-sm">{label}</span>
     </div>
   );
 }

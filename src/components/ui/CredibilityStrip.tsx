@@ -11,14 +11,14 @@ export function CredibilityStrip({
 }) {
   return (
     <div className="flex flex-col gap-4">
-      <span className="font-mono text-xs tracking-[1px] text-text-tertiary">
+      <span className="text-text-tertiary font-mono text-xs tracking-[1px]">
         {eyebrow}
       </span>
-      <div className="flex items-center gap-x-8 overflow-x-auto [scrollbar-width:none] md:flex-wrap md:gap-x-12 md:gap-y-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
+      <div className="flex [scrollbar-width:none] items-center gap-x-8 overflow-x-auto md:flex-wrap md:gap-x-12 md:gap-y-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
         {companies.map((c) => (
           <span
             key={c}
-            className="shrink-0 whitespace-nowrap text-xl font-semibold tracking-[-0.3px] text-text-tertiary"
+            className="text-text-tertiary shrink-0 text-xl font-semibold tracking-[-0.3px] whitespace-nowrap"
           >
             {c}
           </span>

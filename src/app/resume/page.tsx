@@ -18,7 +18,7 @@ export const metadata = {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-mono text-xs tracking-[1px] text-text-tertiary">
+    <span className="text-text-tertiary font-mono text-xs tracking-[1px]">
       {children}
     </span>
   );
@@ -37,10 +37,10 @@ function CredentialList({
       <div className="flex flex-col gap-4">
         {items.map((item) => (
           <div key={item.title} className="flex flex-col gap-0.5">
-            <span className="text-base font-semibold text-text-primary">
+            <span className="text-text-primary text-base font-semibold">
               {item.title}
             </span>
-            <span className="text-sm text-text-secondary">{item.detail}</span>
+            <span className="text-text-secondary text-sm">{item.detail}</span>
           </div>
         ))}
       </div>
@@ -67,10 +67,10 @@ export default function AboutMePage() {
         {/* Header */}
         <header className="flex flex-col gap-5">
           <div className="flex flex-col gap-3">
-            <h1 className="text-[32px] font-semibold leading-[1.1] tracking-[-0.8px] text-text-primary sm:text-[40px]">
+            <h1 className="text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px]">
               {name}
             </h1>
-            <p className="max-w-[760px] text-[17px] leading-[1.6] text-text-secondary">
+            <p className="text-text-secondary max-w-[760px] text-[17px] leading-[1.6]">
               {summary}
             </p>
           </div>

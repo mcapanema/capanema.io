@@ -9,27 +9,27 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
   return (
     <a
       href={`/case-studies/${slug}`}
-      className="group flex flex-col gap-6 rounded-xl border border-border-subtle bg-surface-elevated p-10 shadow-[0_1px_3px_var(--shadow-1a)] transition-colors hover:border-border-strong"
+      className="group border-border-subtle bg-surface-elevated hover:border-border-strong flex flex-col gap-6 rounded-xl border p-10 shadow-[0_1px_3px_var(--shadow-1a)] transition-colors"
     >
-      <span className="font-mono text-xs uppercase tracking-[1px] text-text-accent">
+      <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
         {category}
       </span>
-      <h3 className="text-2xl font-semibold leading-[1.3] tracking-[-0.3px] text-text-primary">
+      <h3 className="text-text-primary text-2xl leading-[1.3] font-semibold tracking-[-0.3px]">
         {title}
       </h3>
-      <p className="text-[15px] leading-[1.6] text-text-secondary">{summary}</p>
-      <div className="h-px w-full bg-border-subtle" />
+      <p className="text-text-secondary text-[15px] leading-[1.6]">{summary}</p>
+      <div className="bg-border-subtle h-px w-full" />
       <div className="flex flex-wrap items-end gap-8">
         {outcomes.map((o) => (
           <div key={o.label} className="flex flex-col gap-1">
-            <span className="text-[32px] font-semibold leading-[1.1] tracking-[-0.5px] text-text-primary">
+            <span className="text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.5px]">
               {o.value}
             </span>
-            <span className="text-[13px] text-text-secondary">{o.label}</span>
+            <span className="text-text-secondary text-[13px]">{o.label}</span>
           </div>
         ))}
       </div>
-      <span className="inline-flex items-center gap-2 pt-2 text-sm font-semibold text-link transition-colors group-hover:text-link-hover">
+      <span className="text-link group-hover:text-link-hover inline-flex items-center gap-2 pt-2 text-sm font-semibold transition-colors">
         Read case study
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </span>

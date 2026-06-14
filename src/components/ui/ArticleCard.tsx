@@ -9,24 +9,24 @@ export function ArticleCard({ article }: { article: Article }) {
   return (
     <a
       href={`/articles/${slug}`}
-      className="group flex flex-col gap-3 rounded-xl border border-border-subtle bg-surface-primary p-8 transition-colors hover:border-border-strong"
+      className="group border-border-subtle bg-surface-primary hover:border-border-strong flex flex-col gap-3 rounded-xl border p-8 transition-colors"
     >
       <div className="flex items-center gap-3">
-        <span className="font-mono text-xs uppercase tracking-[1px] text-text-accent">
+        <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
           {category}
         </span>
-        <span aria-hidden className="text-xs text-text-tertiary">
+        <span aria-hidden className="text-text-tertiary text-xs">
           ·
         </span>
-        <span className="font-mono text-xs text-text-tertiary">
+        <span className="text-text-tertiary font-mono text-xs">
           {formatStamp(date)}
         </span>
       </div>
-      <h3 className="text-xl font-semibold leading-[1.35] tracking-[-0.3px] text-text-primary transition-colors group-hover:text-link">
+      <h3 className="text-text-primary group-hover:text-link text-xl leading-[1.35] font-semibold tracking-[-0.3px] transition-colors">
         {title}
       </h3>
-      <p className="text-[15px] leading-[1.6] text-text-secondary">{excerpt}</p>
-      <span className="font-mono text-xs uppercase tracking-[0.5px] text-text-tertiary">
+      <p className="text-text-secondary text-[15px] leading-[1.6]">{excerpt}</p>
+      <span className="text-text-tertiary font-mono text-xs tracking-[0.5px] uppercase">
         {readingMinutes} min read
       </span>
     </a>

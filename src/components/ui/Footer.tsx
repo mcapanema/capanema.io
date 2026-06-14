@@ -22,14 +22,14 @@ function LinkColumn({
 }) {
   return (
     <div className="flex flex-col gap-3">
-      <span className="font-mono text-[11px] tracking-[1px] text-text-on-dark-muted">
+      <span className="text-text-on-dark-muted font-mono text-[11px] tracking-[1px]">
         {heading}
       </span>
       {links.map((link) => (
         <a
           key={link.label}
           href={link.href}
-          className="text-sm text-text-on-dark transition-opacity hover:opacity-70"
+          className="text-text-on-dark text-sm transition-opacity hover:opacity-70"
         >
           {link.label}
         </a>
@@ -44,10 +44,10 @@ export function Footer() {
       <div className="mx-auto flex max-w-[1120px] flex-col gap-8 px-6 py-16 md:px-16">
         <div className="flex flex-col justify-between gap-10 md:flex-row">
           <div className="flex max-w-80 flex-col gap-2">
-            <span className="text-xl font-semibold tracking-[-0.3px] text-text-on-dark">
+            <span className="text-text-on-dark text-xl font-semibold tracking-[-0.3px]">
               Murilo Capanema
             </span>
-            <p className="text-sm leading-[1.55] text-text-on-dark-muted">
+            <p className="text-text-on-dark-muted text-sm leading-[1.55]">
               Engineering executive — building platforms, teams, and the systems
               that scale them.
             </p>
@@ -57,12 +57,12 @@ export function Footer() {
             <LinkColumn heading="CONNECT" links={connect} />
           </div>
         </div>
-        <div className="h-px w-full bg-surface-dark-raised" />
+        <div className="bg-surface-dark-raised h-px w-full" />
         <div className="flex flex-col justify-between gap-2 sm:flex-row">
-          <span className="font-mono text-xs text-text-on-dark-muted">
+          <span className="text-text-on-dark-muted font-mono text-xs">
             © 2026 CAPANEMA.IO
           </span>
-          <span className="font-mono text-xs text-text-on-dark-muted">
+          <span className="text-text-on-dark-muted font-mono text-xs">
             DESIGNED &amp; BUILT WITH INTENT
           </span>
         </div>

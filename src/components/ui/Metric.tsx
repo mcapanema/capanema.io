@@ -16,7 +16,7 @@ export function Metric({
   return (
     <div className="flex flex-col gap-1">
       <span
-        className={`text-[40px] font-semibold leading-[1.1] tracking-[-0.8px] ${valueColor}`}
+        className={`text-[40px] leading-[1.1] font-semibold tracking-[-0.8px] ${valueColor}`}
       >
         {value}
       </span>

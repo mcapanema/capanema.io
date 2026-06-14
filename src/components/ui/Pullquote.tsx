@@ -9,12 +9,12 @@ export function Pullquote({
   attribution?: React.ReactNode;
 }) {
   return (
-    <figure className="flex flex-col gap-3 border-l-[3px] border-border-accent py-2 pl-6 pr-2">
-      <blockquote className="text-2xl font-medium leading-[1.4] tracking-[-0.3px] text-text-primary">
+    <figure className="border-border-accent flex flex-col gap-3 border-l-[3px] py-2 pr-2 pl-6">
+      <blockquote className="text-text-primary text-2xl leading-[1.4] font-medium tracking-[-0.3px]">
         {children}
       </blockquote>
       {attribution && (
-        <figcaption className="font-mono text-[13px] text-text-tertiary">
+        <figcaption className="text-text-tertiary font-mono text-[13px]">
           {attribution}
         </figcaption>
       )}

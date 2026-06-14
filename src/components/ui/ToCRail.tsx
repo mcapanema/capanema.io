@@ -32,7 +32,7 @@ export function ToCRail({ items }: { items: ToCItem[] }) {
 
   return (
     <nav aria-label="On this page" className="flex flex-col gap-3">
-      <span className="px-4 font-mono text-xs tracking-[1px] text-text-tertiary">
+      <span className="text-text-tertiary px-4 font-mono text-xs tracking-[1px]">
         ON THIS PAGE
       </span>
       {items.map((item) => {
@@ -45,7 +45,7 @@ export function ToCRail({ items }: { items: ToCItem[] }) {
             className={cn(
               "border-l-2 px-4 py-1 text-sm leading-[1.4] transition-colors",
               isActive
-                ? "border-border-accent font-semibold text-text-primary"
+                ? "border-border-accent text-text-primary font-semibold"
                 : "border-border-subtle text-text-secondary hover:text-text-primary",
             )}
           >

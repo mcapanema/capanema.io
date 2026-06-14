@@ -47,7 +47,7 @@ export function Callout({
         {title && (
           <p className={cn("text-sm font-semibold", fg)}>{title}</p>
         )}
-        <div className="text-sm leading-[1.6] text-text-prose">{children}</div>
+        <div className="text-text-prose text-sm leading-[1.6]">{children}</div>
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ export default function RootLayout({
     >
       {/* Colors come from semantic tokens that re-resolve per Mode via
           light-dark()/color-scheme, so no `dark:` variants are needed. */}
-      <body className="min-h-full bg-surface-primary text-text-primary">
+      <body className="bg-surface-primary text-text-primary min-h-full">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {children}
         <Analytics />

@@ -63,16 +63,16 @@ export default async function CaseStudyPage({
 
         {/* Title block */}
         <div className="flex flex-col gap-4">
-          <span className="font-mono text-[13px] tracking-[1px] text-text-accent">
+          <span className="text-text-accent font-mono text-[13px] tracking-[1px]">
             {eyebrow}
           </span>
-          <h1 className="max-w-[1100px] text-[36px] font-semibold leading-[1.1] tracking-[-0.8px] text-text-primary sm:text-[48px] sm:tracking-[-1px]">
+          <h1 className="text-text-primary max-w-[1100px] text-[36px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[48px] sm:tracking-[-1px]">
             {title}
           </h1>
         </div>
 
         {/* Metrics band */}
-        <div className="flex flex-wrap gap-x-16 gap-y-8 border-y border-border-subtle py-8">
+        <div className="border-border-subtle flex flex-wrap gap-x-16 gap-y-8 border-y py-8">
           {metrics.map((m) => (
             <Metric key={m.label} value={m.value} label={m.label} />
           ))}
@@ -91,8 +91,8 @@ export default async function CaseStudyPage({
         </div>
 
         {/* Related */}
-        <section className="flex flex-col gap-8 border-t border-border-subtle pt-12">
-          <h2 className="text-2xl font-semibold tracking-[-0.3px] text-text-primary">
+        <section className="border-border-subtle flex flex-col gap-8 border-t pt-12">
+          <h2 className="text-text-primary text-2xl font-semibold tracking-[-0.3px]">
             Related case studies
           </h2>
           <div className="grid gap-6 md:grid-cols-2">

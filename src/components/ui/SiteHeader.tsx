@@ -17,12 +17,12 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-border-subtle bg-surface-primary">
+    <header className="border-border-subtle bg-surface-primary border-b">
       <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-6 px-6 py-4 md:px-8">
         <Link
           href="/"
           aria-label="Murilo Capanema – Home"
-          className="inline-flex shrink-0 items-center gap-2 text-base font-semibold tracking-[-0.3px] text-text-primary"
+          className="text-text-primary inline-flex shrink-0 items-center gap-2 text-base font-semibold tracking-[-0.3px]"
         >
           <picture>
             <source srcSet="/logo-light.webp" type="image/webp" />
