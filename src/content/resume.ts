@@ -13,16 +13,15 @@ export type ResumeMetric = Outcome & { eyebrow: string };
 
 export const resume = {
   name: "Murilo Capanema",
-  role: "VP of Technology · Genial Care",
   summary:
     "Technology executive operating at the intersection of business strategy, product, and engineering. I build high-performance organizations and AI-enabled platforms that turn domain expertise into measurable business outcomes — from seed stage to scale.",
   resumePdf: "/Murilo-Capanema-Resume.pdf",
 
   metrics: [
-    { eyebrow: "EXPERIENCE", value: "15+", label: "years in tech & product leadership" },
-    { eyebrow: "TEAM SCALE", value: "60+", label: "engineers led across organizations" },
-    { eyebrow: "ENGAGEMENT", value: "20%→75%", label: "DAU growth in 6 months" },
-    { eyebrow: "AI IMPACT", value: "2mo→3d", label: "time-to-intervention, AI-driven" },
+    { eyebrow: "EXPERIENCE", value: "20+", label: "years building technology organizations" },
+    { eyebrow: "TEAM SCALE", value: "~100", label: "engineers scaled across multiple organizations" },
+    { eyebrow: "EFFICIENCY", value: "300%", label: "clinical operations efficiency improvement" },
+    { eyebrow: "AI IMPACT", value: "2mo → 3d", label: "time-to-intervention through AI" },
   ] satisfies ResumeMetric[],
 
   experience: [
@@ -30,21 +29,21 @@ export const resume = {
       date: "2023 — PRESENT",
       title: "VP of Technology · Genial Care",
       description:
-        "Lead a 25-person engineering organization building AI-enabled clinical products on top of a proprietary dataset. Own technical strategy, organizational design, and AI integration across product, operations, and billing.",
+        "Led product & technology through Genial Care's scale-up phase, transforming clinical expertise into AI-enabled products, operational systems, and data capabilities that improved clinical outcomes, increased clinic capacity, and accelerated company growth.",
       outcome: "DAU 20%→75% · time-to-intervention 2mo→3d · billing non-receipt rate <1%",
     },
     {
       date: "2020 — 2023",
       title: "Head of Technology · Genial Care",
       description:
-        "Joined at seed stage with full ownership of product, design, engineering, and IT. Built the technical organization from scratch and led the product strategy that delivered product-market fit and scaled operations.",
+        "Joined at seed stage to build the product, platform, and engineering organization from the ground up, helping take the company from early product development to a $10M Series A led by General Catalyst.",
       outcome: "0→25 engineers, zero voluntary attrition · $10M Series A (General Catalyst, 2023)",
     },
     {
       date: "2020",
       title: "Senior Engineering Manager · Creditas",
       description:
-        "Led the creation of the product platform tribe — the company's most strategic initiative — to unify lending infrastructure across all product lines. Owned technical direction and organizational design for ~60 engineers.",
+        "Led Creditas' Product Platform organization, consolidating shared capabilities across lending products and creating the technical foundations for the company's next stage of growth.",
       outcome: "~60 engineers · 8 direct reports · digital transformation cell model",
     },
     {
@@ -68,17 +67,21 @@ export const resume = {
       title: "B.Sc. Computer Science",
       detail: "Universidade Paulista (UNIP) · 2009–2012",
     },
+    {
+      title: "MBA, Corporate Finance",
+      detail: "Saint Paul Escola de Negócios · In Progress",
+    },
   ] satisfies Credential[],
 
   focusAreas: [
-    "AI/ML Product Integration",
-    "Platform Engineering",
+    "Engineering Leadership",
     "Organizational Design",
-    "Product-Led Growth",
-    "Data Platform Design",
-    "Digital Transformation",
-    "Cloud Architecture",
-    "OKR-Driven Execution",
+    "Platform Strategy",
+    "Data & AI",
+    "Product Development",
+    "Technology Strategy",
+    "Operational Excellence",
+    "Scaling Organizations",
   ],
 
   contact: {
