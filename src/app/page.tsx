@@ -100,6 +100,7 @@ export default function Home() {
                 {/* mobile fallback: accurate sizes, bandwidth-optimal on retina phones */}
                 <img
                   {...heroImgProps}
+                  alt="Murilo Capanema"
                   srcSet={mobileSrcSet}
                   loading="eager"
                   fetchPriority="high"
