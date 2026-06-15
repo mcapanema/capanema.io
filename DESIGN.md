@@ -57,18 +57,18 @@ Two families, loaded in `layout.tsx`:
 
 | Name | px | line-height | tracking | Tailwind example |
 |---|---|---|---|---|
-| Display XL | 72 | 1.05 | −1.5 | `text-[72px] leading-[1.05] tracking-[-1.5px]` |
-| Display L | 64 | 1.05 | −1.3 | `text-[64px] leading-[1.05] tracking-[-1.3px]` |
-| Display M | 56 | 1.08 | −1.1 | `text-[56px] leading-[1.08] tracking-[-1.1px]` |
-| H1 | 48 | 1.1 | −1 | `text-[48px] leading-[1.1] tracking-[-1px]` |
-| H2 | 40 | 1.15 | −0.8 | `text-[40px] leading-[1.15] tracking-[-0.8px]` |
-| H3 | 32 | 1.2 | −0.5 | `text-[32px] leading-[1.2] tracking-[-0.5px]` |
-| H4 | 24 | 1.3 | −0.3 | `text-2xl leading-[1.3] tracking-[-0.3px]` |
-| H5 | 20 | 1.4 | 0 | `text-xl leading-[1.4]` |
-| Body L | 18 | 1.6 | 0 | `text-lg leading-[1.6]` |
-| Body M | 16 | 1.6 | 0 | `text-base leading-[1.6]` |
-| Body S | 14 | 1.5 | 0 | `text-sm leading-[1.5]` |
-| Caption | 12 | 1.4 | 0 | `text-xs leading-[1.4] font-medium` |
+| Display XL | 72 | 1.05 | −1.5 | `text-display-xl font-semibold` |
+| Display L | 64 | 1.05 | −1.3 | `text-display-l font-semibold` |
+| Display M | 56 | 1.08 | −1.1 | `text-display-m font-semibold` |
+| H1 | 48 | 1.1 | −1 | `text-h1 font-semibold` |
+| H2 | 40 | 1.15 | −0.8 | `text-h2 font-semibold` |
+| H3 | 32 | 1.2 | −0.5 | `text-h3 font-semibold` |
+| H4 | 24 | 1.3 | −0.3 | `text-h4 font-semibold` |
+| H5 | 20 | 1.4 | 0 | `text-h5 font-semibold` |
+| Body L | 18 | 1.6 | 0 | `text-body-l` |
+| Body M | 16 | 1.6 | 0 | `text-body-m` |
+| Body S | 14 | 1.5 | 0 | `text-body-s` |
+| Caption | 12 | 1.4 | 0 | `text-caption font-medium` |
 
 The type scale is **tokenized** (v3.1): each step is a `text-*` utility (`text-display-xl … text-caption`) carrying size + line-height + tracking, registered in `globals.css` `@theme`. Line-height tokens exist for prose: `--leading-tight 1.1`, `--leading-snug 1.3`, `--leading-normal 1.6`, `--leading-prose 1.7`. Reading measure: `--measure-prose: 680px`.
 
