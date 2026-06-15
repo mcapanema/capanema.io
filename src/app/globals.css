@@ -2,7 +2,7 @@
 
 /* ============================================================================
    capanema.io — Design System token layer
-   Source of truth: design-system-v2.pen (Pencil)
+   Source of truth: design-system-v3.1.pen (Pencil)
 
    Five-layer governance chain: Foundation → Tokens → Components → Patterns.
    - Foundation primitives are STATIC and never themed.
@@ -32,12 +32,14 @@
   --neutral-800: #1e293b;
   --neutral-900: #0f172a;
 
-  --accent-200: #93c5fd;
-  --accent-300: #60a5fa;
-  --accent-400: #3b82f6;
-  --accent-500: #2563eb;
-  --accent-600: #1d4ed8;
-  --accent-700: #1e40af;
+  /* Accent — Cobalt Deep (v3): deep, slightly desaturated cobalt. Light ramp
+     500/600/700; dark ramp 400/300/200. Replaced Tailwind blue in v3.0. */
+  --accent-200: #a6c1f0;
+  --accent-300: #6e96e2;
+  --accent-400: #3f6bd0;
+  --accent-500: #2150b8;
+  --accent-600: #1a4097;
+  --accent-700: #16357a;
 
   --primary-700: #334155;
   --primary-900: #0f172a;
