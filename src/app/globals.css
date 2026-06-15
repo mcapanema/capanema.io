@@ -48,6 +48,22 @@
   --dark-800: #111827;
   --dark-900: #0b1020;
 
+  /* --- Foundation · radius / motion / icon (v3.1, static, never themed) --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+
   /* --- Tokens · text (light, dark) --------------------------------------- */
   --text-primary: light-dark(var(--primary-900), var(--neutral-50));
   --text-secondary: light-dark(var(--neutral-600), var(--neutral-300));
