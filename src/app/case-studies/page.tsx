@@ -16,11 +16,13 @@ export default function CaseStudiesPage() {
     <>
       <SiteHeader />
       <main className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8 md:py-20">
-        <PageHeader
-          eyebrow="CASE STUDIES"
-          title="Case studies"
-          description="Deep dives into platforms built, organizations scaled, and the strategic decisions behind them — written to show the thinking, not just the result."
-        />
+        <div className="animate-fade-up">
+          <PageHeader
+            eyebrow="CASE STUDIES"
+            title="Case studies"
+            description="Deep dives into platforms built, organizations scaled, and the strategic decisions behind them — written to show the thinking, not just the result."
+          />
+        </div>
         <CaseStudiesExplorer caseStudies={caseStudies} tags={tags} />
       </main>
       <Footer />
