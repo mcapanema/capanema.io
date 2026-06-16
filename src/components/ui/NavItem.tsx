@@ -1,7 +1,9 @@
 import { cn } from "@/lib/cn";
 
 // DS master: Nav Item (M8kBKi). Inter 14/500 text-secondary, padding [space-2,0].
-// Active state lifts to text-primary (set via aria-current).
+// Active state (v3.1): text-primary + weight 600 + a 2px accent bottom border
+// (border-accent), set via aria-current. Accent is reserved for active nav, so
+// inactive items carry a transparent bottom border to keep equal height.
 export function NavItem({
   href,
   children,
@@ -18,8 +20,10 @@ export function NavItem({
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "hover:text-text-primary inline-flex items-center py-2 text-sm font-medium whitespace-nowrap transition-colors",
-        active ? "text-text-primary" : "text-text-secondary",
+        "hover:text-text-primary inline-flex items-center border-b-2 py-2 text-sm whitespace-nowrap transition-colors",
+        active
+          ? "border-border-accent text-text-primary font-semibold"
+          : "border-transparent text-text-secondary font-medium",
         className,
       )}
     >
