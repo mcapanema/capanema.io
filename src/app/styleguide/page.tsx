@@ -23,6 +23,7 @@ import {
   IconButton,
   Metric,
   MetricCard,
+  NavItem,
   Pullquote,
   SectionTick,
   SiteHeader,
@@ -450,20 +451,46 @@ export default function StyleGuide() {
           </div>
         </Section>
 
-        <Section n="10" title="Buttons & actions">
-          <div className="flex flex-wrap items-center gap-4">
-            <Button href="/case-studies" icon={<ArrowRight className="size-4" />}>
-              View case studies
-            </Button>
-            <Button variant="secondary" href="/resume">
-              About me
-            </Button>
-            <Button variant="secondary" icon={<Download className="size-4" />}>
-              Download PDF
-            </Button>
-            <IconButton label="Open external link" href="https://example.com">
-              <ArrowUpRight className="size-[18px]" />
-            </IconButton>
+        <Section
+          n="10"
+          title="Buttons & navigation"
+          description="Controls — buttons, icon buttons, and primary nav. The active nav item carries the v3.1 accent underline (a 2px border-accent rule + weight 600); inactive items are neutral. Accent is reserved for the active item."
+        >
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-wrap items-center gap-4">
+              <Button href="/case-studies" icon={<ArrowRight className="size-4" />}>
+                View case studies
+              </Button>
+              <Button variant="secondary" href="/resume">
+                About me
+              </Button>
+              <Button variant="secondary" icon={<Download className="size-4" />}>
+                Download PDF
+              </Button>
+              <IconButton label="Open external link" href="https://example.com">
+                <ArrowUpRight className="size-[18px]" />
+              </IconButton>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-text-tertiary font-mono text-xs tracking-[1px]">
+                NAV ITEM · ACTIVE + REST
+              </span>
+              <nav aria-label="Style guide navigation sample">
+                <ul className="flex items-center gap-6">
+                  <li>
+                    <NavItem href="/case-studies" active>
+                      Case Studies
+                    </NavItem>
+                  </li>
+                  <li>
+                    <NavItem href="/articles">Writing</NavItem>
+                  </li>
+                  <li>
+                    <NavItem href="/resume">Resume</NavItem>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </Section>
 
