@@ -41,14 +41,16 @@ export default async function ArticlePage({
     <>
       <SiteHeader />
       <main className="mx-auto flex max-w-[680px] flex-col gap-8 px-6 py-12 md:py-16">
-        <Breadcrumb
-          items={[
-            { label: "Articles", href: "/articles" },
-            { label: title },
-          ]}
-        />
+        <div className="animate-fade-up">
+          <Breadcrumb
+            items={[
+              { label: "Articles", href: "/articles" },
+              { label: title },
+            ]}
+          />
+        </div>
 
-        <header className="flex flex-col gap-4">
+        <header className="animate-fade-up-delay-1 flex flex-col gap-4">
           <div className="flex flex-wrap items-center gap-3">
             <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
               {category}
