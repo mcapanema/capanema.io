@@ -119,12 +119,12 @@ export default function AboutMePage() {
         </section>
 
         {/* Education */}
-        <div>
+        <div className="animate-on-scroll">
           <CredentialList label="EDUCATION" items={education} />
         </div>
 
         {/* Focus areas */}
-        <section className="flex flex-col gap-4">
+        <section className="animate-on-scroll flex flex-col gap-4">
           <SectionLabel>FOCUS AREAS</SectionLabel>
           <div className="flex flex-wrap gap-3">
             {focusAreas.map((area) => (
@@ -133,12 +133,14 @@ export default function AboutMePage() {
           </div>
         </section>
 
-        <ContactSection
-          email={contact.email}
-          links={contact.links}
-          headline="Let's talk."
-          sub="Whether you're scaling a technology organization, modernizing a platform, or exploring the role of AI in your business, I'm always interested in exchanging ideas."
-        />
+        <div className="animate-on-scroll">
+          <ContactSection
+            email={contact.email}
+            links={contact.links}
+            headline="Let's talk."
+            sub="Whether you're scaling a technology organization, modernizing a platform, or exploring the role of AI in your business, I'm always interested in exchanging ideas."
+          />
+        </div>
       </main>
       <Footer />
     </>
