@@ -10,7 +10,7 @@ type CommonProps = {
 };
 
 const base =
-  "inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border-default bg-surface-elevated text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary";
+  "inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border-default bg-surface-elevated text-text-secondary transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)] hover:border-border-strong hover:text-text-primary";
 
 type AsLink = CommonProps &
   Omit<ComponentPropsWithoutRef<"a">, keyof CommonProps> & { href: string };

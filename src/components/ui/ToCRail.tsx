@@ -43,7 +43,7 @@ export function ToCRail({ items }: { items: ToCItem[] }) {
             href={`#${item.id}`}
             aria-current={isActive ? "true" : undefined}
             className={cn(
-              "border-l-2 px-4 py-1 text-sm leading-[1.4] transition-colors",
+              "border-l-2 px-4 py-1 text-sm leading-[1.4] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
               isActive
                 ? "border-border-accent text-text-primary font-semibold"
                 : "border-border-subtle text-text-secondary hover:text-text-primary",

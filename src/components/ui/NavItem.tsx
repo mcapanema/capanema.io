@@ -20,7 +20,7 @@ export function NavItem({
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "hover:text-text-primary inline-flex items-center border-b-2 py-2 text-sm whitespace-nowrap transition-colors",
+        "hover:text-text-primary inline-flex items-center border-b-2 py-2 text-sm whitespace-nowrap transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
         active
           ? "border-border-accent text-text-primary font-semibold"
           : "border-transparent text-text-secondary font-medium",

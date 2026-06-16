@@ -30,10 +30,10 @@ function SectionHeader({
       </h2>
       <a
         href={href}
-        className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+        className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]"
       >
         {cta}
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+        <ArrowRight className="size-4 transition-transform duration-[var(--duration-fast)] ease-[var(--ease-standard)] group-hover:translate-x-0.5" />
       </a>
     </div>
   );
@@ -70,17 +70,17 @@ export default function Home() {
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
             {/* Headline + subline + actions — lead the page on mobile, left on desktop */}
             <div className="flex flex-col gap-6 lg:min-w-0 lg:flex-1">
-              <span className="text-text-accent font-mono text-sm tracking-[1px]">
+              <span className="animate-fade-up text-text-accent font-mono text-sm tracking-[1px]">
                 CTO · PLATFORM &amp; AI · ORG SCALING
               </span>
-              <h1 className="text-text-primary max-w-[900px] text-[40px] leading-[1.05] font-semibold tracking-[-1px] sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
+              <h1 className="animate-fade-up-delay-1 text-text-primary max-w-[900px] text-[40px] leading-[1.05] font-semibold tracking-[-1px] sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
                 Scaling engineering organizations and the platforms they ship.
               </h1>
-              <p className="text-text-secondary max-w-[640px] text-lg leading-[1.6]">
+              <p className="animate-fade-up-delay-2 text-text-secondary max-w-[640px] text-lg leading-[1.6]">
                 Two decades helping organizations navigate through
                 growth, complexity, and change.
               </p>
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="animate-fade-up-delay-3 flex flex-wrap gap-3 pt-2">
                 <Button variant="secondary" href="/resume">
                   About me
                 </Button>
@@ -93,7 +93,7 @@ export default function Home() {
               </div>
             </div>
             {/* Portrait — supporting role below the actions on mobile, right on desktop */}
-            <div className="hidden sm:block lg:shrink-0">
+            <div className="animate-fade-up-delay-1 hidden sm:block lg:shrink-0">
               <picture>
                 {/* tablet + desktop: doubled sizes for 1x-display sharpness */}
                 <source media="(min-width: 640px)" srcSet={tabletDesktopSrcSet} />
