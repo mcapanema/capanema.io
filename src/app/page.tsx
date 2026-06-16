@@ -30,10 +30,10 @@ function SectionHeader({
       </h2>
       <a
         href={href}
-        className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+        className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]"
       >
         {cta}
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+        <ArrowRight className="size-4 transition-transform duration-[var(--duration-fast)] ease-[var(--ease-standard)] group-hover:translate-x-0.5" />
       </a>
     </div>
   );
