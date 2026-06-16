@@ -67,14 +67,14 @@ export default function AboutMePage() {
         {/* Header */}
         <header className="flex flex-col gap-5">
           <div className="flex flex-col gap-3">
-            <h1 className="text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px]">
+            <h1 className="animate-fade-up text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px]">
               {name}
             </h1>
-            <p className="text-text-secondary max-w-[760px] text-[17px] leading-[1.6]">
+            <p className="animate-fade-up-delay-1 text-text-secondary max-w-[760px] text-[17px] leading-[1.6]">
               {summary}
             </p>
           </div>
-          <div>
+          <div className="animate-fade-up-delay-2">
             <Button
               variant="secondary"
               href={resumePdf}
@@ -87,7 +87,7 @@ export default function AboutMePage() {
         </header>
 
         {/* Key achievements */}
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="animate-on-scroll grid grid-cols-2 gap-4 lg:grid-cols-4">
           {metrics.map((m) => (
             <MetricCard
               key={m.label}
@@ -100,28 +100,31 @@ export default function AboutMePage() {
 
         {/* Experience */}
         <section className="flex flex-col gap-6">
-          <SectionLabel>EXPERIENCE</SectionLabel>
+          <div className="animate-on-scroll">
+            <SectionLabel>EXPERIENCE</SectionLabel>
+          </div>
           <div className="flex flex-col">
             {experience.map((role, i) => (
-              <TimelineItem
-                key={role.title}
-                date={role.date}
-                title={role.title}
-                description={role.description}
-                outcome={role.outcome}
-                isLast={i === experience.length - 1}
-              />
+              <div key={role.title} className="animate-on-scroll">
+                <TimelineItem
+                  date={role.date}
+                  title={role.title}
+                  description={role.description}
+                  outcome={role.outcome}
+                  isLast={i === experience.length - 1}
+                />
+              </div>
             ))}
           </div>
         </section>
 
         {/* Education */}
-        <div>
+        <div className="animate-on-scroll">
           <CredentialList label="EDUCATION" items={education} />
         </div>
 
         {/* Focus areas */}
-        <section className="flex flex-col gap-4">
+        <section className="animate-on-scroll flex flex-col gap-4">
           <SectionLabel>FOCUS AREAS</SectionLabel>
           <div className="flex flex-wrap gap-3">
             {focusAreas.map((area) => (
@@ -130,12 +133,14 @@ export default function AboutMePage() {
           </div>
         </section>
 
-        <ContactSection
-          email={contact.email}
-          links={contact.links}
-          headline="Let's talk."
-          sub="Whether you're scaling a technology organization, modernizing a platform, or exploring the role of AI in your business, I'm always interested in exchanging ideas."
-        />
+        <div className="animate-on-scroll">
+          <ContactSection
+            email={contact.email}
+            links={contact.links}
+            headline="Let's talk."
+            sub="Whether you're scaling a technology organization, modernizing a platform, or exploring the role of AI in your business, I'm always interested in exchanging ideas."
+          />
+        </div>
       </main>
       <Footer />
     </>
