@@ -53,15 +53,17 @@ export default async function CaseStudyPage({
     <>
       <SiteHeader />
       <main className="mx-auto flex max-w-[1120px] flex-col gap-8 px-6 py-12 md:px-8 md:py-16">
-        <Breadcrumb
-          items={[
-            { label: "Case Studies", href: "/case-studies" },
-            { label: title },
-          ]}
-        />
+        <div className="animate-fade-up">
+          <Breadcrumb
+            items={[
+              { label: "Case Studies", href: "/case-studies" },
+              { label: title },
+            ]}
+          />
+        </div>
 
         {/* Title block */}
-        <div className="flex flex-col gap-4">
+        <div className="animate-fade-up-delay-1 flex flex-col gap-4">
           <span className="text-text-accent font-mono text-[13px] tracking-[1px]">
             {eyebrow}
           </span>
@@ -71,7 +73,7 @@ export default async function CaseStudyPage({
         </div>
 
         {/* Metrics band */}
-        <div className="border-border-subtle flex flex-wrap gap-x-16 gap-y-8 border-y py-8">
+        <div className="animate-fade-up-delay-2 border-border-subtle flex flex-wrap gap-x-16 gap-y-8 border-y py-8">
           {metrics.map((m) => (
             <Metric key={m.label} value={m.value} label={m.label} />
           ))}
@@ -90,7 +92,7 @@ export default async function CaseStudyPage({
         </div>
 
         {/* Related */}
-        <section className="border-border-subtle flex flex-col gap-8 border-t pt-12">
+        <section className="animate-on-scroll border-border-subtle flex flex-col gap-8 border-t pt-12">
           <h2 className="text-text-primary text-2xl font-semibold tracking-[-0.3px]">
             Related case studies
           </h2>
