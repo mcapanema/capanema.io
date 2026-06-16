@@ -40,5 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Ssuperpowers Skill Plans
+# Superpowers Skill Plans
 docs/superpowers/plans/*
+
+# Impeccable Skill
+.impeccable/*
+PRODUCT.md
