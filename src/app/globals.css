@@ -330,6 +330,19 @@ body {
   }
 }
 
+/* Scroll-driven card entry — fires as each card enters the viewport.
+   Requires CSS Scroll-Driven Animations (Chrome 115+, Safari 18+).
+   @supports gate: unsupported browsers see elements immediately (no fill-mode hide). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-on-scroll {
+      animation: fade-up var(--duration-slow) var(--ease-emphasized) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30%;
+    }
+  }
+}
+
 /* ----------------------------------------------------------------------------
    Brand logo · theme-aware swap (navbar)
    Two <img>s share these classes; visibility follows the same color-scheme /
