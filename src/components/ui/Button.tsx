@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 type Variant = "primary" | "secondary";
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition duration-[var(--duration-fast)] ease-[var(--ease-standard)] active:scale-[0.97]";
 
 const variants: Record<Variant, string> = {
   primary:
