@@ -41,7 +41,7 @@ export function Callout({
 }) {
   const { surface, fg, Icon } = config[variant];
   return (
-    <div className={cn("flex gap-3 rounded-[10px] p-6", surface, className)}>
+    <div className={cn("flex gap-3 rounded-sm p-6", surface, className)}>
       <Icon aria-hidden className={cn("mt-0.5 size-5 shrink-0", fg)} />
       <div className="flex flex-col gap-1">
         {title && (

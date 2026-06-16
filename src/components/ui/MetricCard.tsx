@@ -1,6 +1,7 @@
 // DS master: Metric Card (xAD0x). radius 12, surface-elevated, border-subtle,
-// soft shadow (shadow-1a), padding space-6. Optional mono eyebrow in text-accent,
-// value Inter 40/600, label text-secondary.
+// soft shadow (shadow-1a), padding space-6. Optional mono eyebrow in
+// text-tertiary (neutral — v3.1 structural accent), value Inter 40/600, label
+// text-secondary.
 export function MetricCard({
   eyebrow,
   value,
@@ -13,7 +14,7 @@ export function MetricCard({
   return (
     <div className="border-border-subtle bg-surface-elevated flex w-full flex-col gap-2 rounded-xl border p-8 shadow-[0_1px_3px_var(--shadow-1a)]">
       {eyebrow && (
-        <span className="text-text-accent font-mono text-xs tracking-[1px]">
+        <span className="text-text-tertiary font-mono text-xs tracking-[1px]">
           {eyebrow}
         </span>
       )}

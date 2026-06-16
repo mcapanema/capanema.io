@@ -2,7 +2,7 @@
 
 This document is the authoritative record of how capanema.io is designed and built. **Every visual decision must be traceable to it.** Before adding or changing UI, read the relevant section and reuse what exists.
 
-The Design System is maintained in **Pencil** (`.pen` file, a separate repo — the single source of truth) and translated into this codebase as a token-first foundation. This file documents that translation: tokens, components, patterns, conventions, and rules. When the two ever disagree, Pencil wins and this file should be corrected to match.
+The Design System is maintained in **Pencil** (`design-system-v3.1.pen`, a separate repo — the single source of truth) and translated into this codebase as a token-first foundation. This file documents that translation: tokens, components, patterns, conventions, and rules. When the two ever disagree, Pencil wins and this file should be corrected to match.
 
 ---
 
@@ -57,20 +57,20 @@ Two families, loaded in `layout.tsx`:
 
 | Name | px | line-height | tracking | Tailwind example |
 |---|---|---|---|---|
-| Display XL | 72 | 1.05 | −1.5 | `text-[72px] leading-[1.05] tracking-[-1.5px]` |
-| Display L | 64 | 1.05 | −1.3 | `text-[64px] leading-[1.05] tracking-[-1.3px]` |
-| Display M | 56 | 1.08 | −1.1 | `text-[56px] leading-[1.08] tracking-[-1.1px]` |
-| H1 | 48 | 1.1 | −1 | `text-[48px] leading-[1.1] tracking-[-1px]` |
-| H2 | 40 | 1.15 | −0.8 | `text-[40px] leading-[1.15] tracking-[-0.8px]` |
-| H3 | 32 | 1.2 | −0.5 | `text-[32px] leading-[1.2] tracking-[-0.5px]` |
-| H4 | 24 | 1.3 | −0.3 | `text-2xl leading-[1.3] tracking-[-0.3px]` |
-| H5 | 20 | 1.4 | 0 | `text-xl leading-[1.4]` |
-| Body L | 18 | 1.6 | 0 | `text-lg leading-[1.6]` |
-| Body M | 16 | 1.6 | 0 | `text-base leading-[1.6]` |
-| Body S | 14 | 1.5 | 0 | `text-sm leading-[1.5]` |
-| Caption | 12 | 1.4 | 0 | `text-xs leading-[1.4] font-medium` |
+| Display XL | 72 | 1.05 | −1.5 | `text-display-xl font-semibold` |
+| Display L | 64 | 1.05 | −1.3 | `text-display-l font-semibold` |
+| Display M | 56 | 1.08 | −1.1 | `text-display-m font-semibold` |
+| H1 | 48 | 1.1 | −1 | `text-h1 font-semibold` |
+| H2 | 40 | 1.15 | −0.8 | `text-h2 font-semibold` |
+| H3 | 32 | 1.2 | −0.5 | `text-h3 font-semibold` |
+| H4 | 24 | 1.3 | −0.3 | `text-h4 font-semibold` |
+| H5 | 20 | 1.4 | 0 | `text-h5 font-semibold` |
+| Body L | 18 | 1.6 | 0 | `text-body-l` |
+| Body M | 16 | 1.6 | 0 | `text-body-m` |
+| Body S | 14 | 1.5 | 0 | `text-body-s` |
+| Caption | 12 | 1.4 | 0 | `text-caption font-medium` |
 
-The type scale is **applied as raw values**, not tokenized (a known DS gap — §10). Line-height tokens exist for prose: `--leading-tight 1.1`, `--leading-snug 1.3`, `--leading-normal 1.6`, `--leading-prose 1.7`. Reading measure: `--measure-prose: 680px`.
+The type scale is **tokenized** (v3.1): each step is a `text-*` utility (`text-display-xl … text-caption`) carrying size + line-height + tracking, registered in `globals.css` `@theme`. Line-height tokens exist for prose: `--leading-tight 1.1`, `--leading-snug 1.3`, `--leading-normal 1.6`, `--leading-prose 1.7`. Reading measure: `--measure-prose: 680px`.
 
 ### Spacing
 
@@ -87,8 +87,11 @@ DS ramp (`space-0…12`): `0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128`. Ev
 
 ### Radius & elevation
 
-- **Radius** is applied as raw values (gap — §10): cards `rounded-xl` (12), buttons/inputs `rounded-lg` (8), callouts `rounded-[10px]`, pills/dots `rounded-full`.
+- **Radius** — v3.1 scale `radius-sm 8 / md 12 / lg 16 / pill 999`. Wired so `rounded-sm`→8, `rounded-md`→12, `rounded-pill`→999; `rounded-lg` (8) and `rounded-xl` (12) keep Tailwind defaults (existing buttons/cards), and `radius-lg` (16) is consumed via `rounded-[var(--radius-lg)]`. Conceptually buttons read as `radius-sm` (8) and cards as `radius-md` (12). Per v3.1's radius-token migration, the `Callout` snapped from off-scale `rounded-[10px]` to `rounded-sm` (8).
 - **Elevation** — soft card shadow via the themed shadow tokens: `shadow-[0_1px_3px_var(--shadow-1a)]`.
+- **Motion** (v3.1) — `--duration-fast 120ms / -base 200ms / -slow 320ms`; easing `ease-standard cubic-bezier(0.2,0,0,1)` / `ease-emphasized cubic-bezier(0.3,0,0,1)`. Hover uses fast·standard; overlays use slow·emphasized.
+- **Icon sizes** (v3.1) — `--icon-sm 16 / -md 20 / -lg 24` (= `size-4/5/6`); consume via `size-[var(--icon-*)]`.
+- **Breakpoints** (v3.1) — `breakpoint-sm 640 / -md 768 / -lg 1024 / -xl 1280`, declared in `@theme`; equal to Tailwind's defaults.
 
 ### Layout widths
 
@@ -117,6 +120,8 @@ Reference with the matching Tailwind utility (color name = token name). Every to
 
 The full hex values per mode live in `src/app/globals.css`. The deprecated shadcn `--background`/`--primary`/`--radius-*` set is **intentionally omitted** — do not reintroduce or reference `--`-prefixed tokens in new work.
 
+**Structural accent (v3.1).** Accent is reserved for **eyebrows, CTAs, links, and active nav**. Categories and tags are neutral; metrics and outcomes are ink. Emphasis comes from size, weight, and the **eyebrow accent bar** texture (the `Eyebrow` component) — never from spreading color. (`SectionTick` is a codebase-only accent rule built from the same texture; not a DS master.) The accent itself is **Cobalt Deep** (`accent-500 #2150B8`, dark ramp `400 #3F6BD0` / `300 #6E96E2` / `200 #A6C1F0`).
+
 ---
 
 ## 5. Components
@@ -133,6 +138,7 @@ All in `src/components/ui/`, exported from `index.ts`. Each maps to a Pencil mas
 - `Callout` — `info` / `success` / `warning` / `error`, leading icon + optional title (usable in MDX).
 - `Pullquote` — left-accent quote + attribution (usable in MDX).
 - `Breadcrumb` — `items: Crumb[]`, chevron separators, current page emphasized.
+- `Eyebrow` — the v3.1 structural-accent texture (a port of the DS `Eyebrow` master): an accent bar + mono accent label. (`SectionTick`, a 24×3 accent rule, ships alongside it as a codebase-only helper — not a DS master.)
 
 **Composite**
 - `CaseStudyCard` — category, title, summary, divider, outcome metrics, "Read case study" (whole-card link).
@@ -221,12 +227,14 @@ See CLAUDE.md → "Adding content" for the step-by-step.
 
 ## 11. Known gaps & decisions
 
-Gaps the DS itself flags — handled by **mirroring the DS's current raw-value approach** (the agreed call this build) rather than inventing token scales:
+The v2-era token gaps are **closed in v3.1**:
 
-- **No radius token scale** — radii are raw (`rounded-lg` 8, `rounded-xl` 12, `rounded-[10px]`).
-- **No type-scale tokens** — sizes applied raw per §3.
-- **No motion tokens** — transitions use ad-hoc `transition-colors`; define duration/easing tokens before building real motion.
-- **No breakpoint tokens** — rely on Tailwind's defaults (`sm`/`md`/`lg`).
+- **Radius tokens** — `radius-sm/md/lg/pill` (§3).
+- **Type-scale tokens** — `text-display-xl … text-caption` (§3).
+- **Motion tokens** — `duration-*` + `ease-*` (§3).
+- **Breakpoint tokens** — `breakpoint-sm/md/lg/xl` (§3).
+
+Remaining gap: a 15px/13px/11px handful of raw literals stay off the documented ramp (no matching token; expanding the ramp is out of scope). The structural-accent rule is currently applied at the token layer + `MetricCard` + styleguide; rolling it across every page/component (Eyebrow/tick in all headers, neutral categories everywhere, ink timeline outcomes) is a follow-up.
 
 Additions made this build, justified by spec requirements the DS didn't cover, composed from existing primitives:
 
