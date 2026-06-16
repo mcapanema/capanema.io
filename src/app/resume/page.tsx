@@ -67,14 +67,14 @@ export default function AboutMePage() {
         {/* Header */}
         <header className="flex flex-col gap-5">
           <div className="flex flex-col gap-3">
-            <h1 className="text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px]">
+            <h1 className="animate-fade-up text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px]">
               {name}
             </h1>
-            <p className="text-text-secondary max-w-[760px] text-[17px] leading-[1.6]">
+            <p className="animate-fade-up-delay-1 text-text-secondary max-w-[760px] text-[17px] leading-[1.6]">
               {summary}
             </p>
           </div>
-          <div>
+          <div className="animate-fade-up-delay-2">
             <Button
               variant="secondary"
               href={resumePdf}
