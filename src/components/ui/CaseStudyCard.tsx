@@ -9,7 +9,7 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
   return (
     <a
       href={`/case-studies/${slug}`}
-      className="group border-border-subtle bg-surface-elevated hover:border-border-strong flex flex-col gap-6 rounded-xl border p-10 shadow-[0_1px_3px_var(--shadow-1a)] transition-colors"
+      className="group border-border-subtle bg-surface-elevated hover:border-border-strong hover:shadow-[0_4px_16px_var(--shadow-1a)] flex flex-col gap-6 rounded-xl border p-10 shadow-[0_1px_3px_var(--shadow-1a)] transition-[box-shadow,border-color] duration-[var(--duration-fast)] ease-[var(--ease-standard)]"
     >
       <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
         {category}
@@ -29,9 +29,9 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
           </div>
         ))}
       </div>
-      <span className="text-link group-hover:text-link-hover inline-flex items-center gap-2 pt-2 text-sm font-semibold transition-colors">
+      <span className="text-link group-hover:text-link-hover inline-flex items-center gap-2 pt-2 text-sm font-semibold transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]">
         Read case study
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+        <ArrowRight className="size-4 transition-transform duration-[var(--duration-fast)] ease-[var(--ease-standard)] group-hover:translate-x-0.5" />
       </span>
     </a>
   );
