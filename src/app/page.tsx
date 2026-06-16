@@ -93,7 +93,7 @@ export default function Home() {
               </div>
             </div>
             {/* Portrait — supporting role below the actions on mobile, right on desktop */}
-            <div className="lg:shrink-0">
+            <div className="hidden sm:block lg:shrink-0">
               <picture>
                 {/* tablet + desktop: doubled sizes for 1x-display sharpness */}
                 <source media="(min-width: 640px)" srcSet={tabletDesktopSrcSet} />
