@@ -219,6 +219,11 @@
   --ease-standard: var(--ease-standard);
   --ease-emphasized: var(--ease-emphasized);
 
+  /* motion duration (v3.1) — duration-fast / duration-base / duration-slow utilities. */
+  --duration-fast: var(--duration-fast);
+  --duration-base: var(--duration-base);
+  --duration-slow: var(--duration-slow);
+
   /* breakpoints (v3.1) — match Tailwind defaults; declared as the explicit
      DS responsive contract. */
   --breakpoint-sm: 640px;
