@@ -298,6 +298,38 @@ body {
   }
 }
 
+/* Hero entry animation — CSS-only, plays once on initial page load.
+   Gated in prefers-reduced-motion so elements appear instantly for users
+   who prefer no motion. ease-emphasized per DS spec (overlays / entries). */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      translate: 0 12px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up var(--duration-slow) var(--ease-emphasized) both;
+  }
+
+  .animate-fade-up-delay-1 {
+    animation: fade-up var(--duration-slow) var(--ease-emphasized) 80ms both;
+  }
+
+  .animate-fade-up-delay-2 {
+    animation: fade-up var(--duration-slow) var(--ease-emphasized) 160ms both;
+  }
+
+  .animate-fade-up-delay-3 {
+    animation: fade-up var(--duration-slow) var(--ease-emphasized) 240ms both;
+  }
+}
+
 /* ----------------------------------------------------------------------------
    Brand logo · theme-aware swap (navbar)
    Two <img>s share these classes; visibility follows the same color-scheme /
