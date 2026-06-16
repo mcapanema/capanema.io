@@ -56,7 +56,7 @@ export function ArticlesExplorer({
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="animate-fade-up-delay-1 flex flex-col gap-4 sm:flex-row sm:items-center">
         <div className="relative flex-1">
           <Search
             aria-hidden
@@ -90,7 +90,7 @@ export function ArticlesExplorer({
         </label>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="animate-fade-up-delay-2 flex flex-wrap gap-2">
         <FilterChip
           active={activeCategory === null}
           onClick={() => setActiveCategory(null)}
@@ -110,12 +110,18 @@ export function ArticlesExplorer({
         ))}
       </div>
 
-      {showFeatured && <FeaturedArticle article={featured} />}
+      {showFeatured && (
+        <div className="animate-fade-up-delay-3">
+          <FeaturedArticle article={featured} />
+        </div>
+      )}
 
       {grid.length > 0 ? (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {grid.map((a) => (
-            <ArticleCard key={a.slug} article={a} />
+            <div key={a.slug} className="animate-on-scroll">
+              <ArticleCard article={a} />
+            </div>
           ))}
         </div>
       ) : (

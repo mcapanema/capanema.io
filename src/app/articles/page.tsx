@@ -16,11 +16,13 @@ export default function ArticlesPage() {
     <>
       <SiteHeader />
       <main className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8 md:py-20">
-        <PageHeader
-          eyebrow="ARTICLES"
-          title="Articles"
-          description="Essays on engineering leadership, org design, and the craft of building technology organizations — a working notebook, not a feed."
-        />
+        <div className="animate-fade-up">
+          <PageHeader
+            eyebrow="ARTICLES"
+            title="Articles"
+            description="Essays on engineering leadership, org design, and the craft of building technology organizations — a working notebook, not a feed."
+          />
+        </div>
         <ArticlesExplorer articles={articles} categories={categories} />
       </main>
       <Footer />
