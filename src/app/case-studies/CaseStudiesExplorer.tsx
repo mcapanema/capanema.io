@@ -59,7 +59,7 @@ export function CaseStudiesExplorer({
   return (
     <div className="flex flex-col gap-10">
       {/* Toolbar: search + sort */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="animate-fade-up-delay-1 flex flex-col gap-4 sm:flex-row sm:items-center">
         <div className="relative flex-1">
           <Search
             aria-hidden
@@ -94,7 +94,7 @@ export function CaseStudiesExplorer({
       </div>
 
       {/* Tag filters */}
-      <div className="flex flex-wrap gap-2">
+      <div className="animate-fade-up-delay-2 flex flex-wrap gap-2">
         <FilterChip
           active={activeTag === null}
           onClick={() => setActiveTag(null)}
@@ -112,12 +112,18 @@ export function CaseStudiesExplorer({
         ))}
       </div>
 
-      {showFeatured && <FeaturedCaseStudy caseStudy={featured} />}
+      {showFeatured && (
+        <div className="animate-fade-up-delay-3">
+          <FeaturedCaseStudy caseStudy={featured} />
+        </div>
+      )}
 
       {grid.length > 0 ? (
         <div className="grid gap-6 md:grid-cols-2">
           {grid.map((cs) => (
-            <CaseStudyCard key={cs.slug} caseStudy={cs} />
+            <div key={cs.slug} className="animate-on-scroll">
+              <CaseStudyCard caseStudy={cs} />
+            </div>
           ))}
         </div>
       ) : (
