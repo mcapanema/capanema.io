@@ -285,6 +285,19 @@ body {
   border-radius: 2px;
 }
 
+/* Accessibility: disable all motion when the OS reports reduced-motion preference.
+   This covers Tailwind transition utilities and the CSS-only hero animation below. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ----------------------------------------------------------------------------
    Brand logo · theme-aware swap (navbar)
    Two <img>s share these classes; visibility follows the same color-scheme /
