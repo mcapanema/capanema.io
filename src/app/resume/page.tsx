@@ -100,17 +100,20 @@ export default function AboutMePage() {
 
         {/* Experience */}
         <section className="flex flex-col gap-6">
-          <SectionLabel>EXPERIENCE</SectionLabel>
+          <div className="animate-on-scroll">
+            <SectionLabel>EXPERIENCE</SectionLabel>
+          </div>
           <div className="flex flex-col">
             {experience.map((role, i) => (
-              <TimelineItem
-                key={role.title}
-                date={role.date}
-                title={role.title}
-                description={role.description}
-                outcome={role.outcome}
-                isLast={i === experience.length - 1}
-              />
+              <div key={role.title} className="animate-on-scroll">
+                <TimelineItem
+                  date={role.date}
+                  title={role.title}
+                  description={role.description}
+                  outcome={role.outcome}
+                  isLast={i === experience.length - 1}
+                />
+              </div>
             ))}
           </div>
         </section>
