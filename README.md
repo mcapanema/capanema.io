@@ -22,7 +22,7 @@ The site is intentionally minimal. No CMS, no database, no third-party content l
 
 ## Design System
 
-The entire site is built from a Design System maintained in Pencil (`design-system-v3.1.pen`, a separate repo — the single source of truth). **[DESIGN.md](./DESIGN.md)** is its translation into this codebase: tokens, components, patterns, conventions, and accessibility rules.
+The entire site is built from [Capanema Design System](https://github.com/mcapanema/design-system-capanema.io). [DESIGN.md](./DESIGN.md) is its translation into this codebase: tokens, components, patterns, conventions, and accessibility rules.
 
 Key rules:
 - **Semantic tokens only** — never raw hex, never Foundation primitives (`--neutral-*`, `--accent-*`). Always a semantic token (`bg-surface-primary`, `text-text-primary`, `border-border-subtle`, …).
@@ -66,6 +66,8 @@ next.config.ts              # MDX + mdxRs config
 ```bash
 npm install
 npm run dev    # http://localhost:3000
+npm run lint
+npm run test
 npm run build  # validate before pushing
 ```
 
@@ -87,15 +89,3 @@ MDX bodies use plain Markdown plus DS components exposed in `mdx-components.tsx`
 - **Tailwind v4 syntax** — `@import "tailwindcss"` in CSS, not `@tailwind base/components/utilities`. Theme tokens go inside `@theme inline {}`.
 - **Dark mode via tokens, not `dark:` variants** — adding `dark:` classes or hardcoded colors breaks both themes. Use semantic token utilities exclusively.
 - **No shadcn token set** — the deprecated shadcn `--` variable set is intentionally absent; do not reintroduce it.
-
-## Git workflow
-
-**Never commit directly to `main`.** For every change:
-
-1. Branch from `main` with a short descriptive name (e.g. `feat/case-studies`, `fix/dark-mode-nav`).
-2. Make commits on that branch.
-3. Run `npm run build` to verify before opening a PR.
-4. Open a PR with `gh pr create`.
-5. Leave the PR open for review and merge.
-
-**Always base PRs on `main` — never stack one feature branch on another.**
