@@ -117,12 +117,12 @@ export default function Home() {
               <span className="animate-fade-up text-text-accent font-mono text-sm tracking-[1px]">
                 CTO · PLATFORM &amp; AI · ORG SCALING
               </span>
-              <h1 className="animate-fade-up-delay-1 text-text-primary max-w-[900px] text-[40px] leading-[1.05] font-semibold tracking-[-1px] sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
+              <h1 className="animate-fade-up-delay-1 text-text-primary max-w-[900px] text-[40px] leading-[1.05] font-semibold tracking-[-1px] text-balance sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
                 Scaling engineering organizations and the platforms they ship.
               </h1>
-              <p className="animate-fade-up-delay-2 text-text-secondary max-w-[640px] text-lg leading-[1.6]">
-                Two decades helping organizations navigate through
-                growth, complexity, and change.
+              <p className="animate-fade-up-delay-2 text-text-secondary max-w-[640px] text-lg leading-[1.6] text-pretty">
+                Two decades helping organizations navigate through growth,
+                complexity, and change.
               </p>
               {/* Portrait — between the subline and the actions on mobile/tablet; the desktop copy lives in the right column */}
               <HeroPortrait
