@@ -4,7 +4,7 @@ My personal site — a curated record of the engineering leadership work I find 
 
 The site is intentionally minimal. No CMS, no database, no third-party content layer. Content lives as MDX files in the repository, which means the writing process is the same as the engineering process: version-controlled, reviewable, and permanent.
 
-**Production:** https://mcapanemaio.vercel.app
+**Production:** https://capanema.io
 
 ---
 
