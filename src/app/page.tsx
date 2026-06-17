@@ -126,7 +126,7 @@ export default function Home() {
               </p>
               {/* Portrait — between the subline and the actions on mobile/tablet; the desktop copy lives in the right column */}
               <HeroPortrait
-                className="animate-fade-up-delay-3 max-w-[360px] lg:hidden"
+                className="animate-fade-up-delay-3 max-w-[240px] sm:max-w-[340px] lg:hidden"
                 imgProps={heroImgProps}
                 mobileSrcSet={mobileSrcSet}
                 tabletDesktopSrcSet={tabletDesktopSrcSet}
