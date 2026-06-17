@@ -120,14 +120,9 @@ export default function Home() {
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
             {/* Portrait + headline + subline + actions — lead the page on mobile, left column on desktop */}
             <div className="flex flex-col gap-6 lg:min-w-0 lg:flex-1">
-              {/* Portrait — leads the stack on mobile/tablet (above the headline), squared off; the desktop copy lives in the right column */}
-              <HeroPortrait
-                className="animate-fade-up max-w-[300px] lg:hidden"
-                imgClassName="aspect-square object-cover"
-                imgProps={heroImgProps}
-                mobileSrcSet={mobileSrcSet}
-                tabletDesktopSrcSet={tabletDesktopSrcSet}
-              />
+              <span className="animate-fade-up text-text-accent font-mono text-sm tracking-[1px]">
+                CTO · PLATFORM &amp; AI · ORG SCALING
+              </span>
               <h1 className="animate-fade-up-delay-1 text-text-primary max-w-[900px] text-[40px] leading-[1.05] font-semibold tracking-[-1px] text-balance sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
                 Scaling engineering organizations and the platforms they ship.
               </h1>
@@ -135,6 +130,14 @@ export default function Home() {
                 Two decades helping organizations navigate through growth,
                 complexity, and change.
               </p>
+              {/* Portrait — between the subline and the actions on mobile/tablet (squared off); the desktop copy lives in the right column */}
+              <HeroPortrait
+                className="animate-fade-up-delay-3 max-w-[256px] lg:hidden"
+                imgClassName="aspect-square object-cover"
+                imgProps={heroImgProps}
+                mobileSrcSet={mobileSrcSet}
+                tabletDesktopSrcSet={tabletDesktopSrcSet}
+              />
               <div className="animate-fade-up-delay-3 flex flex-wrap gap-3 pt-2">
                 <Button variant="secondary" href="/resume">
                   About me
@@ -149,7 +152,7 @@ export default function Home() {
             </div>
             {/* Portrait — right column on desktop only (natural 4:5 portrait) */}
             <HeroPortrait
-              className="animate-fade-up hidden lg:block lg:w-[340px] lg:shrink-0"
+              className="animate-fade-up-delay-1 hidden lg:block lg:w-[340px] lg:shrink-0"
               imgProps={heroImgProps}
               mobileSrcSet={mobileSrcSet}
               tabletDesktopSrcSet={tabletDesktopSrcSet}
