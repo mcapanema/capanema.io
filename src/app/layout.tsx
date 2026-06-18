@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Red_Hat_Display, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-// Design System fonts: Inter for all UI + display, JetBrains Mono for
+// Design System fonts: Red Hat Display for all UI + display, JetBrains Mono for
 // eyebrows, labels, metadata, and code.
-const inter = Inter({
+const redHatDisplay = Red_Hat_Display({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
@@ -38,11 +38,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
+      className={`${redHatDisplay.variable} ${jetbrainsMono.variable} h-full`}
       suppressHydrationWarning
     >
       {/* Colors come from semantic tokens that re-resolve per Mode via
-          light-dark()/color-scheme, so no `dark:` variants are needed. */}
+      light-dark()/color-scheme, so no `dark:` variants are needed. */}
       <body className="bg-surface-primary text-text-primary min-h-full">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {children}
