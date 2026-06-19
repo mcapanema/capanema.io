@@ -2,7 +2,7 @@
 
 /* ============================================================================
    capanema.io — Design System token layer
-   Source of truth: design-system-v3.1.pen (Pencil)
+   Source of truth: design-system-v3.2.pen (Pencil)
 
    Five-layer governance chain: Foundation → Tokens → Components → Patterns.
    - Foundation primitives are STATIC and never themed.
@@ -126,6 +126,12 @@
   --leading-normal: 1.6;
   --leading-prose: 1.7;
   --measure-prose: 680px;
+
+  /* --- Tokens · letter-spacing (v3.2) ----------------------------------- */
+  --letter-spacing-display: -1.5px;
+  --letter-spacing-heading: -0.5px;
+  --letter-spacing-body: 0px;
+  --letter-spacing-caption: 0.1px;
 }
 
 /* Explicit, persisted choice overrides the OS setting. The pre-hydration
@@ -144,7 +150,7 @@
    covers the DS ramp exactly (space-7=40→10, space-9=64→16, space-12=128→32).
    ---------------------------------------------------------------------------- */
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-red-hat-display), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* text */
@@ -218,6 +224,12 @@
   /* motion easing (v3.1) — ease-standard / ease-emphasized utilities. */
   --ease-standard: var(--ease-standard);
   --ease-emphasized: var(--ease-emphasized);
+
+  /* letter-spacing (v3.2) — tracking-display / tracking-heading / tracking-body / tracking-caption utilities. */
+  --letter-spacing-display: var(--letter-spacing-display);
+  --letter-spacing-heading: var(--letter-spacing-heading);
+  --letter-spacing-body: var(--letter-spacing-body);
+  --letter-spacing-caption: var(--letter-spacing-caption);
 
   /* motion duration (v3.1) — duration-fast / duration-base / duration-slow utilities. */
   --duration-fast: var(--duration-fast);

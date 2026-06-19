@@ -42,7 +42,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
     p: ({ children }) => (
-      <p className="text-text-prose mt-6 text-lg leading-[1.7]">{children}</p>
+      <p className="text-text-prose mt-6 text-lg font-medium leading-[1.7]">{children}</p>
     ),
     a: ({ children, href }) => (
       <a
@@ -53,12 +53,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     ul: ({ children }) => (
-      <ul className="text-text-prose marker:text-text-tertiary mt-6 flex list-disc flex-col gap-2 pl-6 text-lg leading-[1.7]">
+      <ul className="text-text-prose marker:text-text-tertiary mt-6 flex list-disc flex-col gap-2 pl-6 text-lg font-medium leading-[1.7]">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="text-text-prose marker:text-text-tertiary mt-6 flex list-decimal flex-col gap-2 pl-6 text-lg leading-[1.7]">
+      <ol className="text-text-prose marker:text-text-tertiary mt-6 flex list-decimal flex-col gap-2 pl-6 text-lg font-medium leading-[1.7]">
         {children}
       </ol>
     ),
@@ -68,7 +68,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     em: ({ children }) => <em className="italic">{children}</em>,
     blockquote: ({ children }) => (
-      <blockquote className="border-border-accent text-text-secondary mt-8 border-l-[3px] pl-6 text-lg leading-[1.7] italic">
+      <blockquote className="border-border-accent text-text-secondary mt-8 border-l-[3px] pl-6 text-lg font-medium leading-[1.7] italic">
         {children}
       </blockquote>
     ),
@@ -103,7 +103,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </th>
     ),
     td: ({ children }) => (
-      <td className="border-border-subtle text-text-prose border-b px-4 py-3">
+      <td className="border-border-subtle text-text-prose border-b px-4 py-3 font-medium">
         {children}
       </td>
     ),

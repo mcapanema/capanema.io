@@ -12,7 +12,7 @@ o CMS, no database — content lives as MDX + typed metadata in the repo.
 - **Next.js 16** (App Router, Turbopack) — `pageExtensions` includes `md` and `mdx`
 - **MDX** via `@next/mdx` with `experimental.mdxRs: true` (Rust compiler, required for Turbopack compatibility — do not switch to JS-based remark plugins, they will break the build)
 - **Tailwind CSS v4** — configured via `@tailwindcss/postcss`, no `tailwind.config.ts`. All design tokens live in `src/app/globals.css`.
-- **Fonts** — **Inter** (UI + display) + **JetBrains Mono** (eyebrows, labels, metadata, code) via `next/font/google`
+- **Fonts** — **Red Hat Display** (UI + display) + **JetBrains Mono** (eyebrows, labels, metadata, code) via `next/font/google`. CSS variable: `--font-red-hat-display`.
 - **Icons** — `lucide-react`
 - **Vercel Analytics** + **Speed Insights** — in the root layout
 

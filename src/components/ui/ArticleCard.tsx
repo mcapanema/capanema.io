@@ -25,7 +25,7 @@ export function ArticleCard({ article }: { article: Article }) {
       <h3 className="text-text-primary group-hover:text-link text-xl leading-[1.35] font-semibold tracking-[-0.3px] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]">
         {title}
       </h3>
-      <p className="text-text-secondary text-[15px] leading-[1.6]">{excerpt}</p>
+      <p className="text-text-secondary text-[15px] leading-[1.6] font-medium">{excerpt}</p>
       <span className="text-text-tertiary font-mono text-xs tracking-[0.5px] uppercase">
         {readingMinutes} min read
       </span>

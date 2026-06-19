@@ -17,7 +17,7 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
       <h3 className="text-text-primary text-2xl leading-[1.3] font-semibold tracking-[-0.3px]">
         {title}
       </h3>
-      <p className="text-text-secondary text-[15px] leading-[1.6]">{summary}</p>
+      <p className="text-text-secondary text-[15px] leading-[1.6] font-medium">{summary}</p>
       <div className="bg-border-subtle h-px w-full" />
       <div className="flex flex-wrap items-end gap-8">
         {outcomes.map((o) => (
@@ -25,7 +25,7 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
             <span className="text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.5px]">
               {o.value}
             </span>
-            <span className="text-text-secondary text-[13px]">{o.label}</span>
+            <span className="text-text-secondary text-[13px] font-medium">{o.label}</span>
           </div>
         ))}
       </div>

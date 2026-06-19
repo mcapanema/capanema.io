@@ -2,7 +2,7 @@
 
 This document is the authoritative record of how capanema.io is designed and built. **Every visual decision must be traceable to it.** Before adding or changing UI, read the relevant section and reuse what exists.
 
-The Design System is maintained in **Pencil** (`design-system-v3.1.pen`, a separate repo — the single source of truth) and translated into this codebase as a token-first foundation. This file documents that translation: tokens, components, patterns, conventions, and rules. When the two ever disagree, Pencil wins and this file should be corrected to match.
+The Design System is maintained in **Pencil** (`design-system-v3.2.pen`, a separate repo — the single source of truth) and translated into this codebase as a token-first foundation. This file documents that translation: tokens, components, patterns, conventions, and rules. When the two ever disagree, Pencil wins and this file should be corrected to match.
 
 ---
 
@@ -50,7 +50,7 @@ All tokens are defined in `src/app/globals.css` and mapped into Tailwind v4 via 
 
 Two families, loaded in `layout.tsx`:
 
-- **Inter** (`font-sans`, `--font-inter`) — all UI and display text.
+- **Red Hat Display** (`font-sans`, `--font-red-hat-display`) — all UI and display text. A humanist grotesque chosen for editorial confidence at display sizes; more expressive than Inter at the executive portfolio scale.
 - **JetBrains Mono** (`font-mono`, `--font-jetbrains-mono`) — eyebrows, labels, metadata, dates, reading-time, code.
 
 **Type scale** (size / line-height / letter-spacing; headings are weight 600):
@@ -72,6 +72,17 @@ Two families, loaded in `layout.tsx`:
 
 The type scale is **tokenized** (v3.1): each step is a `text-*` utility (`text-display-xl … text-caption`) carrying size + line-height + tracking, registered in `globals.css` `@theme`. Line-height tokens exist for prose: `--leading-tight 1.1`, `--leading-snug 1.3`, `--leading-normal 1.6`, `--leading-prose 1.7`. Reading measure: `--measure-prose: 680px`.
 
+**Letter-spacing tokens** (v3.2 — Tailwind utilities: `tracking-display` / `tracking-heading` / `tracking-body` / `tracking-caption`):
+
+| Token | Value | Use |
+|---|---|---|
+| `--letter-spacing-display` | −1.5px | Display heading text |
+| `--letter-spacing-heading` | −0.5px | Section headings (H2–H4) |
+| `--letter-spacing-body` | 0px | Body and description text |
+| `--letter-spacing-caption` | +0.1px | Captions, mono labels |
+
+Body and small text must use **`font-medium` (500)** in components and prose — Red Hat Display renders optically lighter than Inter at small sizes; 400 produces insufficient stroke contrast.
+
 ### Spacing
 
 DS ramp (`space-0…12`): `0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128`. Every value maps exactly onto Tailwind's default 4px scale, so use standard utilities — no custom spacing tokens:
@@ -90,7 +101,7 @@ DS ramp (`space-0…12`): `0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128`. Ev
 - **Radius** — v3.1 scale `radius-sm 8 / md 12 / lg 16 / pill 999`. Wired so `rounded-sm`→8, `rounded-md`→12, `rounded-pill`→999; `rounded-lg` (8) and `rounded-xl` (12) keep Tailwind defaults (existing buttons/cards), and `radius-lg` (16) is consumed via `rounded-[var(--radius-lg)]`. Conceptually buttons read as `radius-sm` (8) and cards as `radius-md` (12). Per v3.1's radius-token migration, the `Callout` snapped from off-scale `rounded-[10px]` to `rounded-sm` (8).
 - **Elevation** — soft card shadow via the themed shadow tokens: `shadow-[0_1px_3px_var(--shadow-1a)]`.
 - **Motion** (v3.1) — `--duration-fast 120ms / -base 200ms / -slow 320ms`; easing `ease-standard cubic-bezier(0.2,0,0,1)` / `ease-emphasized cubic-bezier(0.3,0,0,1)`. Hover uses fast·standard; overlays use slow·emphasized.
-- **Icon sizes** (v3.1) — `--icon-sm 16 / -md 20 / -lg 24` (= `size-4/5/6`); consume via `size-[var(--icon-*)]`.
+- **Icon sizes** (v3.1) — `--icon-sm 16 / -md 20 / -lg 24` (= `size-4/5/6`); consume via `size-[var(--icon-sm)]` / `size-[var(--icon-md)]` / `size-[var(--icon-lg)]`.
 - **Breakpoints** (v3.1) — `breakpoint-sm 640 / -md 768 / -lg 1024 / -xl 1280`, declared in `@theme`; equal to Tailwind's defaults.
 
 ### Layout widths
@@ -233,6 +244,12 @@ The v2-era token gaps are **closed in v3.1**:
 - **Type-scale tokens** — `text-display-xl … text-caption` (§3).
 - **Motion tokens** — `duration-*` + `ease-*` (§3).
 - **Breakpoint tokens** — `breakpoint-sm/md/lg/xl` (§3).
+
+The v3.2 changes are now **closed**:
+
+- **Font migration** — `font-sans` migrated from Inter to Red Hat Display (`--font-red-hat-display`).
+- **Letter-spacing tokens** — `--letter-spacing-display / -heading / -body / -caption` (§3).
+- **Body text weight calibration** — body/small text across 6 component masters and MDX prose set to `font-medium` (500) for Red Hat Display optical balance.
 
 Remaining gap: a 15px/13px/11px handful of raw literals stay off the documented ramp (no matching token; expanding the ramp is out of scope). The structural-accent rule is currently applied at the token layer + `MetricCard` + styleguide; rolling it across every page/component (Eyebrow/tick in all headers, neutral categories everywhere, ink timeline outcomes) is a follow-up.
 

@@ -34,7 +34,7 @@ export function TimelineItem({
       <h3 className="text-text-primary text-lg leading-[1.3] font-semibold">
         {title}
       </h3>
-      <p className="text-text-secondary text-sm leading-[1.55]">{description}</p>
+      <p className="text-text-secondary text-sm font-medium leading-[1.55]">{description}</p>
       {outcome && (
         <div className="flex items-center gap-2 pt-1">
           <TrendingUp aria-hidden className="text-text-accent size-3.5" />
