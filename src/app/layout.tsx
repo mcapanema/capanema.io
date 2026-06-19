@@ -7,7 +7,7 @@ import "./globals.css";
 // Design System fonts: Red Hat Display for all UI + display, JetBrains Mono for
 // eyebrows, labels, metadata, and code.
 const redHatDisplay = Red_Hat_Display({
-  variable: "--font-inter",
+  variable: "--font-red-hat-display",
   subsets: ["latin"],
   display: "swap",
 });
