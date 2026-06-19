@@ -392,7 +392,7 @@ export default function StyleGuide() {
         <Section
           n="08"
           title="Iconography"
-          description="v3.1 formalizes the icon system: lucide line icons at three sizes (icon-sm/md/lg) plus the working inventory. Consistent stroke weight; sizes consumed via size-[var(--icon-*)]."
+          description="v3.1 formalizes the icon system: lucide line icons at three sizes (icon-sm/md/lg) plus the working inventory. Consistent stroke weight; sizes consumed via size-[var(--icon-sm)], size-[var(--icon-md)], size-[var(--icon-lg)]."
         >
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">

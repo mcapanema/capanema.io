@@ -72,7 +72,7 @@ Two families, loaded in `layout.tsx`:
 
 The type scale is **tokenized** (v3.1): each step is a `text-*` utility (`text-display-xl … text-caption`) carrying size + line-height + tracking, registered in `globals.css` `@theme`. Line-height tokens exist for prose: `--leading-tight 1.1`, `--leading-snug 1.3`, `--leading-normal 1.6`, `--leading-prose 1.7`. Reading measure: `--measure-prose: 680px`.
 
-**Letter-spacing tokens** (v3.2 — use as `tracking-[var(--letter-spacing-*)]` in Tailwind):
+**Letter-spacing tokens** (v3.2 — Tailwind utilities: `tracking-display` / `tracking-heading` / `tracking-body` / `tracking-caption`):
 
 | Token | Value | Use |
 |---|---|---|
@@ -101,7 +101,7 @@ DS ramp (`space-0…12`): `0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128`. Ev
 - **Radius** — v3.1 scale `radius-sm 8 / md 12 / lg 16 / pill 999`. Wired so `rounded-sm`→8, `rounded-md`→12, `rounded-pill`→999; `rounded-lg` (8) and `rounded-xl` (12) keep Tailwind defaults (existing buttons/cards), and `radius-lg` (16) is consumed via `rounded-[var(--radius-lg)]`. Conceptually buttons read as `radius-sm` (8) and cards as `radius-md` (12). Per v3.1's radius-token migration, the `Callout` snapped from off-scale `rounded-[10px]` to `rounded-sm` (8).
 - **Elevation** — soft card shadow via the themed shadow tokens: `shadow-[0_1px_3px_var(--shadow-1a)]`.
 - **Motion** (v3.1) — `--duration-fast 120ms / -base 200ms / -slow 320ms`; easing `ease-standard cubic-bezier(0.2,0,0,1)` / `ease-emphasized cubic-bezier(0.3,0,0,1)`. Hover uses fast·standard; overlays use slow·emphasized.
-- **Icon sizes** (v3.1) — `--icon-sm 16 / -md 20 / -lg 24` (= `size-4/5/6`); consume via `size-[var(--icon-*)]`.
+- **Icon sizes** (v3.1) — `--icon-sm 16 / -md 20 / -lg 24` (= `size-4/5/6`); consume via `size-[var(--icon-sm)]` / `size-[var(--icon-md)]` / `size-[var(--icon-lg)]`.
 - **Breakpoints** (v3.1) — `breakpoint-sm 640 / -md 768 / -lg 1024 / -xl 1280`, declared in `@theme`; equal to Tailwind's defaults.
 
 ### Layout widths
