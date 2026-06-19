@@ -20,7 +20,7 @@ export function Metric({
       >
         {value}
       </span>
-      <span className={`text-sm ${labelColor}`}>{label}</span>
+      <span className={`text-sm font-medium ${labelColor}`}>{label}</span>
     </div>
   );
 }

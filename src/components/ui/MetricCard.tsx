@@ -21,7 +21,7 @@ export function MetricCard({
       <span className="text-text-primary text-[40px] leading-[1.1] font-semibold tracking-[-0.8px]">
         {value}
       </span>
-      <span className="text-text-secondary text-sm">{label}</span>
+      <span className="text-text-secondary text-sm font-medium">{label}</span>
     </div>
   );
 }
