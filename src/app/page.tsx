@@ -63,10 +63,6 @@ function HeroPortrait({
 }) {
   return (
     <div className={cn("relative w-full", className)}>
-      <div
-        aria-hidden
-        className="bg-surface-accent absolute inset-0 translate-x-3 translate-y-3 rounded-[var(--radius-lg)] sm:translate-x-4 sm:translate-y-4"
-      />
       <picture>
         {/* tablet + desktop: doubled sizes for 1x-display sharpness */}
         <source media="(min-width: 640px)" srcSet={tabletDesktopSrcSet} />
@@ -78,7 +74,7 @@ function HeroPortrait({
           loading="eager"
           fetchPriority="high"
           className={cn(
-            "relative block h-auto w-full rounded-[var(--radius-lg)] shadow-[0_1px_3px_var(--shadow-1a)]",
+            "relative block h-auto w-full rounded-[var(--radius-lg)] border border-border-subtle shadow-[0_2px_4px_var(--shadow-1a),0_4px_12px_var(--shadow-1a)]",
             imgClassName,
           )}
         />
