@@ -2,11 +2,23 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import tailwind from "eslint-plugin-tailwindcss";
+import security from "eslint-plugin-security";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   ...tailwind.configs["flat/recommended"],
+  {
+    plugins: {
+      security: security,
+    },
+    rules: {
+      ...security.configs.recommended.rules,
+      "security/detect-object-injection": "off",
+      "security/detect-non-literal-fs-filename": "off",
+      "security/detect-unsafe-regex": "warn",
+    },
+  },
   {
     settings: {
       tailwindcss: {
