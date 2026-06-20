@@ -87,7 +87,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
       <img
         {...props}
-        className="border-border-subtle mt-8 w-full rounded-xl border"
+        className="mt-8 w-full rounded-xl border border-border-subtle shadow-[0_2px_4px_var(--shadow-1a),0_4px_12px_var(--shadow-1a)]"
       />
     ),
     table: ({ children }) => (
