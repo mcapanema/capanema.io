@@ -5,5 +5,8 @@ export default defineConfig({
     environment: "happy-dom",
     exclude: ["node_modules", "dist", "eslint.config.test.mjs"],
     setupFiles: ["./vitest.setup.ts"],
+    happyDOM: {
+      disableLocalStorage: true,
+    },
   },
 });
