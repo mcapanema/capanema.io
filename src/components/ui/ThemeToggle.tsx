@@ -10,6 +10,7 @@ import {
   applyTheme,
   nextTheme,
 } from "../../lib/theme";
+import { cn } from "@/lib/cn";
 
 function getSystemTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -67,14 +68,56 @@ export function ThemeToggle() {
         : "Switch to dark theme";
 
   return (
-    <IconButton label={label} onClick={toggle} disabled={theme === null}>
-      {theme === null ? (
-        <span aria-hidden className="block h-[18px] w-[18px]" />
-      ) : isDark ? (
-        <Sun aria-hidden size={18} />
-      ) : (
-        <Moon aria-hidden size={18} />
-      )}
-    </IconButton>
+    <>
+      <style>{`
+        .theme-toggle-icon-wrapper {
+          position: relative;
+          width: 18px;
+          height: 18px;
+          display: block;
+        }
+        .theme-toggle-icon {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition:
+            opacity var(--duration-base) var(--ease-standard),
+            transform var(--duration-base) var(--ease-standard);
+        }
+        .theme-toggle-icon.is-out {
+          opacity: 0;
+          transform: rotate(45deg);
+        }
+        .theme-toggle-icon.is-in {
+          opacity: 1;
+          transform: rotate(-45deg);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .theme-toggle-icon {
+            transition: opacity var(--duration-fast) var(--ease-standard);
+          }
+          .theme-toggle-icon.is-out,
+          .theme-toggle-icon.is-in {
+            transform: none;
+          }
+        }
+      `}</style>
+      <IconButton label={label} onClick={toggle} disabled={theme === null}>
+        {theme === null ? (
+          <span aria-hidden className="block h-[18px] w-[18px]" />
+        ) : (
+          <span className="theme-toggle-icon-wrapper" aria-hidden="true">
+            <span className={cn("theme-toggle-icon", !isDark ? "is-out" : "is-in")}>
+              <Moon size={18} />
+            </span>
+            <span className={cn("theme-toggle-icon", isDark ? "is-out" : "is-in")}>
+              <Sun size={18} />
+            </span>
+          </span>
+        )}
+      </IconButton>
+    </>
   );
 }
