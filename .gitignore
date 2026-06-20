@@ -43,6 +43,9 @@ next-env.d.ts
 # Superpowers Skill Plans
 docs/superpowers/plans/*
 
+# Worktrees
+.worktrees
+
 # Impeccable Skill
 .impeccable/*
 PRODUCT.md
