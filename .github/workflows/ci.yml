@@ -77,10 +77,8 @@ jobs:
 
       - name: Run security scanner
         uses: gitleaks/gitleaks-action@v2
-        with:
-         args: detect --source . --verbose
         env:
-          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
