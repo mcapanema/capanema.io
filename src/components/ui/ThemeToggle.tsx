@@ -86,20 +86,30 @@ export function ThemeToggle() {
             opacity var(--duration-base) var(--ease-standard),
             transform var(--duration-base) var(--ease-standard);
         }
-        .theme-toggle-icon.is-out {
+        /* Moon: rests vertical (-90deg), exits to -135deg */
+        .theme-toggle-icon-wrapper > span:first-child.is-out {
           opacity: 0;
-          transform: rotate(45deg);
+          transform: rotate(-135deg);
         }
-        .theme-toggle-icon.is-in {
+        .theme-toggle-icon-wrapper > span:first-child.is-in {
           opacity: 1;
-          transform: rotate(-45deg);
+          transform: rotate(-90deg);
+        }
+        /* Sun: rests horizontal (0deg), exits to +135deg */
+        .theme-toggle-icon-wrapper > span:last-child.is-out {
+          opacity: 0;
+          transform: rotate(135deg);
+        }
+        .theme-toggle-icon-wrapper > span:last-child.is-in {
+          opacity: 1;
+          transform: rotate(0deg);
         }
         @media (prefers-reduced-motion: reduce) {
           .theme-toggle-icon {
             transition: opacity var(--duration-fast) var(--ease-standard);
           }
-          .theme-toggle-icon.is-out,
-          .theme-toggle-icon.is-in {
+          .theme-toggle-icon-wrapper > span:first-child,
+          .theme-toggle-icon-wrapper > span:last-child {
             transform: none;
           }
         }
