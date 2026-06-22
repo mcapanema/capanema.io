@@ -18,7 +18,7 @@ export const resume = {
   resumePdf: "/Murilo-Capanema-Resume.pdf",
 
   metrics: [
-    { eyebrow: "EXPERIENCE", value: "20+", label: "years building technology organizations" },
+    { eyebrow: "EXPERIENCE", value: "20", label: "years building technology organizations" },
     { eyebrow: "TEAM SCALE", value: "~100", label: "engineers scaled across multiple organizations" },
     { eyebrow: "EFFICIENCY", value: "300%", label: "clinical operations efficiency improvement" },
     { eyebrow: "AI IMPACT", value: "2mo → 3d", label: "time-to-intervention through AI" },
