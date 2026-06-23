@@ -1,24 +1,10 @@
 # capanema.io
 
-My personal site — a curated record of the engineering leadership work I find worth documenting. It hosts long-form case studies on the problems I've led teams through, the architectural and organizational tradeoffs I've navigated, and the outcomes that followed. It also serves as a living resume and a place to publish writing on technology, product, and org design.
+My personal site — a personal record of the engineering leadership work I find worth documenting. It hosts long-form case studies on the problems I've led teams through, the architectural and organizational tradeoffs I've navigated, and the outcomes that followed. It also serves as a living resume and a place to publish writing on technology, product, and org design.
 
 The site is intentionally minimal. No CMS, no database, no third-party content layer. Content lives as MDX files in the repository, which means the writing process is the same as the engineering process: version-controlled, reviewable, and permanent.
 
 **Production:** https://capanema.io
-
----
-
-## Stack
-
-| Layer | Choice | Rationale |
-|---|---|---|
-| Framework | Next.js 16 (App Router, Turbopack) | Static generation by default; Turbopack keeps dev fast |
-| Content | MDX + `mdxRs: true` | Markdown with React composability; Rust compiler required for Turbopack compatibility |
-| Styles | Tailwind CSS v4 | Token-first, utility-based — no runtime stylesheet overhead |
-| Fonts | Inter + JetBrains Mono (via `next/font`) | Inter for UI/display; JetBrains Mono for labels, eyebrows, metadata, code |
-| Icons | `lucide-react` | Consistent icon set; note: no brand icons (GitHub/LinkedIn are text labels) |
-| Observability | Vercel Analytics + Speed Insights | Page-level traffic and Core Web Vitals |
-| Deployment | Vercel | Git-push-to-production; every push to `main` auto-deploys |
 
 ## Design System
 
@@ -35,7 +21,7 @@ Key rules:
 ```
 src/
   app/
-    layout.tsx              # Root layout: fonts, Analytics, SpeedInsights
+    layout.tsx              # Root layout: fonts, ThemeToggle, Analytics, SpeedInsights
     globals.css             # Tailwind import + full DS token layer (@theme inline)
     page.tsx                # Home (Hero + Latest Updates)
     styleguide/page.tsx     # Token + component preview
@@ -81,7 +67,7 @@ Content is **typed metadata + an MDX body**.
 
 **About me** — edit `src/content/resume.ts`; replace `public/Murilo-Capanema-Resume.pdf` when the downloadable resume changes.
 
-MDX bodies use plain Markdown plus DS components exposed in `mdx-components.tsx`: `<Pullquote>`, `<Callout>`, `<Metric>`, `<Tag>`. H2 anchor IDs are generated in the `h2` renderer (not via `rehype-slug` — see constraints below).
+MDX bodies use plain Markdown plus DS components exposed in `mdx-components.tsx`: `<Pullquote>`, `<Callout>`, `<Metric>`, `<MetricCard>`, `<Tag>`, `<Eyebrow>`. H2 anchor IDs are generated in the `h2` renderer (not via `rehype-slug` — see constraints below).
 
 ## Key constraints
 
