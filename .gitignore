@@ -49,3 +49,9 @@ docs/superpowers/plans/*
 # Impeccable Skill
 .impeccable/*
 PRODUCT.md
+
+# Ignore project Claude config
+.claude/*
+
+# Ignore graphify
+graphify-out/
