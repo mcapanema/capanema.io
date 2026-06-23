@@ -22,9 +22,9 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label="Murilo Capanema – Home"
-          className="text-text-primary inline-flex shrink-0 items-center gap-2 text-base font-semibold tracking-[-0.3px]"
+          className="text-text-primary inline-flex shrink-0 items-center gap-4 text-base font-semibold tracking-[-0.3px]"
         >
-          <picture>
+          <picture className="logo-light-picture">
             <source srcSet="/logo-light.webp" type="image/webp" />
             <img
               src="/logo-light.png"
@@ -34,7 +34,7 @@ export function SiteHeader() {
               className="logo-light h-8 w-8"
             />
           </picture>
-          <picture>
+          <picture className="logo-dark-picture">
             <source srcSet="/logo-dark.webp" type="image/webp" />
             <img
               src="/logo-dark.png"
