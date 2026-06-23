@@ -368,11 +368,25 @@ body {
   display: none;
 }
 
+/* Default: show light logo, hide dark logo picture */
+picture.logo-light-picture {
+  display: block;
+}
+picture.logo-dark-picture {
+  display: none;
+}
+
 /* Forced dark via the ThemeToggle wins over the OS setting. */
 :root[data-theme="dark"] .logo-light {
   display: none;
 }
 :root[data-theme="dark"] .logo-dark {
+  display: block;
+}
+:root[data-theme="dark"] picture.logo-light-picture {
+  display: none;
+}
+:root[data-theme="dark"] picture.logo-dark-picture {
   display: block;
 }
 
@@ -382,6 +396,12 @@ body {
     display: none;
   }
   :root:not([data-theme]) .logo-dark {
+    display: block;
+  }
+  :root:not([data-theme]) picture.logo-light-picture {
+    display: none;
+  }
+  :root:not([data-theme]) picture.logo-dark-picture {
     display: block;
   }
 }
