@@ -512,7 +512,7 @@ export default function StyleGuide() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <MetricCard eyebrow="SCALE" value="140" label="engineers led across 6 teams" />
             <MetricCard eyebrow="UPTIME" value="99.99%" label="platform availability" />
-            <MetricCard eyebrow="SPAN" value="20+" label="years building software" />
+            <MetricCard eyebrow="SPAN" value="20" label="years building software" />
             <MetricCard eyebrow="TEAMS" value="9" label="products shipped to production" />
           </div>
         </Section>
