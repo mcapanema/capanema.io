@@ -34,6 +34,7 @@ function LinkColumn({
           className="text-text-on-dark text-sm transition-opacity hover:opacity-70"
         >
           {link.label}
+          {link.href.startsWith("http") && <span className="sr-only"> (opens in a new tab)</span>}
         </a>
       ))}
     </div>

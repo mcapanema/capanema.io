@@ -44,6 +44,7 @@ export function ContactSection({
                 className="text-text-on-dark text-[15px] font-medium transition-opacity hover:opacity-70"
               >
                 {link.label}
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             ))}
           </div>
