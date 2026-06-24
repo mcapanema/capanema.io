@@ -32,6 +32,7 @@ export function IconButton(props: AsLink | AsButton) {
 
   return (
     <button
+      type="button"
       aria-label={label}
       className={classes}
       {...(rest as ComponentPropsWithoutRef<"button">)}

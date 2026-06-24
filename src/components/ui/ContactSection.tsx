@@ -19,12 +19,12 @@ export function ContactSection({
   return (
     <section className="bg-surface-dark flex flex-col gap-12 rounded-xl p-10 sm:p-16">
       <div className="flex flex-col gap-4">
-        <span className="text-text-accent font-mono text-[13px] tracking-[1px]">
+        <h2 className="text-text-accent font-mono text-[13px] tracking-[1px]">
           CONTACT
-        </span>
-        <h2 className="text-text-on-dark max-w-[900px] text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px] lg:text-[48px] lg:tracking-[-1px]">
-          {headline}
         </h2>
+        <h3 className="text-text-on-dark max-w-[900px] text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px] lg:text-[48px] lg:tracking-[-1px]">
+          {headline}
+        </h3>
         <p className="text-text-on-dark-muted max-w-[620px] text-lg leading-[1.6]">
           {sub}
         </p>

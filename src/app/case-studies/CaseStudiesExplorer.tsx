@@ -74,11 +74,12 @@ export function CaseStudiesExplorer({
             className="border-border-default bg-surface-elevated text-text-primary placeholder:text-text-tertiary h-11 w-full rounded-lg border pr-4 pl-11 text-sm"
           />
         </div>
-        <label className="text-text-secondary flex items-center gap-2 text-sm">
+        <label htmlFor="sort-case-studies" className="text-text-secondary flex items-center gap-2 text-sm">
           <span className="text-text-tertiary font-mono text-xs tracking-[0.5px] uppercase">
             Sort
           </span>
           <select
+            id="sort-case-studies"
             value={sort}
             onChange={(e) => setSort(e.target.value as Sort)}
             aria-label="Sort case studies"
@@ -119,13 +120,18 @@ export function CaseStudiesExplorer({
       )}
 
       {grid.length > 0 ? (
-        <div className="grid gap-6 md:grid-cols-2">
-          {grid.map((cs) => (
-            <div key={cs.slug} className="animate-on-scroll">
-              <CaseStudyCard caseStudy={cs} />
-            </div>
-          ))}
-        </div>
+        <>
+          <p aria-live="polite" className="sr-only">
+            {grid.length} case studies found
+          </p>
+          <div className="grid gap-6 md:grid-cols-2">
+            {grid.map((cs) => (
+              <div key={cs.slug} className="animate-on-scroll">
+                <CaseStudyCard caseStudy={cs} />
+              </div>
+            ))}
+          </div>
+        </>
       ) : (
         <p className="text-text-secondary py-12 text-center">
           No case studies match your search.

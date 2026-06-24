@@ -18,9 +18,9 @@ export const metadata = {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="text-text-tertiary font-mono text-xs tracking-[1px]">
+    <h2 className="text-text-tertiary font-mono text-xs tracking-[1px]">
       {children}
-    </span>
+    </h2>
   );
 }
 
@@ -34,16 +34,16 @@ function CredentialList({
   return (
     <div className="flex flex-col gap-4">
       <SectionLabel>{label}</SectionLabel>
-      <div className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-4">
         {items.map((item) => (
-          <div key={item.title} className="flex flex-col gap-0.5">
+          <li key={item.title} className="flex flex-col gap-0.5">
             <span className="text-text-primary text-base font-semibold">
               {item.title}
             </span>
             <span className="text-text-secondary text-sm">{item.detail}</span>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
@@ -63,7 +63,7 @@ export default function AboutMePage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto flex max-w-[920px] flex-col gap-16 px-6 py-16 md:py-20">
+      <main id="main-content" className="mx-auto flex max-w-[920px] flex-col gap-16 px-6 py-16 md:py-20">
         {/* Header */}
         <header className="flex flex-col gap-5">
           <div className="flex flex-col gap-3">
@@ -103,9 +103,9 @@ export default function AboutMePage() {
           <div className="animate-on-scroll">
             <SectionLabel>EXPERIENCE</SectionLabel>
           </div>
-          <div className="flex flex-col">
+          <ul className="flex flex-col">
             {experience.map((role, i) => (
-              <div key={role.title} className="animate-on-scroll">
+              <li key={role.title} className="animate-on-scroll">
                 <TimelineItem
                   date={role.date}
                   title={role.title}
@@ -113,9 +113,9 @@ export default function AboutMePage() {
                   outcome={role.outcome}
                   isLast={i === experience.length - 1}
                 />
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         {/* Education */}
@@ -126,11 +126,13 @@ export default function AboutMePage() {
         {/* Focus areas */}
         <section className="animate-on-scroll flex flex-col gap-4">
           <SectionLabel>FOCUS AREAS</SectionLabel>
-          <div className="flex flex-wrap gap-3">
+          <ul className="flex flex-wrap gap-3">
             {focusAreas.map((area) => (
-              <Tag key={area}>{area}</Tag>
+              <li key={area}>
+                <Tag>{area}</Tag>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         <div className="animate-on-scroll">
