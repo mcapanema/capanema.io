@@ -205,7 +205,7 @@ export default function StyleGuide() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8">
+      <main id="main-content" className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8">
         <header className="flex flex-col gap-3">
           <Eyebrow>FOUNDATION PREVIEW · V3.1</Eyebrow>
           <SectionTick />

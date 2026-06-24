@@ -15,7 +15,7 @@ export default function CaseStudiesPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8 md:py-20">
+      <main id="main-content" className="mx-auto flex max-w-[1120px] flex-col gap-12 px-6 py-16 md:px-8 md:py-20">
         <div className="animate-fade-up">
           <PageHeader
             eyebrow="CASE STUDIES"
