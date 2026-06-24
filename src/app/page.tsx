@@ -114,7 +114,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="main-content" className="mx-auto max-w-[1120px] px-6 md:px-8">
+      <main id="main-content" tabIndex={-1} className="mx-auto max-w-[1120px] px-6 md:px-8 focus:outline-none">
         {/* Hero — DS Hero Pattern */}
         <section className="flex flex-col gap-12 py-16 md:py-24">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">

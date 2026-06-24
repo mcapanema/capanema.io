@@ -63,7 +63,7 @@ export default function AboutMePage() {
   return (
     <>
       <SiteHeader />
-      <main id="main-content" className="mx-auto flex max-w-[920px] flex-col gap-16 px-6 py-16 md:py-20">
+      <main id="main-content" tabIndex={-1} className="mx-auto flex max-w-[920px] flex-col gap-16 px-6 py-16 md:py-20 focus:outline-none">
         {/* Header */}
         <header className="flex flex-col gap-5">
           <div className="flex flex-col gap-3">

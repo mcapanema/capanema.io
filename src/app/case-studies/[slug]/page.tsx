@@ -52,7 +52,7 @@ export default async function CaseStudyPage({
   return (
     <>
       <SiteHeader />
-      <main id="main-content" className="mx-auto flex max-w-[1120px] flex-col gap-8 px-6 py-12 md:px-8 md:py-16">
+      <main id="main-content" tabIndex={-1} className="mx-auto flex max-w-[1120px] flex-col gap-8 px-6 py-12 md:px-8 md:py-16 focus:outline-none">
         <div className="animate-fade-up">
           <Breadcrumb
             items={[

@@ -40,7 +40,7 @@ export default async function ArticlePage({
   return (
     <>
       <SiteHeader />
-      <main id="main-content" className="mx-auto flex max-w-[680px] flex-col gap-8 px-6 py-12 md:py-16">
+      <main id="main-content" tabIndex={-1} className="mx-auto flex max-w-[680px] flex-col gap-8 px-6 py-12 md:py-16 focus:outline-none">
         <div className="animate-fade-up">
           <Breadcrumb
             items={[

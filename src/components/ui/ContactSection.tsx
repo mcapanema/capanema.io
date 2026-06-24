@@ -35,18 +35,20 @@ export function ContactSection({
         </Button>
         {links.length > 0 && (
           <div className="flex flex-wrap gap-5">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-on-dark text-[15px] font-medium transition-opacity hover:opacity-70"
-              >
-                {link.label}
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            ))}
+            {links.map((link) => {
+              const isExternal = link.href.startsWith("http");
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="text-text-on-dark text-[15px] font-medium transition-opacity hover:opacity-70"
+                >
+                  {link.label}
+                  {isExternal && <span className="sr-only"> (opens in a new tab)</span>}
+                </a>
+              );
+            })}
           </div>
         )}
       </div>
