@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Red_Hat_Display, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SkipToContent } from "@/components/ui";
 import "./globals.css";
 
 // Design System fonts: Red Hat Display for all UI + display, JetBrains Mono for
@@ -44,6 +45,7 @@ export default function RootLayout({
       {/* Colors come from semantic tokens that re-resolve per Mode via
       light-dark()/color-scheme, so no `dark:` variants are needed. */}
       <body className="bg-surface-primary text-text-primary min-h-full">
+        <SkipToContent />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {children}
         <Analytics />
