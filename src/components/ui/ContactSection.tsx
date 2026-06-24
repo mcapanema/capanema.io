@@ -39,6 +39,8 @@ export function ContactSection({
               <a
                 key={link.label}
                 href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-text-on-dark text-[15px] font-medium transition-opacity hover:opacity-70"
               >
                 {link.label}
