@@ -20,3 +20,4 @@ export { FeaturedArticle } from "./FeaturedArticle";
 export { TimelineItem } from "./TimelineItem";
 export { ContactSection } from "./ContactSection";
 export { Eyebrow, SectionTick } from "./Eyebrow";
+export { SkipToContent } from "./SkipToContent";
