@@ -45,6 +45,12 @@ export default function RootLayout({
       light-dark()/color-scheme, so no `dark:` variants are needed. */}
       <body className="bg-surface-primary text-text-primary min-h-full">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <a
+          href="#main-content"
+          className="fixed top-[-40px] left-2 z-50 bg-action-primary px-4 py-2 text-sm font-semibold text-text-on-accent transition-all focus:top-2 focus:rounded-md focus:outline-2 focus:outline-offset-2 focus:outline-focus-ring"
+        >
+          Skip to content
+        </a>
         {children}
         <Analytics />
         <SpeedInsights />

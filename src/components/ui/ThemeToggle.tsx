@@ -114,7 +114,7 @@ export function ThemeToggle() {
           }
         }
       `}</style>
-      <IconButton label={label} onClick={toggle} disabled={theme === null}>
+      <IconButton label={label} onClick={toggle} disabled={theme === null} aria-pressed={isDark}>
         {theme === null ? (
           <span aria-hidden className="block h-[18px] w-[18px]" />
         ) : (

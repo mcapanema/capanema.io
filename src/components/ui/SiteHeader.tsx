@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavItem } from "./NavItem";
@@ -24,26 +25,26 @@ export function SiteHeader() {
           aria-label="Murilo Capanema – Home"
           className="text-text-primary inline-flex shrink-0 items-center gap-4 text-base font-semibold tracking-[-0.3px]"
         >
-          <picture className="logo-light-picture">
-            <source srcSet="/logo-light.webp" type="image/webp" />
-            <img
+          <span className="logo-light-picture">
+            <Image
               src="/logo-light.png"
               alt=""
               width={32}
               height={32}
               className="logo-light h-8 w-8"
+              unoptimized
             />
-          </picture>
-          <picture className="logo-dark-picture">
-            <source srcSet="/logo-dark.webp" type="image/webp" />
-            <img
+          </span>
+          <span className="logo-dark-picture">
+            <Image
               src="/logo-dark.png"
               alt=""
               width={32}
               height={32}
               className="logo-dark h-8 w-8"
+              unoptimized
             />
-          </picture>
+          </span>
           <span className="hidden sm:inline">Murilo Capanema</span>
         </Link>
         <div className="flex items-center gap-4 md:gap-6">

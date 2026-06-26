@@ -14,16 +14,16 @@ export function CredibilityStrip({
       <span className="text-text-tertiary font-mono text-xs tracking-[1px]">
         {eyebrow}
       </span>
-      <div className="flex [scrollbar-width:none] items-center gap-x-8 overflow-x-auto md:flex-wrap md:gap-x-12 md:gap-y-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
+      <ul className="flex [scrollbar-width:none] items-center gap-x-8 overflow-x-auto md:flex-wrap md:gap-x-12 md:gap-y-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
         {companies.map((c) => (
-          <span
+          <li
             key={c}
             className="text-text-tertiary shrink-0 text-xl font-semibold tracking-[-0.3px] whitespace-nowrap"
           >
             {c}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

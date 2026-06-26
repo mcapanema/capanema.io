@@ -43,7 +43,7 @@ export function Button(props: ButtonAsLink | ButtonAsButton) {
   }
 
   return (
-    <button className={classes} {...(rest as ComponentPropsWithoutRef<"button">)}>
+    <button type="button" className={classes} {...(rest as ComponentPropsWithoutRef<"button">)}>
       {children}
       {icon}
     </button>
