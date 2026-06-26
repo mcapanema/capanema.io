@@ -55,3 +55,4 @@ PRODUCT.md
 
 # Ignore graphify
 graphify-out/
+.serena/
