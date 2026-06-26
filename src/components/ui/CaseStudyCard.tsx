@@ -9,7 +9,6 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
   return (
     <a
       href={`/case-studies/${slug}`}
-      aria-label={`${title} — Read case study`}
       className="group border-border-subtle bg-surface-elevated hover:border-border-strong hover:shadow-[0_4px_16px_var(--shadow-1a)] flex flex-col gap-6 rounded-xl border p-10 shadow-[0_1px_3px_var(--shadow-1a)] transition-[box-shadow,border-color] duration-[var(--duration-fast)] ease-[var(--ease-standard)]"
     >
       <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
@@ -22,11 +21,11 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
       <div className="bg-border-subtle h-px w-full" />
       <dl className="flex flex-wrap items-end gap-8">
         {outcomes.map((o) => (
-          <div key={o.label} className="flex flex-col-reverse gap-1">
-            <dt className="text-text-secondary text-[13px] font-medium">{o.label}</dt>
+          <div key={o.label} className="flex flex-col gap-1">
             <dd className="text-text-primary text-[32px] leading-[1.1] font-semibold tracking-[-0.5px]">
               {o.value}
             </dd>
+            <dt className="text-text-secondary text-[13px] font-medium">{o.label}</dt>
           </div>
         ))}
       </dl>

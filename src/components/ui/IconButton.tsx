@@ -7,6 +7,7 @@ type CommonProps = {
   label: string;
   children: ReactNode;
   className?: string;
+  "aria-pressed"?: boolean;
 };
 
 const base =
