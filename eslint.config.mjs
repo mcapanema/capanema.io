@@ -3,11 +3,15 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import tailwind from "eslint-plugin-tailwindcss";
 import security from "eslint-plugin-security";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   ...tailwind.configs["flat/recommended"],
+  // jsx-a11y plugin is already registered by eslint-config-next; enable its
+  // full recommended rule set (Next only turns on a handful by default).
+  { rules: { ...jsxA11y.flatConfigs.recommended.rules } },
   {
     plugins: {
       security: security,
