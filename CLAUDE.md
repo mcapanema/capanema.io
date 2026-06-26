@@ -58,6 +58,17 @@ Content is **typed metadata + an MDX body**, not per-route MDX pages.
 - **Dark mode is token-driven** — semantic tokens carry both mode values via `light-dark()` and re-resolve from `color-scheme` in `globals.css`. Default is `color-scheme: light dark` (follow OS); the header `ThemeToggle` sets `data-theme` on `<html>` to force a persisted choice (see DESIGN.md §13). **Do NOT use `dark:` variants and do NOT hardcode colors.** Use semantic token utilities (`bg-surface-primary`, `text-text-primary`, `border-border-subtle`, …) and dark mode is automatic. See DESIGN.md for the full token list.
 - **Semantic tokens only** — never a raw hex or a Foundation primitive (`--neutral-*`, `--accent-*`) inside a component; always a semantic token. The deprecated shadcn `--` token set is intentionally absent — do not reintroduce it.
 
+## Accessibility
+
+Target **WCAG 2.1 AA** in both themes (4.5:1 text contrast, keyboard-operable, visible focus). Conventions to keep:
+
+- **Skip link + landmark** — `layout.tsx` renders a global "Skip to content" link targeting `#main-content`. Every page's `<main>` **must** carry `id="main-content"` (new pages too).
+- **Images** — decorative images use `alt=""` and rely on a nearby label (e.g. the header logos use `alt=""` because the `<Link>` has `aria-label`). Informative images get descriptive `alt`. Never omit `alt`.
+- **External links** — `target="_blank"` always pairs with `rel="noopener noreferrer"` **and** an `sr-only` "(opens in new tab)" hint so screen readers warn before focus jumps.
+- **Semantic structure** — one `<h1>` per page, no skipped heading levels; real lists use `<ul>/<li>`, label/value pairs use `<dl>/<dt>/<dd>`.
+- **Controls** — form fields are associated via `htmlFor`/`id`; `<button>`s get explicit `type="button"`; toggle buttons expose state with `aria-pressed`; in-page nav uses `aria-current`.
+- Dynamic result counts (explorers) announce via an `aria-live="polite"` region.
+
 ## Deployment
 
 - **GitHub remote**: `git@github.com:mcapanema/capanema.io.git`
