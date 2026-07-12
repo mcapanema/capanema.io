@@ -13,7 +13,7 @@
    - Theme selection: :root defaults to `color-scheme: light dark` (follow the
      OS). A `data-theme="light|dark"` attribute on <html> (set from a persisted
      choice by the pre-hydration script in layout.tsx) forces one mode and wins
-     over the OS setting. See DESIGN.md §2 and §13.
+     over the OS setting. See DESIGN.md → Colors, "The light-dark() Rule".
    ========================================================================== */
 
 :root {
@@ -244,7 +244,7 @@
   --breakpoint-xl: 1280px;
 
   /* type scale (v3.1) — size + line-height + tracking → text-display-xl …
-     text-caption. Mirrors DESIGN.md §3; replaces ad-hoc text-[NNpx] literals. */
+     text-caption. Mirrors DESIGN.md → Typography; replaces ad-hoc text-[NNpx] literals. */
   --text-display-xl: 72px;
   --text-display-xl--line-height: 1.05;
   --text-display-xl--letter-spacing: -1.5px;
