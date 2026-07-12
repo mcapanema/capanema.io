@@ -1,283 +1,235 @@
-# capanema.io — Design System
-
-This document is the authoritative record of how capanema.io is designed and built. **Every visual decision must be traceable to it.** Before adding or changing UI, read the relevant section and reuse what exists.
-
-The Design System is maintained in **Pencil** (`design-system-v3.2.pen`, a separate repo — the single source of truth) and translated into this codebase as a token-first foundation. This file documents that translation: tokens, components, patterns, conventions, and rules. When the two ever disagree, Pencil wins and this file should be corrected to match.
-
+---
+name: capanema.io
+description: Executive portfolio for Murilo Capanema — case studies, writing, and résumé, built content-first on a token-driven design system.
+colors:
+  cobalt: "#2150b8"
+  cobalt-hover: "#1a4097"
+  cobalt-pressed: "#16357a"
+  cobalt-bright: "#3f6bd0"
+  cobalt-soft: "#6e96e2"
+  cobalt-faint: "#a6c1f0"
+  ink: "#0f172a"
+  ink-deep: "#1e293b"
+  ink-soft: "#334155"
+  slate: "#475569"
+  slate-mid: "#64748b"
+  slate-soft: "#94a3b8"
+  slate-light: "#cbd5e1"
+  mist: "#e2e8f0"
+  frost: "#f8fafc"
+  white: "#ffffff"
+  night: "#0b1020"
+  night-raised: "#111827"
+  night-elevated: "#172033"
+typography:
+  display:
+    fontFamily: "Red Hat Display, Helvetica Neue, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "72px"
+    fontWeight: 600
+    lineHeight: 1.05
+    letterSpacing: "-1.5px"
+  headline:
+    fontFamily: "Red Hat Display, Helvetica Neue, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "40px"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.8px"
+  title:
+    fontFamily: "Red Hat Display, Helvetica Neue, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "24px"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.3px"
+  body:
+    fontFamily: "Red Hat Display, Helvetica Neue, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "18px"
+    fontWeight: 500
+    lineHeight: 1.6
+    letterSpacing: "0px"
+  label:
+    fontFamily: "JetBrains Mono, ui-monospace, Menlo, Consolas, monospace"
+    fontSize: "12px"
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: "0.5px"
+rounded:
+  sm: "8px"
+  md: "12px"
+  lg: "16px"
+  pill: "999px"
+spacing:
+  space-1: "4px"
+  space-2: "8px"
+  space-3: "12px"
+  space-4: "16px"
+  space-5: "24px"
+  space-6: "32px"
+  space-7: "40px"
+  space-8: "48px"
+  space-9: "64px"
+  space-10: "80px"
+  space-11: "96px"
+  space-12: "128px"
+components:
+  button-primary:
+    backgroundColor: "{colors.cobalt}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.sm}"
+    padding: "12px 24px"
+  button-primary-hover:
+    backgroundColor: "{colors.cobalt-hover}"
+  button-primary-active:
+    backgroundColor: "{colors.cobalt-pressed}"
+  button-secondary:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.sm}"
+    padding: "12px 24px"
+  button-secondary-hover:
+    backgroundColor: "{colors.ink-soft}"
+  tag:
+    backgroundColor: "{colors.mist}"
+    textColor: "{colors.slate}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "4px 12px"
+  card:
+    backgroundColor: "{colors.white}"
+    rounded: "{rounded.md}"
+    padding: "40px"
 ---
 
-## 1. Philosophy
+# Design System: capanema.io
 
-The site is content-first: an executive portfolio that should communicate seniority, credibility, clarity, and thoughtfulness. The design is understated and timeless — closer to a thoughtful technology leader's knowledge base than a marketing site.
+## 1. Overview
 
-Principles, in priority order (the tie-breakers when a choice is unclear):
+**Creative North Star: "The Working Notebook"**
 
-1. **Simplicity over complexity** — fewest moving parts that solve the problem.
-2. **Consistency over novelty** — match what exists; predictable beats clever.
-3. **Accessibility first** — WCAG AA is the floor, in both themes, no exceptions.
-4. **Readability over decoration** — type, spacing, and hierarchy serve reading.
-5. **Mobile-first & responsive** — design the smallest viewport first.
-6. **Reuse before creating** — compose from existing tokens/components/patterns.
-7. **Maintainability** — every value routes through a token; optimize for the next contributor.
+capanema.io is a senior technology leader's well-kept notebook: structured, honest, showing the work. Every case study reads like a carefully written entry — real decisions, real tradeoffs, real outcomes — and every visual decision is in service of that reading. The system is content-first and understated: hierarchy, spacing, and type are tools for the text, not displays of design skill. Confidence comes from substance, not from design volume ("earned confidence" — PRODUCT.md).
 
-Decision test for anything new: *Does it serve the reader first? Can an existing token/component/pattern already do it? Does it work in Light and Dark with zero overrides? Does it meet WCAG AA? Will it be obvious to the next contributor?* If any answer is no, revise before adding.
+The mechanics are engineered like the work it describes. A five-layer governance chain (Foundation primitives → Semantic tokens → Components → Patterns → Pages) means every color routes through a semantic token, and dark mode is automatic: each themed token is defined once with CSS `light-dark()` and re-resolves from `color-scheme`, so components need zero `dark:` variants and zero per-mode overrides. The design system is maintained in Pencil (`design-system-v3.2.pen`, a separate repo — the single source of truth); this file is its translation into the codebase. When they disagree, Pencil wins.
 
----
+This system explicitly rejects the SaaS landing-page template (numbered eyebrows, hero metrics, identical card grids, cream backgrounds, gradient blobs), the generic LinkedIn-résumé-in-a-box, and the academic text wall. Timeless over trendy: nothing that will read as 2026 in 2028.
 
-## 2. Architecture
+**Key Characteristics:**
+- Content-first: type, spacing, and hierarchy serve long-form reading (680px prose measure).
+- Token-driven theming: `light-dark()` + `color-scheme`; both themes ship from one definition.
+- One reserved accent (Cobalt) with strict usage rules; warmth carried by voice and type, not decoration.
+- Tactile and assured interactions: press-scale on buttons, quiet card lift — decisive but never showy.
+- WCAG 2.1 AA in both themes, reduced-motion respected everywhere, 44px touch targets.
+- Page container 1120px; prose measure 680px; pattern headers 820px.
 
-**Five-layer governance chain — each layer references only the one above it:**
+## 2. Colors
 
-```
-Foundation primitives  →  Semantic tokens  →  Components  →  Patterns  →  Pages
-(static hex/values)        (per-mode)          (consume tokens)  (compose)   (compose)
-```
+A restrained strategy: cool slate neutrals plus one deep cobalt accent, deployed on well under 10% of any screen.
 
-- **Foundation primitives** are static and never themed (`--neutral-*`, `--accent-*`, `--dark-*`, `--primary-*`). Components must never reference them directly.
-- **Semantic tokens** carry a value per **Mode (Light / Dark)** and re-resolve automatically.
-- **Components** consume semantic tokens only — never raw hex, never primitives.
-- **Patterns** compose components; **Pages** compose patterns.
+### Primary
+- **Cobalt Deep** (#2150b8, `--accent-500`): the single brand accent. In light mode it is the primary action fill, link color, accent text, eyebrow bar, and focus ring. Hover deepens to **Cobalt Hover** (#1a4097), pressed to **Cobalt Pressed** (#16357a).
+- **Cobalt Bright / Soft / Faint** (#3f6bd0 / #6e96e2 / #a6c1f0, `--accent-400/300/200`): the dark-mode ramp. Dark surfaces need lighter, less saturated cobalt to hold contrast — links use Soft, link hover uses Faint, focus ring uses Bright.
 
-**Dark mode is token-driven.** `globals.css` defines each themed token once with `light-dark(<light>, <dark>)` in `:root`, which resolves against the element's `color-scheme`. `:root` defaults to `color-scheme: light dark` (follow the OS). An explicit, persisted choice sets `data-theme="light|dark"` on `<html>`, which switches `color-scheme` and overrides the OS. Because every component uses semantic token utilities, dark mode needs **zero `dark:` variants and zero per-component overrides**. Never hardcode a color or add a `dark:` class.
+### Neutral
+- **Ink** (#0f172a): primary text in light mode; also the dark "Contact/Footer" surface and the secondary button fill. The strongest voice on the page.
+- **Ink Deep / Ink Soft** (#1e293b / #334155): prose text (light), dark-mode raised surfaces, secondary-button hover.
+- **Slate / Slate Mid / Slate Soft / Slate Light** (#475569 / #64748b / #94a3b8 / #cbd5e1): the supporting-text and border ramp — secondary text, tertiary/muted text, strong borders, default borders. Never used for body copy below Slate (#475569, 4.5:1 floor).
+- **Mist / Frost / White** (#e2e8f0 / #f8fafc / #ffffff): light-mode surfaces — subtle borders, tag fills, secondary surfaces, and the page itself. Pure white body background, never cream.
+- **Night / Night Raised / Night Elevated** (#0b1020 / #111827 / #172033): the dark-mode surface stack, page → raised → elevated card.
 
-All tokens are defined in `src/app/globals.css` and mapped into Tailwind v4 via `@theme inline`, which keeps utilities pointing at the live CSS vars so the `light-dark()`/`color-scheme` resolution re-resolves them. See §13 for the theme-toggle mechanism.
+Status colors exist as fg/surface pairs per mode (success green, warning amber, error red, info cobalt) in `src/app/globals.css`; color is never the only signal — always paired with an icon or label.
 
----
+### Named Rules
+**The Semantic-Only Rule.** Components never reference a Foundation primitive (`--neutral-*`, `--accent-*`, `--dark-*`) or a raw hex — only semantic token utilities (`bg-surface-elevated`, `text-text-secondary`, `border-border-subtle`). The hex values above exist so you can reason about contrast; they are forbidden in component code.
 
-## 3. Foundations
+**The Reserved Accent Rule.** Cobalt appears only on eyebrows, CTAs, links, and active nav. Categories and tags are neutral; metrics and outcomes are ink. Emphasis comes from size and weight, never from spreading the accent.
 
-### Typography
+**The light-dark() Rule.** Every themed token is defined once in `:root` with `light-dark(<light>, <dark>)`, resolved by `color-scheme` (OS default; a persisted `data-theme` on `<html>` overrides it via a pre-hydration script). Never write a `dark:` variant, never add a `@media (prefers-color-scheme)` block for colors, never hardcode a color. New themed tokens: define in `:root`, map in `@theme inline`.
 
-Two families, loaded in `layout.tsx`:
+## 3. Typography
 
-- **Red Hat Display** (`font-sans`, `--font-red-hat-display`) — all UI and display text. A humanist grotesque chosen for editorial confidence at display sizes; more expressive than Inter at the executive portfolio scale.
-- **JetBrains Mono** (`font-mono`, `--font-jetbrains-mono`) — eyebrows, labels, metadata, dates, reading-time, code.
+**Display Font:** Red Hat Display (with Helvetica Neue, system-ui fallback)
+**Body Font:** Red Hat Display — one family, committed weight and size contrast
+**Label/Mono Font:** JetBrains Mono (eyebrows, tags, dates, metadata, code)
 
-**Type scale** (size / line-height / letter-spacing; headings are weight 600):
+**Character:** A humanist grotesque with editorial confidence at display sizes, warmer and more expressive than a geometric sans; the mono is the engineer's hand — precise little labels annotating the notebook.
 
-| Name | px | line-height | tracking | Tailwind example |
-|---|---|---|---|---|
-| Display XL | 72 | 1.05 | −1.5 | `text-display-xl font-semibold` |
-| Display L | 64 | 1.05 | −1.3 | `text-display-l font-semibold` |
-| Display M | 56 | 1.08 | −1.1 | `text-display-m font-semibold` |
-| H1 | 48 | 1.1 | −1 | `text-h1 font-semibold` |
-| H2 | 40 | 1.15 | −0.8 | `text-h2 font-semibold` |
-| H3 | 32 | 1.2 | −0.5 | `text-h3 font-semibold` |
-| H4 | 24 | 1.3 | −0.3 | `text-h4 font-semibold` |
-| H5 | 20 | 1.4 | 0 | `text-h5 font-semibold` |
-| Body L | 18 | 1.6 | 0 | `text-body-l` |
-| Body M | 16 | 1.6 | 0 | `text-body-m` |
-| Body S | 14 | 1.5 | 0 | `text-body-s` |
-| Caption | 12 | 1.4 | 0 | `text-caption font-medium` |
+### Hierarchy
+Tokenized as `text-display-xl … text-caption` utilities (size + line-height + tracking travel together).
 
-The type scale is **tokenized** (v3.1): each step is a `text-*` utility (`text-display-xl … text-caption`) carrying size + line-height + tracking, registered in `globals.css` `@theme`. Line-height tokens exist for prose: `--leading-tight 1.1`, `--leading-snug 1.3`, `--leading-normal 1.6`, `--leading-prose 1.7`. Reading measure: `--measure-prose: 680px`.
+- **Display** (600, 72px / 64px / 56px, 1.05–1.08, −1.5 to −1.1px): hero headlines only (`text-display-xl/l/m`).
+- **Headline** (600, 48px / 40px / 32px, 1.1–1.2, −1 to −0.5px): page and section headings (`text-h1/h2/h3`).
+- **Title** (600, 24px / 20px, 1.3–1.4, −0.3 to 0px): card titles, sub-sections (`text-h4/h5`).
+- **Body** (500, 18px / 16px / 14px, 1.6; prose at 1.7): reading text on `text-prose`, max measure 680px (`--measure-prose`).
+- **Label** (500, 12px JetBrains Mono, +0.5 to +1px tracking): eyebrows, tags, dates, reading time, metadata.
 
-**Letter-spacing tokens** (v3.2 — Tailwind utilities: `tracking-display` / `tracking-heading` / `tracking-body` / `tracking-caption`):
+### Named Rules
+**The Medium-Body Rule.** Body and small text always use weight 500 (`font-medium`). Red Hat Display renders optically lighter than Inter; 400 produces insufficient stroke contrast.
 
-| Token | Value | Use |
-|---|---|---|
-| `--letter-spacing-display` | −1.5px | Display heading text |
-| `--letter-spacing-heading` | −0.5px | Section headings (H2–H4) |
-| `--letter-spacing-body` | 0px | Body and description text |
-| `--letter-spacing-caption` | +0.1px | Captions, mono labels |
+**The Measure Rule.** Prose never exceeds 680px. The page container is 1120px, pattern headers 820px, hero sublines 640px — reading comfort defines every width.
 
-Body and small text must use **`font-medium` (500)** in components and prose — Red Hat Display renders optically lighter than Inter at small sizes; 400 produces insufficient stroke contrast.
+## 4. Elevation
 
-### Spacing
+**The Paper-on-Desk Rule.** Cards sit barely above the page — a printed sheet on a desk. The resting shadow is intentional but whisper-soft; hover lifts the sheet slightly. Depth beyond that is conveyed by borders (`border-subtle` → `border-strong`) and the surface stack (primary → secondary → elevated), not by heavier shadows. Both shadow colors are themed tokens, so elevation survives dark mode without adjustment.
 
-DS ramp (`space-0…12`): `0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128`. Every value maps exactly onto Tailwind's default 4px scale, so use standard utilities — no custom spacing tokens:
+### Shadow Vocabulary
+- **Resting card** (`box-shadow: 0 1px 3px var(--shadow-1a)` — #0f172a at 8% light / black at 35% dark): the default card state.
+- **Hover lift** (`box-shadow: 0 4px 16px var(--shadow-1a)`): interactive cards on hover, paired with a border shift to `border-strong`. Transition 120ms `cubic-bezier(0.2, 0, 0, 1)`.
 
-| DS | px | Tailwind | DS | px | Tailwind |
-|---|---|---|---|---|---|
-| space-1 | 4 | `1` | space-7 | 40 | `10` |
-| space-2 | 8 | `2` | space-8 | 48 | `12` |
-| space-3 | 12 | `3` | space-9 | 64 | `16` |
-| space-4 | 16 | `4` | space-10 | 80 | `20` |
-| space-5 | 24 | `6` | space-11 | 96 | `24` |
-| space-6 | 32 | `8` | space-12 | 128 | `32` |
-
-### Radius & elevation
-
-- **Radius** — v3.1 scale `radius-sm 8 / md 12 / lg 16 / pill 999`. Wired so `rounded-sm`→8, `rounded-md`→12, `rounded-pill`→999; `rounded-lg` (8) and `rounded-xl` (12) keep Tailwind defaults (existing buttons/cards), and `radius-lg` (16) is consumed via `rounded-[var(--radius-lg)]`. Conceptually buttons read as `radius-sm` (8) and cards as `radius-md` (12). Per v3.1's radius-token migration, the `Callout` snapped from off-scale `rounded-[10px]` to `rounded-sm` (8).
-- **Elevation** — soft card shadow via the themed shadow tokens: `shadow-[0_1px_3px_var(--shadow-1a)]`.
-- **Motion** (v3.1) — `--duration-fast 120ms / -base 200ms / -slow 320ms`; easing `ease-standard cubic-bezier(0.2,0,0,1)` / `ease-emphasized cubic-bezier(0.3,0,0,1)`. Hover uses fast·standard; overlays use slow·emphasized.
-- **Icon sizes** (v3.1) — `--icon-sm 16 / -md 20 / -lg 24` (= `size-4/5/6`); consume via `size-[var(--icon-sm)]` / `size-[var(--icon-md)]` / `size-[var(--icon-lg)]`.
-- **Breakpoints** (v3.1) — `breakpoint-sm 640 / -md 768 / -lg 1024 / -xl 1280`, declared in `@theme`; equal to Tailwind's defaults.
-
-### Layout widths
-
-- Page container: `max-w-[1120px]`.
-- Reading measure (prose): `max-w-[680px]`.
-- Pattern headers / hero subline: `max-w-[820px]` / `max-w-[640px]`.
-
----
-
-## 4. Semantic tokens
-
-Reference with the matching Tailwind utility (color name = token name). Every token resolves per mode.
-
-**Text** — `text-primary`, `text-secondary`, `text-tertiary`, `text-muted`, `text-prose`, `text-accent`, `text-inverse`, `text-on-accent`, `text-on-dark`, `text-on-dark-muted`, `text-success`.
-→ utilities `text-text-primary`, `text-text-secondary`, … (the doubled `text-` is correct: prefix + token name).
-
-**Surface** — `surface-primary`, `surface-secondary`, `surface-tertiary`, `surface-subtle`, `surface-elevated`, `surface-inverse`, `surface-dark`, `surface-dark-raised`, `surface-accent`. → `bg-surface-elevated`, etc.
-
-**Border** — `border-subtle`, `border-default`, `border-strong`, `border-accent`. → `border-border-subtle`, etc.
-
-**Action / link / focus / disabled** — `action-primary` (+`-hover`, `-pressed`), `action-secondary` (+`-hover`), `link` (+`-hover`), `focus-ring`, `disabled`, `disabled-text`.
-
-**Status** (each has `-fg` and `-surface`) — `status-success-*`, `status-warning-*`, `status-error-*`, `status-info-*`. Always pair the surface with the matching fg **and** an icon/label (color is never the sole signal).
-
-> `surface-dark` / `text-on-dark*` are dark in **both** modes — used by the Footer and Contact section.
-
-The full hex values per mode live in `src/app/globals.css`. The deprecated shadcn `--background`/`--primary`/`--radius-*` set is **intentionally omitted** — do not reintroduce or reference `--`-prefixed tokens in new work.
-
-**Structural accent (v3.1).** Accent is reserved for **eyebrows, CTAs, links, and active nav**. Categories and tags are neutral; metrics and outcomes are ink. Emphasis comes from size, weight, and the **eyebrow accent bar** texture (the `Eyebrow` component) — never from spreading color. (`SectionTick` is a codebase-only accent rule built from the same texture; not a DS master.) The accent itself is **Cobalt Deep** (`accent-500 #2150B8`, dark ramp `400 #3F6BD0` / `300 #6E96E2` / `200 #A6C1F0`).
-
----
+Motion tokens back all elevation changes: `--duration-fast` 120ms (hover), `--duration-base` 200ms, `--duration-slow` 320ms (entrances), easing `ease-standard` (0.2, 0, 0, 1) and `ease-emphasized` (0.3, 0, 0, 1). All motion collapses to ~0ms under `prefers-reduced-motion: reduce`.
 
 ## 5. Components
 
-All in `src/components/ui/`, exported from `index.ts`. Each maps to a Pencil master and uses semantic tokens only.
+All components live in `src/components/ui/` (one file each, barrel-exported), map to Pencil masters, and consume semantic tokens only. The overall feel is **tactile and assured**: physical, decisive feedback — controls that feel good to use without ever showing off.
 
-**Primitives**
-- `Button` — primary / secondary variants, optional icon, `min-h-11` touch target. Renders `<a>` (when `href`) or `<button>`.
-- `IconButton` — square icon action, requires `label` (a11y), `min-h-11 min-w-11`.
-- `Tag` — mono pill, optional accent dot.
-- `NavItem` — text nav link with active state.
-- `Metric` — big value + label; `tone="onDark"` for dark panels.
-- `MetricCard` — elevated metric with mono eyebrow.
-- `Callout` — `info` / `success` / `warning` / `error`, leading icon + optional title (usable in MDX).
-- `Pullquote` — left-accent quote + attribution (usable in MDX).
-- `Breadcrumb` — `items: Crumb[]`, chevron separators, current page emphasized.
-- `Eyebrow` — the v3.1 structural-accent texture (a port of the DS `Eyebrow` master): an accent bar + mono accent label. (`SectionTick`, a 24×3 accent rule, ships alongside it as a codebase-only helper — not a DS master.)
+### Buttons
+- **Shape:** gently rounded (8px), min-height 44px (touch target floor), padding 12px 24px, 14px semibold label.
+- **Primary:** Cobalt fill (`action-primary`) with white text; hover deepens, press darkens further **and scales to 0.97** — the tactile signature.
+- **Secondary:** Ink fill (`action-secondary`) with inverse text; hover lightens to Ink Soft.
+- **Hover / Focus:** 120ms standard-ease color transitions; global 2px cobalt `:focus-visible` ring, offset 2px.
+- Renders as `<a>` when given `href`, `<button type="button">` otherwise. `IconButton` is the square 44px variant and requires an accessible `label`.
 
-**Composite**
-- `CaseStudyCard` — category, title, summary, divider, outcome metrics, "Read case study" (whole-card link).
-- `ArticleCard` — category · date, title, excerpt, reading time.
-- `CredibilityStrip` — eyebrow + company wordmarks.
-- `FeaturedCaseStudy` — content + dark metric panel (Discovery featured block).
-- `FeaturedArticle` — featured essay card (Writing pattern).
-- `TimelineItem` — dated role with left rail + accent dot, description, accent outcome; `isLast` drops the rail.
-- `ToCRail` — "On this page" rail with **scroll-spy** active state (client; IntersectionObserver).
+### Chips
+- **Tag:** mono 12px/500 label in a Mist pill (`surface-tertiary`), Slate text, +0.5px tracking, padding 4px 12px; optional 6px cobalt dot. Tags are neutral — never accent-colored (Reserved Accent Rule).
+- **Filter chips** (index explorers): same pill language, ≥36px target, toggle state via `aria-pressed`.
 
-**Chrome / layout**
-- `SiteHeader` — brand + primary nav + `ThemeToggle` (client; active section from pathname).
-- `ThemeToggle` — `IconButton` that flips light/dark and persists the choice to `localStorage` (client; see §13).
-- `Footer` — dark, brand + link columns + legal.
-- `PageHeader` — shared index header (eyebrow + H1 + description).
-- `ContactSection` — dark Contact pattern block (eyebrow, headline, sub, email CTA, social links).
+### Cards / Containers
+- **Corner Style:** 12px radius.
+- **Background:** `surface-elevated` (white light / Night Elevated dark) over 1px `border-subtle`.
+- **Shadow Strategy:** Paper-on-Desk (see Elevation) — resting shadow, hover lift + border shift.
+- **Internal Padding:** 40px (space-7), internal gaps 24px.
+- **CaseStudyCard** (signature): mono category line, title, summary, hairline divider, outcome metrics as `<dl>` (32px ink values — never accent), and a "Read case study" link that slides its arrow 2px on hover. The whole card is the link.
 
-> `Highlight Card` (LA0Vr) exists in the DS but is not yet used in code — build it from its master if a future section needs it.
+### Inputs / Fields
+- **Style:** tokenized text inputs and selects on the index explorers — `surface-primary` background, 1px `border-default`, 8px radius, 44px min-height, labels associated via `htmlFor`/`id`.
+- **Focus:** the global cobalt `:focus-visible` ring; no custom glow.
+- **Result counts** announce through an `aria-live="polite"` region.
 
----
+### Navigation
+- **NavItem:** 14px medium Slate text, 2px transparent bottom border reserving space; active state is semibold Ink with a 2px cobalt underline, exposed via `aria-current="page"`. Hover shifts text to primary in 120ms.
+- **SiteHeader:** brand + primary nav + ThemeToggle (persists choice to `localStorage`, sets `data-theme`).
+- **Breadcrumb / ToCRail:** mono metadata styling; the ToC rail scroll-spies with IntersectionObserver and hides below `lg`.
 
-## 6. Patterns → Pages
+### Eyebrow (signature)
+The structural-accent texture: a 3×14px cobalt pill bar followed by a mono 12px cobalt label, +1px tracking. This is the system's one licensed accent flourish — one per section header, never stacked, never numbered. `SectionTick` (24×3px cobalt rule) is its codebase-only sibling for headline underlines.
 
-The DS Patterns board maps ~1:1 to the pages. Each page is composed only from existing components.
+### Dark panels
+`surface-dark` + `text-on-dark*` tokens are dark in **both** modes — the Footer, ContactSection, and FeaturedCaseStudy metric panel. `Metric` takes `tone="onDark"` there.
 
-| Page | Route | Pattern | Key components |
-|---|---|---|---|
-| Home | `/` | Hero + Latest Updates | `PageHeader`-less hero, `Button`, `CredibilityStrip`, `CaseStudyCard`, `ArticleCard` |
-| Case Studies | `/case-studies` | Case Study Discovery | `PageHeader`, `FeaturedCaseStudy`, `CaseStudyCard`, explorer (search/filter/sort) |
-| Case Study | `/case-studies/[slug]` | Case Study Detail | `Breadcrumb`, `Metric` band, `ToCRail`, MDX prose, `Pullquote`, `Callout`, `CaseStudyCard` (related) |
-| Articles | `/articles` | Writing | `PageHeader`, `FeaturedArticle`, `ArticleCard`, explorer |
-| Article | `/articles/[slug]` | Writing (reading) | `Breadcrumb`, meta, MDX prose |
-| About me | `/resume` | Profile + Contact | `MetricCard`, `TimelineItem`, `Tag`, `ContactSection`, `Button` (download) |
+## 6. Do's and Don'ts
 
-`/styleguide` renders the token palette, type scale, and every component for in-browser review in both themes.
+### Do:
+- **Do** route every color through a semantic token utility; define new themed tokens once with `light-dark()` in `:root` and map them in `@theme inline`.
+- **Do** verify WCAG AA in **both** themes before calling anything done: body ≥4.5:1, large text and UI ≥3:1, focus ring ≥3:1.
+- **Do** keep body text at weight 500+ (the Medium-Body Rule) and prose within 680px.
+- **Do** keep interactive targets ≥44×44px (`min-h-11`), give every control a visible `:focus-visible` ring, and expose state (`aria-current`, `aria-pressed`, `aria-live`).
+- **Do** write complete literal Tailwind classes — never interpolate class names (`text-${x}` is invisible to Tailwind).
+- **Do** gate every animation behind `prefers-reduced-motion` and use the motion tokens (120/200/320ms, standard/emphasized easing).
+- **Do** compose from existing components (`src/components/ui/`) and patterns before inventing; one `<h1>` per page, headings never skip levels.
 
----
-
-## 7. Conventions
-
-- **Token names** — lowercase, hyphen-separated (`action-primary`, `status-error-fg`). Interaction states use `-hover` / `-pressed`. Reference in CSS with a `$`/`var()`; in Tailwind via the color utility.
-- **Components** — PascalCase, named by function not appearance, one file each, re-exported from `index.ts`. Variants are props/token overrides, never a forked component.
-- **No raw values in components** — every color/spacing/radius is a token or a standard Tailwind utility backed by one. If you write a hex into a component, route it through a token instead.
-- **Class joining** — `cn()` from `src/lib/cn.ts` (no clsx dependency).
-- **Dynamic Tailwind classes** — Tailwind only detects complete literal class strings; never build class names by interpolation (`text-${x}`). Use full literals or arbitrary `text-(--token)` syntax.
-
----
-
-## 8. Accessibility (mandatory, both themes)
-
-- **WCAG 2.1 AA** minimum for all text and meaningful UI; verify in Light **and** Dark.
-- **Keyboard** — every interactive element reachable and operable, logical order, no traps.
-- **Visible focus** — global `:focus-visible` ring (`--focus-ring`) in `globals.css`; never remove without an equal replacement.
-- **Targets** — interactive targets ≥ 44×44px (`min-h-11`; filter chips ≥ 36px with spacing).
-- **Color is never alone** — hierarchy from size/weight; status pairs color with icon + label.
-- **Semantic structure** — one `<h1>` per page, headings nest without skipping; real landmarks (`nav` for breadcrumb/ToC/header, `header`/`footer`/`main`).
-- **Responsive** — usable from 320px; content reflows, nothing clipped or horizontally scrolled. ToC hides under `lg`; grids collapse to one column.
-
-Contrast quick reference: body ≥ 4.5:1; large text (≥24px / 19px bold) & UI ≥ 3:1; focus ring ≥ 3:1 against adjacent color.
-
----
-
-## 9. MDX prose system
-
-`mdx-components.tsx` (repo root, required by Next's MDX integration) styles every prose element with DS tokens — Body L on `text-prose` at `leading-prose`, headings on the type scale, tokenized links/code/tables/blockquotes.
-
-- **Heading anchors** — the `h2` renderer slugifies its text into an `id` (`slugify()` in `content/types.ts`), since `rehype-slug` can't run under Turbopack. ToC `sections` in metadata mirror those labels to produce matching anchors.
-- **DS components in MDX** — `<Pullquote>`, `<Callout>`, `<Metric>`, `<Tag>` are exposed for authors to compose directly.
-- Supports the full long-form toolkit: headings, lists, links, images, tables, code blocks, blockquotes, callouts, pullquotes, metrics.
-- Templates strip the leading top margin with `[&>*:first-child]:mt-0`.
-
----
-
-## 10. Content model
-
-Typed metadata + MDX bodies, in `src/content/`:
-
-- `types.ts` — `CaseStudy`, `Article`, `Outcome`; helpers `formatStamp`, `byNewest`, `slugify`.
-- `case-studies.ts` / `articles.ts` — metadata arrays + getters + tag/category helpers. Case studies carry `metrics`, `sections` (= H2 labels driving the ToC), `period`.
-- `case-studies/<slug>.mdx`, `articles/<slug>.mdx` — long-form bodies, loaded via **relative dynamic import** (`../../../content/.../${slug}.mdx`) so Turbopack bundles them; `generateStaticParams` prerenders each.
-- `resume.ts` — typed About me profile data; PDF at `public/Murilo-Capanema-Resume.pdf`.
-
-See CLAUDE.md → "Adding content" for the step-by-step.
-
----
-
-## 11. Known gaps & decisions
-
-The v2-era token gaps are **closed in v3.1**:
-
-- **Radius tokens** — `radius-sm/md/lg/pill` (§3).
-- **Type-scale tokens** — `text-display-xl … text-caption` (§3).
-- **Motion tokens** — `duration-*` + `ease-*` (§3).
-- **Breakpoint tokens** — `breakpoint-sm/md/lg/xl` (§3).
-
-The v3.2 changes are now **closed**:
-
-- **Font migration** — `font-sans` migrated from Inter to Red Hat Display (`--font-red-hat-display`).
-- **Letter-spacing tokens** — `--letter-spacing-display / -heading / -body / -caption` (§3).
-- **Body text weight calibration** — body/small text across 6 component masters and MDX prose set to `font-medium` (500) for Red Hat Display optical balance.
-
-Remaining gap: a 15px/13px/11px handful of raw literals stay off the documented ramp (no matching token; expanding the ramp is out of scope). The structural-accent rule is currently applied at the token layer + `MetricCard` + styleguide; rolling it across every page/component (Eyebrow/tick in all headers, neutral categories everywhere, ink timeline outcomes) is a follow-up.
-
-Additions made this build, justified by spec requirements the DS didn't cover, composed from existing primitives:
-
-- **Search / category-tag filter / sort** controls on the index pages (the DS defines cards, not form controls) — tokenized inputs, selects, and toggle chips.
-- **Education / Certifications** on the About me page — a `CredentialList` composed from type tokens.
-- **Résumé download** — a real `<a download>` to a (placeholder) PDF in `public/`.
-
----
-
-## 12. Workflow reminders
-
-- Verify both themes and mobile before claiming done.
-- `npm run build` must pass before a PR; pages prerender as static HTML.
-- Branch from `main`, never stack PRs (see CLAUDE.md → Git workflow).
-- When the Pencil DS changes, update this file, CLAUDE.md, and the token layer together — never let them drift.
-
----
-
-## 13. Theming & the theme toggle
-
-Three layers cooperate:
-
-1. **Tokens (`globals.css`).** Each themed token is `light-dark(<light>, <dark>)`, resolved against `color-scheme`. `:root` is `color-scheme: light dark` (follow OS). `:root[data-theme="light"|"dark"]` forces one mode.
-2. **Pre-hydration script (`layout.tsx`).** First child of `<body>`; reads `localStorage.theme` and, if it is `"light"`/`"dark"`, sets `data-theme` on `<html>` before first paint (no flash). No stored value = attribute unset = follow OS. `<html>` carries `suppressHydrationWarning` because the script mutates the attribute.
-3. **`ThemeToggle` (`components/ui/ThemeToggle.tsx`).** On mount resolves the effective theme (`localStorage` else `matchMedia`); on click flips it, writes `localStorage.theme`, and sets `data-theme`. Renders a fixed-size placeholder until mounted to avoid layout shift / hydration mismatch.
-
-**Default behavior is preserved:** with nothing stored, the site follows the OS live. Persistence is opt-in (set on first click). Returning to pure OS-follow means clearing `localStorage.theme` (no "Auto" control yet — a possible future addition).
-
-Adding a new themed token: define it once with `light-dark()` in `:root` and map it in `@theme inline`. Never add a `@media (prefers-color-scheme)` block or a `dark:` variant.
+### Don't:
+- **Don't** build the **"SaaS landing-page template"** (PRODUCT.md anti-reference #1): numbered eyebrows (`01 / About`), hero metrics, identical card grids, cream or sand backgrounds, gradient blobs.
+- **Don't** produce the **"generic LinkedIn-style résumé in a box"** (anti-reference #2) — bullet-list achievements with no voice — or the **"academic / dry"** text wall (anti-reference #3).
+- **Don't** use `dark:` variants, `@media (prefers-color-scheme)` color blocks, raw hex, or Foundation primitives (`--neutral-*`, `--accent-*`, `--dark-*`) in components. The deprecated shadcn `--` token set stays dead — never reintroduce it.
+- **Don't** spread the accent: no cobalt categories, tags, metrics, or decorative fills. Accent = eyebrows, CTAs, links, active nav. Nothing else.
+- **Don't** use gradient text, glassmorphism, side-stripe borders (>1px colored `border-left`), or shadows heavier than the two-step vocabulary. If a card looks like it's floating, the shadow is too dark.
+- **Don't** let color be the only signal — status always pairs fg + surface + icon/label.
+- **Don't** drop below 4.5:1 on muted/secondary text "for elegance"; Slate (#475569) is the light-mode floor for body-size copy.
+- **Don't** ship any surface that reads as 2026 in 2028 — no trend-chasing; typographic hierarchy, spacing, and structure carry the design.
