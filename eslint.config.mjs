@@ -8,7 +8,6 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  ...tailwind.configs["flat/recommended"],
   // jsx-a11y plugin is already registered by eslint-config-next; enable its
   // full recommended rule set (Next only turns on a handful by default).
   { rules: { ...jsxA11y.flatConfigs.recommended.rules } },
@@ -24,10 +23,11 @@ const eslintConfig = defineConfig([
     },
   },
   {
+    extends: [tailwind.configs.recommended],
     settings: {
       tailwindcss: {
         callees: ["cn"],
-        config: new URL("src/app/globals.css", import.meta.url).pathname,
+        cssConfigPath: new URL("src/app/globals.css", import.meta.url).pathname,
       },
     },
     rules: {
