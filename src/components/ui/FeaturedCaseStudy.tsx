@@ -13,17 +13,17 @@ export function FeaturedCaseStudy({ caseStudy }: { caseStudy: CaseStudy }) {
         <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
           Featured · {category}
         </span>
-        <h3 className="text-text-primary text-[32px] leading-[1.2] font-semibold tracking-[-0.5px]">
+        <h3 className="text-text-primary text-h3 font-semibold">
           {title}
         </h3>
-        <p className="text-text-secondary text-base leading-[1.6]">{summary}</p>
+        <p className="text-text-secondary text-body-m">{summary}</p>
         <div className="pt-2">
           <Button href={`/case-studies/${slug}`} icon={<ArrowRight className="size-4" />}>
             Read the case study
           </Button>
         </div>
       </div>
-      <div className="bg-surface-dark flex flex-col gap-8 rounded-xl p-10 lg:w-[300px]">
+      <div className="bg-surface-dark flex flex-col gap-8 rounded-xl p-10 lg:w-75">
         {metrics.slice(0, 3).map((m) => (
           <Metric key={m.label} value={m.value} label={m.label} tone="onDark" />
         ))}

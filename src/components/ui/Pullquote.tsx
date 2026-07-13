@@ -10,11 +10,11 @@ export function Pullquote({
 }) {
   return (
     <figure className="border-border-accent flex flex-col gap-3 border-l-[3px] py-2 pr-2 pl-6">
-      <blockquote className="text-text-primary text-2xl leading-[1.4] font-medium tracking-[-0.3px]">
+      <blockquote className="text-text-primary text-h4 font-medium">
         {children}
       </blockquote>
       {attribution && (
-        <figcaption className="text-text-tertiary font-mono text-[13px]">
+        <figcaption className="text-text-tertiary font-mono text-xs">
           {attribution}
         </figcaption>
       )}

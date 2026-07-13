@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getImageProps } from "next/image";
 import {
@@ -29,16 +30,16 @@ function SectionHeader({
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
-      <h2 className="text-text-primary text-h3 leading-1.2 font-semibold tracking-[-0.5px]">
+      <h2 className="text-text-primary text-h3 font-semibold">
         {title}
       </h2>
-      <a
+      <Link
         href={href}
         className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-fast ease-standard"
       >
         {cta}
         <ArrowRight className="size-4 transition-transform duration-fast ease-standard group-hover:translate-x-0.5" />
-      </a>
+      </Link>
     </div>
   );
 }
@@ -110,6 +111,9 @@ export default function Home() {
     alt: "Murilo Capanema",
     quality: 90,
     sizes: "300px",
+    // Blurred background while the photo decodes — avoids the flash of bare
+    // cobalt plate on first paint (LCP element).
+    placeholder: "blur",
   });
   const mobileSrcSet = mobileSrcSetRaw ?? "";
 
@@ -125,10 +129,10 @@ export default function Home() {
               <span className="animate-fade-up text-text-accent font-mono text-sm tracking-[1px]">
                 CTO · PLATFORM &amp; AI · ORG SCALING
               </span>
-              <h1 className="animate-fade-up-delay-1 text-text-primary max-w-225 text-h2 leading-1.05 font-semibold tracking-[-1px] text-balance sm:text-display-m sm:tracking-[-1.1px] lg:text-display-l lg:tracking-[-1.3px]">
+              <h1 className="animate-fade-up-delay-1 text-text-primary max-w-225 text-h2 sm:text-display-m lg:text-display-l font-semibold text-balance">
                 Scaling engineering organizations and the platforms they ship.
               </h1>
-              <p className="animate-fade-up-delay-2 text-text-secondary max-w-160 text-lg leading-1.6 text-pretty">
+              <p className="animate-fade-up-delay-2 text-text-secondary max-w-160 text-body-l text-pretty">
                 Two decades helping organizations navigate through growth,
                 complexity, and change.
               </p>
