@@ -145,14 +145,14 @@ export default function Home() {
                 tabletDesktopSrcSet={tabletDesktopSrcSet}
               />
               <div className="animate-fade-up-delay-3 flex flex-wrap gap-3 pt-2">
+                <Button variant="secondary" href="/resume">
+                  About me
+                </Button>
                 <Button
                   href="/case-studies"
                   icon={<ArrowRight className="size-4" />}
                 >
                   View case studies
-                </Button>
-                <Button variant="secondary" href="/resume">
-                  About me
                 </Button>
               </div>
             </div>
@@ -199,8 +199,8 @@ export default function Home() {
           <ContactSection
             email={resume.contact.email}
             links={resume.contact.links}
-            headline="If the work resonates, let's talk."
-            sub="The fastest way to know whether we'd work well together is a real conversation about a real problem."
+            headline="Let's compare notes."
+            sub="If something here overlaps with what you're working on — or you see it differently — I'm always glad to talk."
           />
         </div>
       </main>
