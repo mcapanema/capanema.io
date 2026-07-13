@@ -200,7 +200,7 @@ export default function Home() {
             email={resume.contact.email}
             links={resume.contact.links}
             headline="Let's compare notes."
-            sub="If something here overlaps with what you're working on — or you see it differently — I'm always glad to talk."
+            sub="If something here overlaps with what you're working on, or you see it differently, I'm always glad to talk."
           />
         </div>
       </main>
