@@ -19,13 +19,13 @@ export function ContactSection({
   return (
     <section className="bg-surface-dark flex flex-col gap-12 rounded-xl p-10 sm:p-16">
       <div className="flex flex-col gap-4">
-        <h2 className="text-text-accent font-mono text-[13px] tracking-[1px]">
+        <h2 className="text-text-accent font-mono text-xs tracking-[1px]">
           CONTACT
         </h2>
-        <h3 className="text-text-on-dark max-w-[900px] text-[32px] leading-[1.1] font-semibold tracking-[-0.8px] sm:text-[40px] lg:text-[48px] lg:tracking-[-1px]">
+        <h3 className="text-text-on-dark text-h3 sm:text-h2 lg:text-h1 max-w-225 font-semibold">
           {headline}
         </h3>
-        <p className="text-text-on-dark-muted max-w-[620px] text-lg leading-[1.6]">
+        <p className="text-text-on-dark-muted text-body-l max-w-155">
           {sub}
         </p>
       </div>
@@ -41,7 +41,7 @@ export function ContactSection({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-on-dark text-[15px] font-medium transition-opacity hover:opacity-70"
+                className="text-text-on-dark text-sm font-medium transition-opacity hover:opacity-70"
               >
                 {link.label}
                 <span className="sr-only"> (opens in new tab)</span>

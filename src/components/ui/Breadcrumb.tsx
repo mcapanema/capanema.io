@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Fragment } from "react";
 
@@ -15,19 +16,19 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
             <Fragment key={i}>
               <li>
                 {item.href && !last ? (
-                  <a
+                  <Link
                     href={item.href}
-                    className="text-text-tertiary hover:text-text-primary text-[13px] transition-colors"
+                    className="text-text-tertiary hover:text-text-primary text-sm transition-colors"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ) : (
                   <span
                     aria-current={last ? "page" : undefined}
                     className={
                       last
-                        ? "text-text-primary text-[13px] font-semibold"
-                        : "text-text-tertiary text-[13px]"
+                        ? "text-text-primary text-sm font-semibold"
+                        : "text-text-tertiary text-sm"
                     }
                   >
                     {item.label}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Article } from "@/content/types";
 import { formatStamp } from "@/content/types";
 
@@ -7,12 +8,12 @@ import { formatStamp } from "@/content/types";
 export function ArticleCard({ article }: { article: Article }) {
   const { slug, category, title, excerpt, date, readingMinutes } = article;
   return (
-    <a
+    <Link
       href={`/articles/${slug}`}
-      className="group border-border-subtle bg-surface-primary hover:border-border-strong hover:shadow-[0_4px_12px_var(--shadow-1b)] flex flex-col gap-3 rounded-xl border p-8 shadow-[0_1px_2px_var(--shadow-1b)] transition-[box-shadow,border-color,color] duration-[var(--duration-fast)] ease-[var(--ease-standard)]"
+      className="group border-border-subtle bg-surface-primary hover:border-border-strong hover:shadow-[0_4px_12px_var(--shadow-1b)] flex flex-col gap-3 rounded-xl border p-8 shadow-[0_1px_2px_var(--shadow-1b)] transition-[box-shadow,border-color,color] duration-fast ease-standard"
     >
       <div className="flex items-center gap-3">
-        <span className="text-text-accent font-mono text-xs tracking-[1px] uppercase">
+        <span className="text-text-tertiary font-mono text-xs tracking-[1px] uppercase">
           {category}
         </span>
         <span aria-hidden className="text-text-tertiary text-xs">
@@ -22,13 +23,13 @@ export function ArticleCard({ article }: { article: Article }) {
           {formatStamp(date)}
         </span>
       </div>
-      <h3 className="text-text-primary group-hover:text-link text-xl leading-[1.35] font-semibold tracking-[-0.3px] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]">
+      <h3 className="text-text-primary group-hover:text-link text-h5 font-semibold tracking-[-0.3px] transition-colors duration-fast ease-standard">
         {title}
       </h3>
-      <p className="text-text-secondary text-[15px] leading-[1.6] font-medium">{excerpt}</p>
+      <p className="text-text-secondary text-body-m font-medium">{excerpt}</p>
       <span className="text-text-tertiary font-mono text-xs tracking-[0.5px] uppercase">
         {readingMinutes} min read
       </span>
-    </a>
+    </Link>
   );
 }

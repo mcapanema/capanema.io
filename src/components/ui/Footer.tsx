@@ -22,7 +22,7 @@ function LinkColumn({
 }) {
   return (
     <div className="flex flex-col gap-3">
-      <span className="text-text-on-dark-muted font-mono text-[11px] tracking-[1px]">
+      <span className="text-text-on-dark-muted font-mono text-xs tracking-[1px]">
         {heading}
       </span>
       {links.map((link) => (
@@ -46,13 +46,13 @@ function LinkColumn({
 export function Footer() {
   return (
     <footer className="bg-surface-dark">
-      <div className="mx-auto flex max-w-[1120px] flex-col gap-8 px-6 py-16 md:px-16">
+      <div className="mx-auto flex max-w-280 flex-col gap-8 px-6 py-16 md:px-16">
         <div className="flex flex-col justify-between gap-10 md:flex-row">
           <div className="flex max-w-80 flex-col gap-2">
             <span className="text-text-on-dark text-xl font-semibold tracking-[-0.3px]">
               Murilo Capanema
             </span>
-            <p className="text-text-on-dark-muted text-sm leading-[1.55]">
+            <p className="text-text-on-dark-muted text-body-s">
               Engineering executive — building platforms, teams, and the systems
               that scale them.
             </p>

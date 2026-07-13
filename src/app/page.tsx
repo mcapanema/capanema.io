@@ -1,16 +1,19 @@
 import type { ComponentPropsWithoutRef } from "react";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getImageProps } from "next/image";
 import {
   ArticleCard,
   Button,
   CaseStudyCard,
+  ContactSection,
   CredibilityStrip,
   Footer,
   SiteHeader,
 } from "@/components/ui";
 import { getCaseStudies } from "@/content/case-studies";
 import { getArticles } from "@/content/articles";
+import { resume } from "@/content/resume";
 import { cn } from "@/lib/cn";
 import meImage from "./me.png";
 
@@ -27,16 +30,16 @@ function SectionHeader({
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
-      <h2 className="text-text-primary text-[32px] leading-[1.2] font-semibold tracking-[-0.5px]">
+      <h2 className="text-text-primary text-h3 font-semibold">
         {title}
       </h2>
-      <a
+      <Link
         href={href}
-        className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]"
+        className="group text-link hover:text-link-hover inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-fast ease-standard"
       >
         {cta}
-        <ArrowRight className="size-4 transition-transform duration-[var(--duration-fast)] ease-[var(--ease-standard)] group-hover:translate-x-0.5" />
-      </a>
+        <ArrowRight className="size-4 transition-transform duration-fast ease-standard group-hover:translate-x-0.5" />
+      </Link>
     </div>
   );
 }
@@ -65,7 +68,7 @@ function HeroPortrait({
     <div className={cn("relative w-full", className)}>
       <div
         aria-hidden
-        className="bg-surface-accent absolute inset-0 translate-x-3 translate-y-3 rounded-[var(--radius-lg)] sm:translate-x-4 sm:translate-y-4"
+        className="bg-surface-accent absolute inset-0 rounded-[var(--radius-lg)] translate-3 sm:translate-4"
       />
       <picture>
         {/* tablet + desktop: doubled sizes for 1x-display sharpness */}
@@ -108,13 +111,16 @@ export default function Home() {
     alt: "Murilo Capanema",
     quality: 90,
     sizes: "300px",
+    // Blurred background while the photo decodes — avoids the flash of bare
+    // cobalt plate on first paint (LCP element).
+    placeholder: "blur",
   });
   const mobileSrcSet = mobileSrcSetRaw ?? "";
 
   return (
     <>
       <SiteHeader />
-      <main id="main-content" className="mx-auto max-w-[1120px] px-6 md:px-8">
+      <main id="main-content" className="mx-auto max-w-280 px-6 md:px-8">
         {/* Hero — DS Hero Pattern */}
         <section className="flex flex-col gap-12 py-16 md:py-24">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
@@ -123,16 +129,16 @@ export default function Home() {
               <span className="animate-fade-up text-text-accent font-mono text-sm tracking-[1px]">
                 CTO · PLATFORM &amp; AI · ORG SCALING
               </span>
-              <h1 className="animate-fade-up-delay-1 text-text-primary max-w-[900px] text-[40px] leading-[1.05] font-semibold tracking-[-1px] text-balance sm:text-[56px] sm:tracking-[-1.1px] lg:text-[64px] lg:tracking-[-1.3px]">
+              <h1 className="animate-fade-up-delay-1 text-text-primary max-w-225 text-h2 sm:text-display-m lg:text-display-l font-semibold text-balance">
                 Scaling engineering organizations and the platforms they ship.
               </h1>
-              <p className="animate-fade-up-delay-2 text-text-secondary max-w-[640px] text-lg leading-[1.6] text-pretty">
+              <p className="animate-fade-up-delay-2 text-text-secondary max-w-160 text-body-l text-pretty">
                 Two decades helping organizations navigate through growth,
                 complexity, and change.
               </p>
               {/* Portrait — between the subline and the actions on mobile/tablet (squared off); the desktop copy lives in the right column */}
               <HeroPortrait
-                className="animate-fade-up-delay-3 max-w-[256px] lg:hidden"
+                className="animate-fade-up-delay-3 max-w-64 lg:hidden"
                 imgClassName="aspect-square object-cover"
                 imgProps={heroImgProps}
                 mobileSrcSet={mobileSrcSet}
@@ -152,7 +158,7 @@ export default function Home() {
             </div>
             {/* Portrait — right column on desktop only (natural 4:5 portrait) */}
             <HeroPortrait
-              className="animate-fade-up-delay-1 hidden lg:block lg:w-[340px] lg:shrink-0"
+              className="animate-fade-up-delay-1 hidden lg:block lg:w-85 lg:shrink-0"
               imgProps={heroImgProps}
               mobileSrcSet={mobileSrcSet}
               tabletDesktopSrcSet={tabletDesktopSrcSet}
@@ -184,6 +190,18 @@ export default function Home() {
               ))}
             </div>
           </section>
+        </div>
+
+        {/* Contact close — DS Contact Pattern, home-specific copy. Generous
+            bottom air so the dark panel reads as the page's deliberate close
+            rather than butting into the (also dark) footer. */}
+        <div className="pb-16 md:pb-24">
+          <ContactSection
+            email={resume.contact.email}
+            links={resume.contact.links}
+            headline="Let's compare notes."
+            sub="If something here overlaps with what you're working on, or you see it differently, I'm always glad to talk."
+          />
         </div>
       </main>
       <Footer />
