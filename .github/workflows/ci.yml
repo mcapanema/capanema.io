@@ -70,7 +70,19 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
-      - name: Dependency audit
+      # If a prod high has no fix, add `continue-on-error: true` here with a
+      # comment naming the advisory, and remove it once a patched release ships.
+      - name: Dependency audit (production, blocking)
+        run: npm audit --omit=dev --audit-level=high
+
+      # Criticals block even in dev deps: they run during npm ci and builds.
+      - name: Dependency audit (all, critical, blocking)
+        run: npm audit --audit-level=critical
+
+      # ponytail: dev-only highs don't gate merges. Today that's braces@3.0.3 via
+      # eslint-config-next > fast-glob (GHSA-vfj7-8cjw-p6xm, no patched release;
+      # glob input is our own eslint config). Make this blocking once it's clean.
+      - name: Dependency audit (all, informational)
         run: npm audit --audit-level=high
         continue-on-error: true
 
